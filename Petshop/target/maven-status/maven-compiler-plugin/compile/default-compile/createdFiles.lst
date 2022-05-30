@@ -1,0 +1,6 @@
+br\com\fatec\Controller\ConsultasController.class
+br\com\fatec\Controller\HomeController.class
+br\com\fatec\Controller\CadastroClienteController.class
+br\com\fatec\Controller\AgendaConsultaController.class
+br\com\fatec\App.class
+br\com\fatec\Controller\CadastroPetController.class

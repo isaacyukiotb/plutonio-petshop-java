@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="723.0" prefWidth="921.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.CadastroPetController">
+    <stylesheets>
+        <URL value="@css/cadastropet.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="306.0" layoutY="67.0" text="Cadastro de Pet" textFill="#deb859">
+         <font>
+            <Font name="Eras Bold ITC" size="39.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="63.0" layoutY="131.0" prefHeight="461.0" prefWidth="809.0">
+        <columnConstraints>
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="269.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="486.0" minWidth="10.0" prefWidth="205.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="434.0" minWidth="10.0" prefWidth="352.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Nome" textFill="WHITE" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNome" prefHeight="34.0" prefWidth="260.0" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+            </TextField>
+            <Label text="Categoria" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="90.0" />
+               </GridPane.margin>
+            </Label>
+            <ComboBox fx:id="cmbCategoria" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Label text="Raça" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="250.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="txtIdDono" prefHeight="34.0" prefWidth="155.0" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+            </TextField>
+            <Label text="Gênero" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="30.0" />
+               </GridPane.margin>
+            </Label>
+            <CheckBox fx:id="ckMasculino" mnemonicParsing="false" onAction="#ckSetMasculino" text="M" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="ckFeminino" mnemonicParsing="false" onAction="#ckSetFeminino" text="F" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="18.0" />
+               </font>
+            </CheckBox>
+            <Label text="Dono" textFill="WHITE" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="18.0" />
+               </font>
+            </Label>
+            <Label text="Restrições" textFill="WHITE" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtRaca" prefHeight="34.0" prefWidth="293.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+            </TextField>
+         </children>
+      </GridPane>
+      <TextArea fx:id="txtRestricao" layoutX="63.0" layoutY="536.0" prefHeight="125.0" prefWidth="592.0">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="14.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="btnCadastro" layoutX="733.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnCadastrar_click" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: #6Fc8De;" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

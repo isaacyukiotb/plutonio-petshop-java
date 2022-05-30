@@ -1,0 +1,36 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+
+.mainFxmlClass{
+    -fx-background-color: #e7e3ff;
+}
+
+.btnCadastrar{
+    -fx-background-color:  #5171A5;
+    -fx-border-radius: 20;
+    -fx-background-radius:20;
+}
+
+.input{
+    -fx-border-color: #BF98A0;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-radius:20;
+}
+
+.label{
+    -fx-text-fill: #141301;
+    -fx-margin-left: 100px;
+}
+
+.title{
+    -fx-text-fill: #736372;
+}
+
+.btnCancelar{
+    -fx-background-color:  #FF6B6B;
+    -fx-border-radius: 20;
+    -fx-background-radius:20;
+}

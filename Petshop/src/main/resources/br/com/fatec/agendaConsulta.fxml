@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.AgendaConsultaController">
+    <stylesheets>
+        <URL value="@css/agendaconsulta.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="331.0" layoutY="43.0" text="Agendar Consulta/Serviço" />
+      <GridPane layoutX="89.0" layoutY="126.0" prefHeight="334.0" prefWidth="622.0">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="CPF do Dono" />
+            <Label GridPane.rowIndex="2" />
+            <Label text="Tipo do Serviço" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCpfDono" onAction="#txtCpfDono_focus" GridPane.rowIndex="1" />
+            <DatePicker fx:id="dpData" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Data:" GridPane.columnIndex="1" />
+            <Label fx:id="lblPreco" text="R$:99,99" GridPane.rowIndex="8" />
+            <Label text="PREÇO TOTAL:" GridPane.rowIndex="7" />
+            <Button fx:id="btnCadastrar" mnemonicParsing="false" onAction="#btnCadastrar_click" text="Cadastrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <ComboBox fx:id="cmbPet" prefWidth="150.0" GridPane.rowIndex="3" />
+            <Label text="Selecionar Pet" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbServico" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Horario:" GridPane.columnIndex="2" />
+            <ComboBox fx:id="cmbHorario" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="Observação" GridPane.rowIndex="4" />
+            <TextArea fx:id="txtObservacao" prefHeight="45.0" prefWidth="198.0" GridPane.rowIndex="5" />
+            <Label text="Funcionário" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="cmbFuncionario" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

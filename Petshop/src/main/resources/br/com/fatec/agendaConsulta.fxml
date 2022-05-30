@@ -37,13 +37,13 @@
             <TextField fx:id="txtCpfDono" onAction="#txtCpfDono_focus" GridPane.rowIndex="1" />
             <DatePicker fx:id="dpData" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Data:" GridPane.columnIndex="1" />
-            <Label fx:id="lblPreco" text="R$:99,99" GridPane.rowIndex="8" />
+            <Label fx:id="lblPreco" text="R$: 00,00" GridPane.rowIndex="8" />
             <Label text="PREÇO TOTAL:" GridPane.rowIndex="7" />
             <Button fx:id="btnCadastrar" mnemonicParsing="false" onAction="#btnCadastrar_click" text="Cadastrar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
             <Button mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
             <ComboBox fx:id="cmbPet" prefWidth="150.0" GridPane.rowIndex="3" />
             <Label text="Selecionar Pet" GridPane.rowIndex="2" />
-            <ComboBox fx:id="cmbServico" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="cmbServico" onAction="#cmbServico_selected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Horario:" GridPane.columnIndex="2" />
             <ComboBox fx:id="cmbHorario" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label text="Observação" GridPane.rowIndex="4" />

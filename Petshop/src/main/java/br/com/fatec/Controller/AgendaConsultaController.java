@@ -6,8 +6,10 @@ package br.com.fatec.Controller;
 
 import br.com.fatec.DAO.ClienteDAO;
 import br.com.fatec.DAO.PetDAO;
+import br.com.fatec.DAO.ServicoDAO;
 import br.com.fatec.model.Cliente;
 import br.com.fatec.model.Pet;
+import br.com.fatec.model.Servico;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -43,7 +45,7 @@ public class AgendaConsultaController implements Initializable {
     @FXML
     private ComboBox<Pet> cmbPet;
     @FXML
-    private ComboBox<String> cmbServico;
+    private ComboBox<Servico> cmbServico;
     @FXML
     private ComboBox<String> cmbHorario;
 
@@ -51,19 +53,18 @@ public class AgendaConsultaController implements Initializable {
     private TextArea txtObservacao;
     @FXML
     private ComboBox<String> cmbFuncionario;
-    
+
     //Lists
     ObservableList<Pet> pet = FXCollections.observableArrayList();
-    
+
     ObservableList<String> horario = FXCollections.observableArrayList();
     ObservableList<String> funcionario = FXCollections.observableArrayList();
-    ObservableList<String> servico = FXCollections.observableArrayList();
-    
+    ObservableList<Servico> servicos = FXCollections.observableArrayList();
+
     //DAOS
     Cliente cliente = new Cliente();
     ClienteDAO clienteDao = new ClienteDAO();
     PetDAO petDao = new PetDAO();
-    
 
     /**
      * Initializes the controller class.
@@ -78,19 +79,27 @@ public class AgendaConsultaController implements Initializable {
         setCmbServico();
 
     }
-    
-    
 
     @FXML
     private void btnCadastrar_click(ActionEvent event) {
     }
 
     private void setCmbServico() {
-        servico.add("Banho");
-        servico.add("Tosa");
-        servico.add("Banho e Tosa");
-        servico.add("Tosa Higienica");
-        cmbServico.setItems(servico);
+        ServicoDAO dao = new ServicoDAO();
+      
+        try {
+            servicos = dao.buscaALL();
+        } catch (SQLException ex) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("ERRO");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Erro ao procurar!" + ex.getMessage());
+
+            alerta.showAndWait();
+               
+        }   
+     
+        cmbServico.setItems(servicos);
     }
 
     private void setCmbFuncionario() {
@@ -116,15 +125,13 @@ public class AgendaConsultaController implements Initializable {
         cmbHorario.setItems(horario);
     }
 
-
     @FXML
     private void txtCpfDono_focus(ActionEvent event) {
-        
-        
+
         cliente.setCpf(txtCpfDono.getText());
-        
+
         try {
-            
+
             cliente = clienteDao.buscaCPF(cliente);
             pet = petDao.buscaDono(cliente);
         } catch (SQLException ex) {
@@ -135,10 +142,16 @@ public class AgendaConsultaController implements Initializable {
 
             alerta.showAndWait();
         }
-        
+
         cmbPet.setItems(pet);
         txtObservacao.setText(cliente.getEmail());
     }
-    
+
+    @FXML
+    private void cmbServico_selected(ActionEvent event) {
+        Servico servico = cmbServico.getValue();
+        String valor = Float.toString(servico.getPreco());
+        lblPreco.setText("R$: " + valor);
+    }
 
 }

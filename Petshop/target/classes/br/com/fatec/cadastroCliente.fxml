@@ -113,23 +113,23 @@
                <font>
                   <Font name="Yu Gothic UI Semibold" size="16.0" />
                </font></TextField>
-            <TextField fx:id="txtCep" alignment="CENTER" prefHeight="43.0" prefWidth="124.0" promptText="0000-00" styleClass="input" GridPane.rowIndex="10">
+            <TextField fx:id="txtCep" alignment="CENTER" onAction="#txtCep_enter" prefHeight="43.0" prefWidth="124.0" promptText="0000-00" styleClass="input" GridPane.rowIndex="10">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="16.0" />
                </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="249.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="13">
+            <TextField fx:id="txtBairro" prefHeight="43.0" prefWidth="249.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="13">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="16.0" />
                </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="230.0" styleClass="input" GridPane.rowIndex="16">
+            <TextField fx:id="txtCidade" prefHeight="43.0" prefWidth="230.0" styleClass="input" GridPane.rowIndex="16">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="16.0" />
                </font></TextField>
-            <TextField alignment="CENTER" prefHeight="43.0" prefWidth="67.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="16">
+            <TextField fx:id="txtUf" alignment="CENTER" prefHeight="43.0" prefWidth="67.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="16">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="16.0" />
                </font></TextField>
-            <TextField prefHeight="0.0" prefWidth="255.0" promptText="avenida, rua, alameda..." styleClass="input" GridPane.rowIndex="13">
+            <TextField fx:id="txtEndereco" prefHeight="0.0" prefWidth="255.0" promptText="avenida, rua, alameda..." styleClass="input" GridPane.rowIndex="13">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="16.0" />
                </font></TextField>

@@ -144,6 +144,7 @@
             </Button>
          </children>
       </GridPane>
+      <Button layoutX="43.0" layoutY="54.0" mnemonicParsing="false" onAction="#switchPage_home" text="Voltar" />
    </children>
    <cursor>
       <Cursor fx:constant="DEFAULT" />

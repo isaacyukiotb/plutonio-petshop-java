@@ -6,8 +6,10 @@ package br.com.fatec.Controller;
 
 import br.com.fatec.DAO.CepDAO;
 import br.com.fatec.DAO.ClienteDAO;
+import br.com.fatec.SceneController;
 import br.com.fatec.model.Cep;
 import br.com.fatec.model.Cliente;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -26,7 +28,9 @@ import javafx.scene.image.ImageView;
  * @author isaac
  */
 public class CadastroClienteController implements Initializable {
-
+    
+    SceneController sceneController = new SceneController();
+    
     @FXML
     private TextField txtNome;
     @FXML
@@ -127,6 +131,11 @@ public class CadastroClienteController implements Initializable {
         txtUf.setText(cep.getUf());
         
         
+    }
+
+    @FXML
+    private void switchPage_home(ActionEvent event) throws IOException{
+        sceneController.switchToSceneHome(event);
     }
 
 }

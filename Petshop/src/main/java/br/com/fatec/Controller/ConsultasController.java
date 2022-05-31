@@ -4,8 +4,12 @@
  */
 package br.com.fatec.Controller;
 
+import br.com.fatec.SceneController;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -14,7 +18,9 @@ import javafx.fxml.Initializable;
  * @author isaac
  */
 public class ConsultasController implements Initializable {
-
+    
+    
+    SceneController sceneController = new SceneController();
     /**
      * Initializes the controller class.
      */
@@ -22,5 +28,10 @@ public class ConsultasController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void switchPage_home(ActionEvent event) throws IOException{
+        sceneController.switchToSceneHome(event);
+    }
     
 }

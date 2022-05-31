@@ -5,7 +5,9 @@
 package br.com.fatec.Controller;
 
 import br.com.fatec.DAO.PetDAO;
+import br.com.fatec.SceneController;
 import br.com.fatec.model.Pet;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,7 +30,10 @@ import javafx.scene.control.TextField;
  * @author isaac
  */
 public class CadastroPetController implements Initializable {
-
+    
+    
+    SceneController sceneController = new SceneController();
+    
     @FXML
     private TextField txtNome;
     @FXML
@@ -48,6 +53,7 @@ public class CadastroPetController implements Initializable {
 
     private String sexo;
 
+    
     ObservableList<String> categoria = FXCollections.observableArrayList();
 
     /**
@@ -120,6 +126,12 @@ public class CadastroPetController implements Initializable {
                 alerta.showAndWait();
             
         }
+        
+    }
+
+    @FXML
+    private void switchPage_home(ActionEvent event) throws IOException{
+        sceneController.switchToSceneHome(event);
         
     }
 

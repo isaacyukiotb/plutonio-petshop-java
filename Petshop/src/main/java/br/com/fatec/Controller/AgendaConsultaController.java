@@ -7,9 +7,11 @@ package br.com.fatec.Controller;
 import br.com.fatec.DAO.ClienteDAO;
 import br.com.fatec.DAO.PetDAO;
 import br.com.fatec.DAO.ServicoDAO;
+import br.com.fatec.SceneController;
 import br.com.fatec.model.Cliente;
 import br.com.fatec.model.Pet;
 import br.com.fatec.model.Servico;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -33,7 +35,9 @@ import javafx.scene.input.InputMethodEvent;
  * @author isaac
  */
 public class AgendaConsultaController implements Initializable {
-
+    
+    SceneController sceneController = new SceneController();
+    
     @FXML
     private TextField txtCpfDono;
     @FXML
@@ -152,6 +156,11 @@ public class AgendaConsultaController implements Initializable {
         Servico servico = cmbServico.getValue();
         String valor = Float.toString(servico.getPreco());
         lblPreco.setText("R$: " + valor);
+    }
+
+    @FXML
+    private void switchPage_home(ActionEvent event) throws IOException{
+        sceneController.switchToSceneHome(event);
     }
 
 }

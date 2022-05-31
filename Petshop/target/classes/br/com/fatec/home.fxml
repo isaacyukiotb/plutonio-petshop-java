@@ -10,69 +10,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="1121.0" style="-fx-background-color: #6FC8De;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="1121.0" style="-fx-background-color: #eee;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.HomeController">
     <stylesheets>
         <URL value="@css/home.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7a95de" height="250.0" layoutX="-3.0" layoutY="-3.0" stroke="#0000002c" strokeType="INSIDE" width="1124.0" />
-      <MenuBar layoutX="266.0" layoutY="101.0" style="-fx-background-color: #64DEB3;" styleClass="menu">
-        <menus>
-          <Menu mnemonicParsing="false" style="-fx-font-size: 20;" styleClass="menu1" text="Cachorros">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" style="-fx-font-size: 20; -fx-color: white;" text="Gatos">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" style="-fx-font-size: 20; -fx-font-color: blue;" text="Pássaros">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" style="-fx-font-size: 20; -fx-font-color: black;" text="Peixes">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" style="-fx-font-size: 20; -fx-font-color: white;" text="Espécies diferenciadas">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" style="-fx-font-size: 20; -fx-font-color: white;" text="Promoções">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" style="-fx-font-size: 20; -fx-font-color: white;" text="Serviços">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-        </menus>
-      </MenuBar>
-      <MenuButton alignment="CENTER" layoutX="958.0" layoutY="167.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="118.0" style="-fx-background-color: DE9685;" text="Agenda" textFill="WHITE">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Visualizar" />
-          <MenuItem mnemonicParsing="false" text="Cadastrar" />
-        </items>
-         <font>
-            <Font name="Yu Gothic UI Semibold" size="18.0" />
-         </font>
-      </MenuButton>
-      <ImageView fitHeight="171.0" fitWidth="233.0" layoutX="26.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@resources/img/logo-cobasi.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="390.0" fitWidth="483.0" layoutX="371.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@resources/img/akita.png" />
-         </image>
-      </ImageView>
+      <Button layoutX="256.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_cadastroPet" styleClass="navButton" text="Pets" textAlignment="CENTER" AnchorPane.bottomAnchor="485.0" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="826.0" AnchorPane.topAnchor="170.0" />
+      <Button layoutX="406.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_agendaServico" styleClass="navButton" text="Servicos/Agenda" textAlignment="CENTER" />
+      <Button layoutX="638.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_cadastroCliente" styleClass="navButton" text="Cliente" textAlignment="CENTER" />
+      <Button layoutX="888.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_consultar" styleClass="navButton" text="Consultar" textAlignment="CENTER" />
    </children>
 </AnchorPane>

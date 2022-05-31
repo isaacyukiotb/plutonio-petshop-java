@@ -18,5 +18,6 @@
       <TextField layoutX="48.0" layoutY="66.0" />
       <Label layoutX="48.0" layoutY="51.0" text="Label" />
       <Button layoutX="501.0" layoutY="58.0" mnemonicParsing="false" text="Buscar" />
+      <Button layoutX="22.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchPage_home" text="Voltar" />
    </children>
 </AnchorPane>

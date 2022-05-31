@@ -5,4 +5,12 @@
 .mainFxmlClass {
 
 }
+.navButton{
+    -fx-background-color: #ddd;
+    -fx-border-width: 0;
+}
 
+
+.navButton:hover{
+    -fx-background-color: #aaa;
+}

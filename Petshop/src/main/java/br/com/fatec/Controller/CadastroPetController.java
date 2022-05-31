@@ -6,11 +6,11 @@ package br.com.fatec.Controller;
 
 import br.com.fatec.DAO.PetDAO;
 import br.com.fatec.SceneController;
+import br.com.fatec.TextFieldFormatter;
 import br.com.fatec.model.Pet;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +23,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -133,6 +134,15 @@ public class CadastroPetController implements Initializable {
     private void switchPage_home(ActionEvent event) throws IOException{
         sceneController.switchToSceneHome(event);
         
+    }
+
+    @FXML
+    private void txtCpfDono_KeyRealased(KeyEvent event) {
+        TextFieldFormatter tff = new TextFieldFormatter();
+        tff.setMask("###.###.###-##");
+        tff.setCaracteresValidos("0123456789");
+        tff.setTf(txtIdDono);
+        tff.formatter();
     }
 
 }

@@ -69,7 +69,7 @@
                   <Insets right="250.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="txtIdDono" prefHeight="34.0" prefWidth="155.0" GridPane.rowIndex="1">
+            <TextField fx:id="txtIdDono" onKeyReleased="#txtCpfDono_KeyRealased" prefHeight="34.0" prefWidth="155.0" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>

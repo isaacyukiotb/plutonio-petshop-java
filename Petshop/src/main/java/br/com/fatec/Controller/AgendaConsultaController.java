@@ -8,6 +8,7 @@ import br.com.fatec.DAO.ClienteDAO;
 import br.com.fatec.DAO.PetDAO;
 import br.com.fatec.DAO.ServicoDAO;
 import br.com.fatec.SceneController;
+import br.com.fatec.TextFieldFormatter;
 import br.com.fatec.model.Cliente;
 import br.com.fatec.model.Pet;
 import br.com.fatec.model.Servico;
@@ -28,6 +29,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -161,6 +163,15 @@ public class AgendaConsultaController implements Initializable {
     @FXML
     private void switchPage_home(ActionEvent event) throws IOException{
         sceneController.switchToSceneHome(event);
+    }
+
+    @FXML
+    private void txtCpfDono_KeyRealased(KeyEvent event) {
+        TextFieldFormatter tff = new TextFieldFormatter();
+        tff.setMask("###.###.###-##");
+        tff.setCaracteresValidos("0123456789");
+        tff.setTf(txtCpfDono);
+        tff.formatter();
     }
 
 }

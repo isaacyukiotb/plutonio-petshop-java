@@ -34,7 +34,7 @@
             <Label text="CPF do Dono" />
             <Label GridPane.rowIndex="2" />
             <Label text="Tipo do Serviço" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="txtCpfDono" onAction="#txtCpfDono_focus" GridPane.rowIndex="1" />
+            <TextField fx:id="txtCpfDono" onAction="#txtCpfDono_focus" onKeyReleased="#txtCpfDono_KeyRealased" GridPane.rowIndex="1" />
             <DatePicker fx:id="dpData" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Data:" GridPane.columnIndex="1" />
             <Label fx:id="lblPreco" text="R$: 00,00" GridPane.rowIndex="8" />

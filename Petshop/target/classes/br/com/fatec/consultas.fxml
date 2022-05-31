@@ -7,17 +7,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.ConsultasController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.ConsultasController">
     <stylesheets>
         <URL value="@css/consultas.css" />
     </stylesheets>
    <children>
-      <Label layoutX="274.0" layoutY="21.0" text="Consultas" />
-      <ListView layoutX="48.0" layoutY="94.0" prefHeight="267.0" prefWidth="504.0" />
+      <Label layoutX="399.0" layoutY="34.0" text="Consultas" />
+      <ListView layoutX="35.0" layoutY="187.0" prefHeight="641.0" prefWidth="406.0" />
       <Label layoutX="48.0" layoutY="70.0" />
-      <TextField layoutX="48.0" layoutY="66.0" />
-      <Label layoutX="48.0" layoutY="51.0" text="Label" />
-      <Button layoutX="501.0" layoutY="58.0" mnemonicParsing="false" text="Buscar" />
+      <TextField layoutX="205.0" layoutY="149.0" />
+      <Label layoutX="368.0" layoutY="131.0" />
+      <Button layoutX="622.0" layoutY="290.0" mnemonicParsing="false" text="Pesquisar" />
       <Button layoutX="22.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchPage_home" text="Voltar" />
+      <ComboBox layoutX="35.0" layoutY="149.0" prefWidth="150.0" />
+      <Label layoutX="34.0" layoutY="128.0" text="Pesquisar por:" />
+      <Label layoutX="205.0" layoutY="128.0" text="Dado:" />
+      <Button layoutX="628.0" layoutY="508.0" mnemonicParsing="false" text="Deletar" />
+      <Button layoutX="632.0" layoutY="400.0" mnemonicParsing="false" text="Editar" />
    </children>
 </AnchorPane>

@@ -7,6 +7,7 @@ package br.com.fatec.Controller;
 import br.com.fatec.DAO.CepDAO;
 import br.com.fatec.DAO.ClienteDAO;
 import br.com.fatec.SceneController;
+import br.com.fatec.TextFieldFormatter;
 import br.com.fatec.model.Cep;
 import br.com.fatec.model.Cliente;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -136,6 +138,42 @@ public class CadastroClienteController implements Initializable {
     @FXML
     private void switchPage_home(ActionEvent event) throws IOException{
         sceneController.switchToSceneHome(event);
+    }
+
+    @FXML
+    private void txtRg_KeyReleased(KeyEvent event) {
+        TextFieldFormatter tff = new TextFieldFormatter();
+        tff.setMask("##.###.###-#");
+        tff.setCaracteresValidos("0123456789");
+        tff.setTf(txtRg);
+        tff.formatter();
+    }
+
+    @FXML
+    private void txtCpf_KeyReleased(KeyEvent event) {
+        TextFieldFormatter tff = new TextFieldFormatter();
+        tff.setMask("###.###.###-##");
+        tff.setCaracteresValidos("0123456789");
+        tff.setTf(txtCpf);
+        tff.formatter();
+    }
+
+    @FXML
+    private void txtDataNasc_KeyReleased(KeyEvent event) {
+        TextFieldFormatter tff = new TextFieldFormatter();
+        tff.setMask("##/##/####");
+        tff.setCaracteresValidos("0123456789");
+        tff.setTf(txtDataNasc);
+        tff.formatter();
+    }
+
+    @FXML
+    private void txtCep_KeyReleased(KeyEvent event) {
+        TextFieldFormatter tff = new TextFieldFormatter();
+        tff.setMask("#####-###");
+        tff.setCaracteresValidos("0123456789");
+        tff.setTf(txtCep);
+        tff.formatter();
     }
 
 }

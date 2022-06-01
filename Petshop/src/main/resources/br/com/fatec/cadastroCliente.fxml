@@ -122,15 +122,15 @@
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtRg" prefHeight="43.0" prefWidth="183.0" promptText="12.345.678-9" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="txtRg" onKeyReleased="#txtRg_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="12.345.678-9" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtCpf" prefHeight="43.0" prefWidth="182.0" promptText="123.456.789-10" styleClass="input" GridPane.rowIndex="4">
+            <TextField fx:id="txtCpf" onKeyReleased="#txtCpf_KeyReleased" prefHeight="43.0" prefWidth="182.0" promptText="123.456.789-10" styleClass="input" GridPane.rowIndex="4">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtDataNasc" alignment="CENTER" prefHeight="41.0" prefWidth="126.0" promptText="dd/mm/aaaa" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="txtDataNasc" alignment="CENTER" onKeyReleased="#txtDataNasc_KeyReleased" prefHeight="41.0" prefWidth="126.0" promptText="dd/mm/aaaa" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
@@ -138,7 +138,7 @@
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtCep" alignment="CENTER" onAction="#txtCep_enter" prefHeight="43.0" prefWidth="102.0" promptText="0000-00" styleClass="input" GridPane.rowIndex="10">
+            <TextField fx:id="txtCep" alignment="CENTER" onAction="#txtCep_enter" onKeyReleased="#txtCep_KeyReleased" prefHeight="43.0" prefWidth="102.0" promptText="0000-00" styleClass="input" GridPane.rowIndex="10">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>

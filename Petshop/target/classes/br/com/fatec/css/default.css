@@ -13,6 +13,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius:20;
 }
 
+.btnCadastrar:hover{
+    -fx-background-color: #50c5b7;
+    -fx-text-fill: #052f5f;
+}
+
+.btnCancelar{
+    -fx-background-color:  #FF6B6B;
+    -fx-border-radius: 20;
+    -fx-background-radius:20;
+}
+.btnCancelar:hover{
+    -fx-background-color: #df3b57;
+    -fx-text-fill: #fca227;
+}
+
 .btnVoltar{
     -fx-background-color:  #052f5f;
 }
@@ -25,16 +40,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .label{
-    -fx-text-fill: #141301;
+    -fx-text-fill: #052f5f;
     -fx-margin-left: 200px;
+}
+
+.txtArea .content{
+    -fx-background-color: #eee;
+    -fx-border-width: 0;
+    -fx-border-radius: 17;
+    -fx-background-radius: 17;
 }
 
 .title{
     -fx-text-fill: #736372;
 }
 
-.btnCancelar{
-    -fx-background-color:  #FF6B6B;
-    -fx-border-radius: 20;
-    -fx-background-radius:20;
+.check .box{
+    -fx-background-color: #eee;
+    -fx-border-width: 0;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
 }
+
+.combo-box .arrow {
+    -fx-background-color: #0a457f;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #eee;
+    -fx-size: 100;
+    -fx-background-radius: 17;
+
+}
+
+.combo-box{
+     -fx-background-color: #eee;
+    -fx-border-width: 0;
+    -fx-border-radius: 17;
+    -fx-background-radius: 17;
+}
+

@@ -13,138 +13,190 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="893.0" prefWidth="893.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.CadastroClienteController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.CadastroClienteController">
     <stylesheets>
         <URL value="@css/cadastrocliente.css" />
       <URL value="@css/default.css" />
     </stylesheets>
    <children>
-      <Label layoutX="238.0" layoutY="39.0" prefHeight="54.0" prefWidth="418.0" styleClass="title" text="Cadastro de Clientes" textAlignment="CENTER" textFill="#736372">
-         <font>
-            <Font name="Eras Bold ITC" size="39.0" />
-         </font>
-      </Label>
-      <GridPane layoutX="69.0" layoutY="107.0" prefHeight="754.0" prefWidth="743.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="146.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="904.0" />
+      <GridPane layoutX="81.0" layoutY="137.0" prefHeight="691.0" prefWidth="743.0" stylesheets="@css/default.css">
         <columnConstraints>
-          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="299.0" />
-          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="272.0" />
-            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="179.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="316.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="373.0" minWidth="10.0" prefWidth="271.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="285.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="172.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="38.0" minHeight="0.0" prefHeight="34.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="49.0" minHeight="0.0" prefHeight="34.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="40.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="32.0" minHeight="0.0" prefHeight="28.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="27.0" minHeight="0.0" prefHeight="14.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="104.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="89.0" minHeight="0.0" prefHeight="43.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Nome" textFill="WHITE" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Label text="CPF" textFill="WHITE" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
-            <Label text="Data de nascimento" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
+            <Label text="Data de Nasc." textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Label text="RG" textFill="WHITE" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Label text="E-mail" textFill="WHITE" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Label text="CEP" textFill="WHITE" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Label text="Logradouro" textFill="WHITE" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Label text="Cidade" textFill="WHITE" GridPane.rowIndex="15" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Label text="Bairro" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Label text="UF" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="15" GridPane.valignment="BOTTOM">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="18.0" />
-               </font></Label>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <TextField fx:id="txtNome" prefHeight="43.0" prefWidth="266.0" promptText="Flávio Viotti" style="-fx-border-image-slice: xx.xx.xx;" styleClass="input" GridPane.rowIndex="1">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
             <TextField fx:id="txtRg" prefHeight="43.0" prefWidth="183.0" promptText="12.345.678-9" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
             <TextField fx:id="txtCpf" prefHeight="43.0" prefWidth="182.0" promptText="123.456.789-10" styleClass="input" GridPane.rowIndex="4">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtDataNasc" alignment="CENTER" prefHeight="43.0" prefWidth="161.0" promptText="dd/mm/aaaa" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="txtDataNasc" alignment="CENTER" prefHeight="41.0" prefWidth="126.0" promptText="dd/mm/aaaa" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
             <TextField fx:id="txtEmail" prefHeight="43.0" prefWidth="244.0" promptText="plutonio@email.com" styleClass="input" GridPane.rowIndex="7">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtCep" alignment="CENTER" onAction="#txtCep_enter" prefHeight="43.0" prefWidth="124.0" promptText="0000-00" styleClass="input" GridPane.rowIndex="10">
+            <TextField fx:id="txtCep" alignment="CENTER" onAction="#txtCep_enter" prefHeight="43.0" prefWidth="102.0" promptText="0000-00" styleClass="input" GridPane.rowIndex="10">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
             <TextField fx:id="txtBairro" prefHeight="43.0" prefWidth="249.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="13">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtCidade" prefHeight="43.0" prefWidth="230.0" styleClass="input" GridPane.rowIndex="16">
+            <TextField fx:id="txtCidade" prefHeight="43.0" prefWidth="269.0" styleClass="input" GridPane.rowIndex="16">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
             <TextField fx:id="txtUf" alignment="CENTER" prefHeight="43.0" prefWidth="67.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="16">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtEndereco" prefHeight="0.0" prefWidth="255.0" promptText="avenida, rua, alameda..." styleClass="input" GridPane.rowIndex="13">
+            <TextField fx:id="txtEndereco" prefHeight="42.0" prefWidth="280.0" promptText="avenida, rua, alameda..." styleClass="input" GridPane.rowIndex="13">
                <font>
-                  <Font name="Yu Gothic UI Semibold" size="16.0" />
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <Button fx:id="btnCadastrar" mnemonicParsing="false" onAction="#btnCadastrar_click" prefHeight="41.0" prefWidth="108.0" style="-fx-border-radius: 50;" styleClass="btnCadastrar" text="Cadastrar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="17" GridPane.valignment="CENTER">
+            <Button fx:id="btnCadastrar" mnemonicParsing="false" onAction="#btnCadastrar_click" prefHeight="41.0" prefWidth="100.0" style="-fx-border-radius: 50;" styleClass="btnCadastrar" text="Cadastrar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="16" GridPane.valignment="CENTER">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="15.0" />
                </font></Button>
-            <Button fx:id="btnCadastrar1" mnemonicParsing="false" onAction="#btnCadastrar_click" prefHeight="41.0" prefWidth="108.0" style="-fx-border-radius: 50;" styleClass="btnCancelar" text="Cancelar" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="17" GridPane.valignment="CENTER">
+            <Button fx:id="btnCadastrar1" mnemonicParsing="false" onAction="#btnCadastrar_click" prefHeight="41.0" prefWidth="94.0" style="-fx-border-radius: 50;" styleClass="btnCancelar" text="Cancelar" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="16" GridPane.valignment="CENTER">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="15.0" />
                </font>
             </Button>
+            <ImageView fitHeight="81.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@resources/img/Very-Basic-Search-icon.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="110.0" />
+               </GridPane.margin>
+            </ImageView>
+            <ImageView fitHeight="219.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+               <image>
+                  <Image url="@resources/img/plutonio_solo.png" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
-      <Button layoutX="43.0" layoutY="54.0" mnemonicParsing="false" onAction="#switchPage_home" text="Voltar" />
+      <Button layoutX="16.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchPage_home" prefHeight="44.0" prefWidth="108.0" styleClass="btnVoltar" text="❮  voltar" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <ImageView fitHeight="90.0" fitWidth="554.0" layoutX="164.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/titulo_cadas_cli.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="772.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/plutonio_cabeça.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a457f" height="19.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="904.0" />
    </children>
    <cursor>
       <Cursor fx:constant="DEFAULT" />

@@ -8,10 +8,11 @@ import br.com.fatec.model.Cliente;
 import java.sql.SQLException;
 import java.util.Collection;
 import br.com.fatec.model.Proprietario;
-import br.com.fatec.model.Veiculo;
+
 
 import br.com.fatec.persistencia.Banco;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import java.util.Collection;
 
@@ -128,7 +129,50 @@ public class ClienteDAO implements DAO <Cliente>{
 
     @Override
     public Collection lista(String criterio) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         //cria uma lista para armazenar os dados vindos do banco
+        ArrayList<Cliente> lista = new ArrayList<>();
+        
+        String sql = "SELECT * FROM cliente ";
+
+        //precisa fazer filtro para listagem
+        if(criterio != null && criterio.length() > 0) {
+            sql += " WHERE " + criterio;
+        }
+        
+        //abre a conexao com o banco
+        Banco.conectar();
+        
+        //preparar o comando PST
+        pst = Banco.obterConexao().prepareStatement(sql);
+        
+        //executar o comando
+        rs = pst.executeQuery(); //esse método serve para SELECT
+        
+        //Varre todo o resultado da consulta e coloca cada registro dentro
+        //de um objeto e coloca o objeto dentro da coleção
+        while(rs.next()) {
+            //criar o objeto
+            cliente = new Cliente();
+            
+            //mover os dados do resultSet para o objeto proprietário
+            cliente.setId(rs.getInt("id_cliente"));
+            cliente.setCpf(rs.getString("cpf"));
+            cliente.setRg(rs.getString("rg"));
+            cliente.setNome(rs.getString("nome"));
+            cliente.setDataNasc(rs.getString("data_nasc"));
+            cliente.setCep(rs.getString("cep"));
+            cliente.setEmail(rs.getString("email"));
+            
+            //move o objeto para a coleção
+            lista.add(cliente);
+        }
+                
+        //fecha a conexao
+        Banco.desconectar();
+        
+        //devolve o objeto proprietario
+        return lista;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

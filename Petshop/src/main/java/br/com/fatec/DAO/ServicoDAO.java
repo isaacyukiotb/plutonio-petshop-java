@@ -8,6 +8,7 @@ import br.com.fatec.model.Proprietario;
 import br.com.fatec.model.Servico;
 import br.com.fatec.persistencia.Banco;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,7 +54,46 @@ public class ServicoDAO implements DAO<Servico> {
 
     @Override
     public Collection<Servico> lista(String criterio) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         //cria uma lista para armazenar os dados vindos do banco
+        ArrayList<Servico> lista = new ArrayList<>();
+        
+        String sql = "SELECT * FROM servico ";
+
+        //precisa fazer filtro para listagem
+        if(criterio != null && criterio.length() > 0) {
+            sql += " WHERE " + criterio;
+        }
+        
+        //abre a conexao com o banco
+        Banco.conectar();
+        
+        //preparar o comando PST
+        pst = Banco.obterConexao().prepareStatement(sql);
+        
+        //executar o comando
+        rs = pst.executeQuery(); //esse método serve para SELECT
+        
+        //Varre todo o resultado da consulta e coloca cada registro dentro
+        //de um objeto e coloca o objeto dentro da coleção
+        while(rs.next()) {
+            //criar o objeto
+            servico = new Servico();
+            
+            //mover os dados do resultSet para o objeto proprietário
+            servico.setId_servico(rs.getInt("id_serv"));
+            servico.setNome(rs.getString("nome"));
+            servico.setPreco(rs.getFloat("preco"));
+            
+            //move o objeto para a coleção
+            lista.add(servico);
+        }
+                
+        //fecha a conexao
+        Banco.desconectar();
+        
+        //devolve o objeto proprietario
+        return lista;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public ObservableList<Servico> buscaALL() throws SQLException {

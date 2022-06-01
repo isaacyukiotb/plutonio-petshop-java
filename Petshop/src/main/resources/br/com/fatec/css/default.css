@@ -4,25 +4,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 
 .mainFxmlClass{
-    -fx-background-color: #e7e3ff;
+    -fx-background-color: #fff;
 }
 
 .btnCadastrar{
-    -fx-background-color:  #5171A5;
+    -fx-background-color:  #0a457f;
     -fx-border-radius: 20;
     -fx-background-radius:20;
 }
 
+.btnVoltar{
+    -fx-background-color:  #052f5f;
+}
+
 .input{
-    -fx-border-color: #BF98A0;
-    -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-background-radius:20;
+    -fx-background-color: #eee;
+    -fx-border-width: 0;
+    -fx-border-radius: 17;
+    -fx-background-radius: 17;
 }
 
 .label{
     -fx-text-fill: #141301;
-    -fx-margin-left: 100px;
+    -fx-margin-left: 200px;
 }
 
 .title{

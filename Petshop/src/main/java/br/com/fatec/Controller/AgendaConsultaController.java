@@ -15,6 +15,8 @@ import br.com.fatec.model.Servico;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,9 +38,9 @@ import javafx.scene.input.KeyEvent;
  * @author isaac
  */
 public class AgendaConsultaController implements Initializable {
-    
+
     SceneController sceneController = new SceneController();
-    
+
     @FXML
     private TextField txtCpfDono;
     @FXML
@@ -91,7 +93,7 @@ public class AgendaConsultaController implements Initializable {
 
     private void setCmbServico() {
         ServicoDAO dao = new ServicoDAO();
-      
+
         try {
             servicos = dao.buscaALL();
         } catch (SQLException ex) {
@@ -101,9 +103,9 @@ public class AgendaConsultaController implements Initializable {
             alerta.setContentText("Erro ao procurar!" + ex.getMessage());
 
             alerta.showAndWait();
-               
-        }   
-     
+
+        }
+
         cmbServico.setItems(servicos);
     }
 
@@ -154,13 +156,17 @@ public class AgendaConsultaController implements Initializable {
 
     @FXML
     private void cmbServico_selected(ActionEvent event) {
+        Locale s = new Locale("PT", "BR");
+        NumberFormat defaultFormat = NumberFormat.getCurrencyInstance(s);
+
         Servico servico = cmbServico.getValue();
-        String valor = Float.toString(servico.getPreco());
-        lblPreco.setText("R$: " + valor);
+        
+        Float valor = servico.getPreco();
+        lblPreco.setText(defaultFormat.format(valor));
     }
 
     @FXML
-    private void switchPage_home(ActionEvent event) throws IOException{
+    private void switchPage_home(ActionEvent event) throws IOException {
         sceneController.switchToSceneHome(event);
     }
 

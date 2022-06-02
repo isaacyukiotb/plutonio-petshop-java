@@ -116,7 +116,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtRaca" prefHeight="34.0" prefWidth="293.0" promptText="Linguiça" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <TextField fx:id="txtRaca" prefHeight="34.0" prefWidth="293.0" promptText="Pincher" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>

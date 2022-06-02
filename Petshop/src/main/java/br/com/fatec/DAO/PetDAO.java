@@ -6,7 +6,6 @@ package br.com.fatec.DAO;
 
 import br.com.fatec.model.Cliente;
 import br.com.fatec.model.Pet;
-import br.com.fatec.model.Servico;
 import br.com.fatec.persistencia.Banco;
 import java.sql.SQLException;
 import java.util.ArrayList;

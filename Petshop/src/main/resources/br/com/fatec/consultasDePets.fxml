@@ -13,16 +13,21 @@
     </stylesheets>
    <children>
       <Label fx:id="lblConsulta" layoutX="399.0" layoutY="34.0" text="Consultas" />
-      <ListView fx:id="lvListaAll" layoutX="35.0" layoutY="187.0" prefHeight="641.0" prefWidth="406.0" />
       <Label layoutX="48.0" layoutY="70.0" />
       <TextField fx:id="txtDados" layoutX="205.0" layoutY="149.0" onKeyReleased="#txtDados_KeyReleased" />
       <Label layoutX="368.0" layoutY="131.0" />
-      <Button fx:id="btnPesquisar" layoutX="622.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnPesquisar_click" text="Pesquisar" />
+      <Button fx:id="btnPesquisar" layoutX="384.0" layoutY="149.0" mnemonicParsing="false" onAction="#btnPesquisar_click" text="Pesquisar" />
       <Button layoutX="22.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchPage_home" text="Voltar" />
       <ComboBox fx:id="cmTipoPesquisa" layoutX="35.0" layoutY="149.0" onAction="#cmTipoPesquisa_selected" prefWidth="150.0" />
       <Label layoutX="34.0" layoutY="128.0" text="Pesquisar por:" />
       <Label layoutX="205.0" layoutY="128.0" text="Dado:" />
       <Button fx:id="btnDeletar" layoutX="628.0" layoutY="508.0" mnemonicParsing="false" onAction="#btnDeletar_click" text="Deletar" />
       <Button fx:id="btnEditar" layoutX="632.0" layoutY="400.0" mnemonicParsing="false" onAction="#btnEditar_click" text="Editar" />
+      <TableView fx:id="tbvPet" layoutX="35.0" layoutY="184.0" prefHeight="636.0" prefWidth="435.0">
+        <columns>
+          <TableColumn fx:id="nome" prefWidth="75.0" text="Nome" />
+          <TableColumn fx:id="genero" prefWidth="75.0" text="Genero" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

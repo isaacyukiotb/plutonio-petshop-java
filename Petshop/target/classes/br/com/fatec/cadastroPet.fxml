@@ -76,7 +76,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtIdDono" alignment="CENTER" onKeyReleased="#txtCpfDono_KeyRealased" prefHeight="34.0" prefWidth="136.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="1">
+            <TextField fx:id="txtCpfDono" alignment="CENTER" onKeyReleased="#txtCpfDono_KeyRealased" prefHeight="34.0" prefWidth="136.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>

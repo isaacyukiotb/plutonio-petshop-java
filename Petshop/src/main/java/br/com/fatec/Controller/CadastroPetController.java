@@ -4,14 +4,18 @@
  */
 package br.com.fatec.Controller;
 
+import br.com.fatec.DAO.ClienteDAO;
 import br.com.fatec.DAO.PetDAO;
 import br.com.fatec.SceneController;
 import br.com.fatec.TextFieldFormatter;
+import br.com.fatec.model.Cliente;
 import br.com.fatec.model.Pet;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,20 +31,19 @@ import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
- 
+ *
  * @author isaac
  */
 public class CadastroPetController implements Initializable {
-    
-    
+
     SceneController sceneController = new SceneController();
+    ObservableList<String> categoria = FXCollections.observableArrayList();
     
     @FXML
     private TextField txtNome;
     @FXML
     private ComboBox<String> cmbCategoria;
-    @FXML
-    private TextField txtIdDono;
+    
     @FXML
     private CheckBox ckMasculino;
     @FXML
@@ -53,9 +56,8 @@ public class CadastroPetController implements Initializable {
     private Button btnCadastro;
 
     private String sexo;
-
-    
-    ObservableList<String> categoria = FXCollections.observableArrayList();
+    @FXML
+    private TextField txtCpfDono;
 
     /**
      * Initializes the controller class.
@@ -90,50 +92,64 @@ public class CadastroPetController implements Initializable {
 
     @FXML
     private void btnCadastrar_click(ActionEvent event) {
+
         Pet pet = new Pet();
         PetDAO dao = new PetDAO();
+        
+        ClienteDAO clienteDao = new ClienteDAO();
+        
+        Cliente dono = new Cliente();
+        dono.setCpf(txtCpfDono.getText());
+        
+        try {
+            dono = clienteDao.buscaCPF(dono);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            //Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 
         pet.setNome(txtNome.getText());
         pet.setCategoria(cmbCategoria.getValue());
         pet.setRaca(txtRaca.getText());
         pet.setGenero(this.sexo);
         pet.setRestricao(txtRestricao.getText());
-        pet.setId_dono(Integer.parseInt(txtIdDono.getText()));
-        
-        try{
-            if(dao.insere(pet)){
+        pet.setId_dono(dono.getId());
+
+        try {
+            if (dao.insere(pet)) {
                 Alert alerta = new Alert(Alert.AlertType.INFORMATION);
                 alerta.setTitle("SUCESSO");
                 alerta.setHeaderText("INFORMACOES");
                 alerta.setContentText("Dados gravados com SUCESSO!");
-                
+
                 alerta.showAndWait();
-         
-            }else{
+
+            } else {
                 Alert alerta = new Alert(Alert.AlertType.ERROR);
                 alerta.setTitle("ERRO");
                 alerta.setHeaderText("INFORMACOES");
                 alerta.setContentText("Erro ao gravar os Dados!");
-                
+
                 alerta.showAndWait();
             }
-            
-        }catch(SQLException ex){
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
-                alerta.setTitle("ERRO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Erro na gravacao: " + ex.getMessage());
-                
-                alerta.showAndWait();
-            
+
+        } catch (SQLException ex) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("ERRO");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Erro na gravacao: " + ex.getMessage());
+
+            alerta.showAndWait();
+
         }
-        
+
     }
 
     @FXML
-    private void switchPage_home(ActionEvent event) throws IOException{
+    private void switchPage_home(ActionEvent event) throws IOException {
         sceneController.switchToSceneHome(event);
-        
+
     }
 
     @FXML
@@ -141,7 +157,7 @@ public class CadastroPetController implements Initializable {
         TextFieldFormatter tff = new TextFieldFormatter();
         tff.setMask("###.###.###-##");
         tff.setCaracteresValidos("0123456789");
-        tff.setTf(txtIdDono);
+        tff.setTf(txtCpfDono);
         tff.formatter();
     }
 

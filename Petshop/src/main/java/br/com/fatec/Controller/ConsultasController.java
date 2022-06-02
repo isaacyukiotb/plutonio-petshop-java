@@ -28,8 +28,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 
 /**
@@ -41,18 +43,12 @@ public class ConsultasController implements Initializable {
 
     SceneController sceneController = new SceneController();
 
-    ObservableList<Pet> obsPets;
-    ArrayList<Pet> lista = new ArrayList<>();
-
     PetDAO petDao = new PetDAO();
     ClienteDAO clienteDao = new ClienteDAO();
 
     Pet currentPet = new Pet();
 
     String argumentos = "";
-
-    @FXML
-    private ListView<Pet> lvListaAll;
 
     @FXML
     private Label lblConsulta;
@@ -66,13 +62,23 @@ public class ConsultasController implements Initializable {
     private Button btnEditar;
     @FXML
     private ComboBox<String> cmTipoPesquisa;
+    @FXML
+    private TableView<Pet> tbvPet;
+    @FXML
+    private TableColumn<Pet, String> nome;
+    @FXML
+    private TableColumn<Pet, String> genero;
 
     /**
      * Initializes the controller class.
+     *
      */
+    ObservableList<Pet> list = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        carregaPets("");
         carregaCmbOptions();
     }
 
@@ -81,39 +87,10 @@ public class ConsultasController implements Initializable {
         sceneController.switchToSceneHome(event);
     }
 
-    public void carregaPets(String args) {
-        try {
-
-            lista = (ArrayList<Pet>) petDao.lista(args);
-
-        } catch (SQLException ex) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("ERRO");
-            alerta.setHeaderText("INFORMACOES");
-            alerta.setContentText("Erro na consulta: " + ex.getMessage());
-            alerta.showAndWait();
-        }
-
-        obsPets = FXCollections.observableArrayList(lista);
-
-        lvListaAll.setItems(obsPets);
-
-        lvListaAll.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pet>() {
-
-            @Override
-            public void changed(ObservableValue<? extends Pet> ov, Pet t, Pet t1) {
-                currentPet = (Pet) lvListaAll.getSelectionModel().getSelectedItem();
-                lblConsulta.setText(currentPet.getNome());
-            }
-
-        });
-
-    }
-
     private void carregaCmbOptions() {
 
         ObservableList<String> obsTipos = FXCollections.observableArrayList();
-
+        obsTipos.add("Todos");
         obsTipos.add("id_pet");
         obsTipos.add("nome");
         obsTipos.add("categoria");
@@ -128,10 +105,15 @@ public class ConsultasController implements Initializable {
 
     @FXML
     private void btnPesquisar_click(ActionEvent event) {
-        argumentos = "";
-        argumentos = cmTipoPesquisa.getValue();
-        argumentos += " = " + "'" + txtDados.getText() + "'";
-        carregaPets(argumentos);
+        if (cmTipoPesquisa.getValue() == "Todos") {
+            argumentos = "";
+            carregaPets(argumentos);
+        } else {
+            argumentos = "";
+            argumentos = cmTipoPesquisa.getValue();
+            argumentos += " = " + "'" + txtDados.getText() + "'";
+            carregaPets(argumentos);
+        }
     }
 
     @FXML
@@ -169,6 +151,7 @@ public class ConsultasController implements Initializable {
                 alerta3.setHeaderText("INFORMACOES");
                 alerta3.setContentText("Dados deletados com Sucesso! ");
                 alerta3.showAndWait();
+                carregaPets("");
             } catch (SQLException ex) {
                 Alert alerta2 = new Alert(Alert.AlertType.ERROR);
                 alerta2.setTitle("ERRO");
@@ -183,6 +166,36 @@ public class ConsultasController implements Initializable {
 
     @FXML
     private void btnEditar_click(ActionEvent event) {
+    }
+
+    public void carregaPets(String args) {
+        ObservableList<Pet> obsPets = FXCollections.observableArrayList();
+        ArrayList<Pet> lista = new ArrayList<>();
+        try {
+            lista.addAll(petDao.lista(args));
+        } catch (SQLException ex) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("ERRO");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Erro na consulta: " + ex.getMessage());
+            alerta.showAndWait();
+        }
+        obsPets.addAll(lista);
+
+        nome.setCellValueFactory(new PropertyValueFactory<Pet, String>("nome"));
+        genero.setCellValueFactory(new PropertyValueFactory<Pet, String>("genero"));
+
+        tbvPet.setItems(obsPets);
+
+        tbvPet.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pet>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Pet> ov, Pet t, Pet t1) {
+                currentPet = (Pet) tbvPet.getSelectionModel().getSelectedItem();
+                lblConsulta.setText(currentPet.getNome());
+            }
+
+        });
     }
 
 }

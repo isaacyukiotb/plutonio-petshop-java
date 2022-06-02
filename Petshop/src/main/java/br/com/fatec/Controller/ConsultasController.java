@@ -123,7 +123,10 @@ public class ConsultasController implements Initializable {
 
     @FXML
     private void cmTipoPesquisa_selected(ActionEvent event) {
+
+        txtDados.setText("");
         argumentos = "";
+
     }
 
     @FXML

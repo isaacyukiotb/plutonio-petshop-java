@@ -51,11 +51,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 17;
 }
 
+.txtArea{
+    -fx-background-color: #eee;
+    -fx-border-width: 0;
+}
+
 .title{
     -fx-text-fill: #736372;
 }
 
-.check .box{
+.check .box {
     -fx-background-color: #eee;
     -fx-border-width: 0;
     -fx-border-radius: 5;
@@ -73,10 +78,67 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 }
 
-.combo-box{
-     -fx-background-color: #eee;
+.combo-box  .list-cell {
+    -fx-background-color: #eee;
+    -fx-text-fill: #0a457f;
     -fx-border-width: 0;
     -fx-border-radius: 17;
     -fx-background-radius: 17;
 }
+
+.combo-box-popup .list-view {
+    -fx-background-insets: 0, 1;
+    -fx-background-color: #eee;
+    -fx-border-width: 0;
+    -fx-border-radius: 17;
+    -fx-background-radius: 17;
+}  
+
+.combo-box{
+    -fx-background-color: #eee;
+    -fx-border-width: 0;
+    -fx-border-radius: 17;
+    -fx-background-radius: 17;
+}
+
+.date-picker .arrow-button{
+    -fx-background-color: #eee;
+    -fx-background-radius: 17;
+    -fx-border-radius: 17;
+}
+
+.date-picker  {
+    -fx-background-color: #eee;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.date-picker .cell {
+    -fx-background-color: #eee;
+}
+
+.date-picker .cell:hover {
+    -fx-background-color: #50c5b7;
+}
+
+.date-picker .selected {
+    -fx-background-color:  #052f5f;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #0a457f;
+}
+
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: #fca227;
+}
+
+.date-picker .text-field{
+     -fx-background-color: #eee;
+     -fx-background-radius: 7;
+     -fx-border-radius: 7;
+     -fx-border-width: 0;
+}
+
 

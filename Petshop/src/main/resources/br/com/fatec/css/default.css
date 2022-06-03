@@ -32,6 +32,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color:  #052f5f;
 }
 
+.btnPesquisar{
+    -fx-background-color:  #0a457f;
+    -fx-border-radius: 20;
+    -fx-background-radius:20;
+}
+
+.btnPesquisar:hover{
+    -fx-background-color: #50c5b7;
+    -fx-text-fill: #052f5f;
+}
+
+.btnDeletar{
+    -fx-background-color:  #FF6B6B;
+    -fx-border-radius: 20;
+    -fx-background-radius:20;
+}
+.btnDeletar:hover{
+    -fx-background-color: #df3b57;
+    -fx-text-fill: #fca227;
+}
+
+.btnEditar{
+    -fx-background-color:  #fca227;
+    -fx-border-radius: 20;
+    -fx-background-radius:20;
+}
+.btnEditar:hover{
+    -fx-background-color: #052f5f;
+    -fx-text-fill: #50c5b7;
+}
+
 .input{
     -fx-background-color: #eee;
     -fx-border-width: 0;
@@ -92,13 +123,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: 0;
     -fx-border-radius: 17;
     -fx-background-radius: 17;
+    -fx-font-family: "Yu Gothic UI Semibold";
+    -fx-font-size: 14;
+    
 }  
 
+.combo-box-popup .list-view .list-cell:filled:hover 
+{
+    -fx-background-color: #50c5b7;
+    -fx-text-fill: #052f5f;
+}
 .combo-box{
     -fx-background-color: #eee;
     -fx-border-width: 0;
     -fx-border-radius: 17;
     -fx-background-radius: 17;
+    -fx-font-family: "Yu Gothic UI Semibold";
+    -fx-font-size: 14;
 }
 
 .date-picker .arrow-button{
@@ -139,6 +180,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
      -fx-background-radius: 7;
      -fx-border-radius: 7;
      -fx-border-width: 0;
+     -fx-font-family: "Yu Gothic UI Semibold";
+     -fx-font-size: 14;
 }
 
+.table-view{
+    -fx-background-color: #eee;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+    -fx-border-width: 0;
+    -fx-font-family: "Yu Gothic UI Semibold";
+    -fx-font-size: 14;
+}
 
+.table-view .column-header-background .filler {
+    -fx-background-color: #eee;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #052f5f;
+    -fx-background-radius:10;
+    -fx-padding: 0 0 5px 0;
+    -fx-font-family: "Yu Gothic UI Semibold";
+    -fx-font-size: 14;
+}
+
+.table-view .column-header {
+    -fx-background-color: #eee;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+.table-row-cell:hover {
+    -fx-background-color: #fca227;
+    -fx-text-fill: #fff;
+}

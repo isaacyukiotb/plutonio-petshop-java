@@ -24,8 +24,8 @@
         <columnConstraints>
           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="316.0" />
           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="373.0" minWidth="10.0" prefWidth="271.0" />
-            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="285.0" minWidth="0.0" prefWidth="0.0" />
-            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="172.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="285.0" minWidth="0.0" prefWidth="18.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="149.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
@@ -130,31 +130,27 @@
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtDataNasc" alignment="CENTER" onKeyReleased="#txtDataNasc_KeyReleased" prefHeight="41.0" prefWidth="126.0" promptText="dd/mm/aaaa" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Yu Gothic UI Semibold" size="14.0" />
-               </font></TextField>
             <TextField fx:id="txtEmail" prefHeight="43.0" prefWidth="244.0" promptText="plutonio@email.com" styleClass="input" GridPane.rowIndex="7">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtCep" alignment="CENTER" onAction="#txtCep_enter" onKeyReleased="#txtCep_KeyReleased" prefHeight="43.0" prefWidth="102.0" promptText="0000-00" styleClass="input" GridPane.rowIndex="10">
+            <TextField fx:id="txtCep" onAction="#txtCep_enter" onKeyReleased="#txtCep_KeyReleased" prefHeight="43.0" prefWidth="102.0" promptText="0000-000" styleClass="input" GridPane.rowIndex="10">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtBairro" prefHeight="43.0" prefWidth="249.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="13">
+            <TextField fx:id="txtBairro" disable="true" prefHeight="43.0" prefWidth="249.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="13">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtCidade" prefHeight="43.0" prefWidth="269.0" styleClass="input" GridPane.rowIndex="16">
+            <TextField fx:id="txtCidade" disable="true" prefHeight="43.0" prefWidth="269.0" styleClass="input" GridPane.rowIndex="16">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtUf" alignment="CENTER" prefHeight="43.0" prefWidth="67.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="16">
+            <TextField fx:id="txtUf" alignment="CENTER" disable="true" prefHeight="43.0" prefWidth="67.0" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="16">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtEndereco" prefHeight="42.0" prefWidth="280.0" promptText="avenida, rua, alameda..." styleClass="input" GridPane.rowIndex="13">
+            <TextField fx:id="txtEndereco" disable="true" prefHeight="42.0" prefWidth="280.0" promptText="avenida, rua, alameda..." styleClass="input" GridPane.rowIndex="13">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
@@ -179,7 +175,40 @@
                <image>
                   <Image url="@resources/img/plutonio_solo.png" />
                </image>
+               <GridPane.margin>
+                  <Insets left="65.0" />
+               </GridPane.margin>
             </ImageView>
+            <DatePicker prefHeight="40.0" prefWidth="165.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Nº" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="txtBairro1" prefHeight="43.0" prefWidth="66.0" styleClass="input" GridPane.columnIndex="3" GridPane.rowIndex="13">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+            </TextField>
+            <Label text="Telefone" textFill="WHITE" GridPane.columnIndex="3" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="txtTelefone" onKeyReleased="#txtTelefone_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="  (11) 91111-1111" styleClass="input" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Yu Gothic UI Semibold" size="14.0" />
+               </font>
+            </TextField>
          </children>
       </GridPane>
       <Button layoutX="16.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchPage_home" prefHeight="44.0" prefWidth="108.0" styleClass="btnVoltar" text="❮  voltar" textFill="WHITE">

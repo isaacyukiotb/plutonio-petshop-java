@@ -1,5 +1,6 @@
 package br.com.fatec;
 
+import br.com.fatec.DAO.FuncionarioDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,8 @@ public class App extends Application {
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException {        
+    public void start(Stage stage) throws IOException {  
+        FuncionarioDAO.inserirFuncionariosPadroes();
         scene = new Scene(loadFXML("home"));
         stage.setScene(scene);
         stage.show();

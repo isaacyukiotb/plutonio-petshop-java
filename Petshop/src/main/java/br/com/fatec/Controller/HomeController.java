@@ -4,6 +4,7 @@
  */
 package br.com.fatec.Controller;
 
+import br.com.fatec.DAO.FuncionarioDAO;
 import br.com.fatec.SceneController;
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +28,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO  
+        
     }
 
     @FXML
@@ -47,6 +49,11 @@ public class HomeController implements Initializable {
     @FXML
     private void switchPage_consultar(ActionEvent event) throws IOException{
         sceneController.switchToSceneConsultar(event);
+    }
+
+    @FXML
+    private void switchPage_cadastroFuncionario(ActionEvent event) throws IOException{
+        sceneController.switchToSceneCadastroFuncionario(event);
     }
 
 }

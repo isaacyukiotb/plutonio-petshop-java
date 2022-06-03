@@ -13,7 +13,6 @@ br\com\fatec\Controller\AgendaConsultaController.class
 br\com\fatec\Controller\CadastroPetController.class
 br\com\fatec\DAO\CepDAO.class
 br\com\fatec\DAO\ClienteDAO.class
-br\com\fatec\Controller\ConsultasController.class
 br\com\fatec\DAO\ServicoDAO.class
 br\com\fatec\DAO\DAO.class
 br\com\fatec\DAO\AgendaDAO.class

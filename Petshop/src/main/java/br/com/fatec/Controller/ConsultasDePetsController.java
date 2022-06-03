@@ -39,7 +39,7 @@ import javafx.scene.input.KeyEvent;
  *
  * @author isaac
  */
-public class ConsultasController implements Initializable {
+public class ConsultasDePetsController implements Initializable {
 
     SceneController sceneController = new SceneController();
 
@@ -138,7 +138,7 @@ public class ConsultasController implements Initializable {
         try {
             cliente = clienteDao.buscaID(cliente);
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultasController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConsultasDePetsController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);

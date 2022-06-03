@@ -101,7 +101,7 @@ public class AgendaConsultaController implements Initializable {
             alerta.setTitle("ERRO");
             alerta.setHeaderText("INFORMACOES");
             alerta.setContentText("Erro ao procurar!" + ex.getMessage());
-
+            
             alerta.showAndWait();
 
         }

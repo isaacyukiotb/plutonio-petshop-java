@@ -25,46 +25,64 @@ public class SceneController {
     public void switchToSceneCadastroPet(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("cadastroPet.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Cadastro de Pets");
+        stage.setResizable(false);
+        stage.centerOnScreen();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void switchToSceneCadastroCliente(ActionEvent event) throws IOException{
+    public void switchToSceneCadastroCliente(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("cadastroCliente.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Cadastro de Clientes");
+        stage.setResizable(false);
+        stage.centerOnScreen();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void switchToSceneAgendaConsulta(ActionEvent event) throws IOException{
+    public void switchToSceneAgendaConsulta(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("agendaConsulta.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Agenda de Serviços");
+        stage.setResizable(false);
+        stage.centerOnScreen();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void switchToSceneConsultar(ActionEvent event) throws IOException{
+    public void switchToSceneConsultar(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("consultasDePets.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Consulta de Pets");
+        stage.setResizable(false);
+        stage.centerOnScreen();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void switchToSceneHome(ActionEvent event) throws IOException{
+    public void switchToSceneHome(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Home");
+        stage.setResizable(false);
+        stage.centerOnScreen();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    
-    public void switchToSceneCadastroFuncionario(ActionEvent event) throws IOException{
+
+    public void switchToSceneCadastroFuncionario(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("cadastroFuncionario.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Cadastro de Funcionarios");
+        stage.setResizable(false);
+        stage.centerOnScreen();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

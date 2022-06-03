@@ -18,7 +18,14 @@
       <Button layoutX="256.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_cadastroPet" styleClass="navButton" text="Pets" textAlignment="CENTER" AnchorPane.bottomAnchor="485.0" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="826.0" AnchorPane.topAnchor="170.0" />
       <Button layoutX="406.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_agendaServico" styleClass="navButton" text="Servicos/Agenda" textAlignment="CENTER" />
       <Button layoutX="638.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_cadastroCliente" styleClass="navButton" text="Cliente" textAlignment="CENTER" />
-      <Button layoutX="888.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_consultar" styleClass="navButton" text="Consultar" textAlignment="CENTER" />
       <Button layoutX="753.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_cadastroFuncionario" styleClass="navButton" text="Funcionario" textAlignment="CENTER" />
+      <MenuButton layoutX="876.0" layoutY="170.0" mnemonicParsing="false" styleClass="navButton" text="Consultar">
+        <items>
+            <MenuItem mnemonicParsing="false" text="Funcionário" />
+          <MenuItem mnemonicParsing="false" text="Cliente" />
+          <MenuItem mnemonicParsing="false" text="Serviço" />
+            <MenuItem mnemonicParsing="false" text="Pet" />
+        </items>
+      </MenuButton>
    </children>
 </AnchorPane>

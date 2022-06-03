@@ -4,20 +4,29 @@
  */
 package br.com.fatec.Controller;
 
+import br.com.fatec.DAO.AgendaDAO;
 import br.com.fatec.DAO.ClienteDAO;
+import br.com.fatec.DAO.FuncionarioDAO;
 import br.com.fatec.DAO.PetDAO;
 import br.com.fatec.DAO.ServicoDAO;
 import br.com.fatec.SceneController;
 import br.com.fatec.TextFieldFormatter;
+import br.com.fatec.model.Agenda;
 import br.com.fatec.model.Cliente;
+import br.com.fatec.model.Funcionario;
 import br.com.fatec.model.Pet;
 import br.com.fatec.model.Servico;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +34,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -59,19 +69,28 @@ public class AgendaConsultaController implements Initializable {
     @FXML
     private TextArea txtObservacao;
     @FXML
-    private ComboBox<String> cmbFuncionario;
+    private ComboBox<Funcionario> cmbFuncionario;
+    //Variables
+    Locale s = new Locale("PT", "BR");
+
+    //Currents
+    Pet currentPet;
+    Funcionario currentFuncionaro;
 
     //Lists
     ObservableList<Pet> pet = FXCollections.observableArrayList();
 
     ObservableList<String> horario = FXCollections.observableArrayList();
-    ObservableList<String> funcionario = FXCollections.observableArrayList();
+    ObservableList<Funcionario> funcionario = FXCollections.observableArrayList();
     ObservableList<Servico> servicos = FXCollections.observableArrayList();
 
     //DAOS
     Cliente cliente = new Cliente();
     ClienteDAO clienteDao = new ClienteDAO();
     PetDAO petDao = new PetDAO();
+    AgendaDAO agendaDAO = new AgendaDAO();
+    @FXML
+    private Button btnCancelar;
 
     /**
      * Initializes the controller class.
@@ -89,6 +108,36 @@ public class AgendaConsultaController implements Initializable {
 
     @FXML
     private void btnCadastrar_click(ActionEvent event) {
+        
+        Agenda agenda = new Agenda();
+
+        LocalDate data = dpData.getValue();
+        String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+        agenda.setData(dataPickerString);
+        agenda.setHora(cmbHorario.getValue());
+        agenda.setObservacao(txtObservacao.getText());
+        agenda.setId_pet(currentPet.getId_pet());
+        agenda.setId_func(currentFuncionaro.getId_funcionario());
+
+        try {
+            agendaDAO.insere(agenda);
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("SUCESSO");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Agenda cadastrada com SUCESSO !!!");
+
+            alerta.showAndWait();
+            limparCampos();
+
+        } catch (SQLException ex) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("ERRO");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Erro ao cadastrar!" + ex.getMessage());
+
+            alerta.showAndWait();
+        }
     }
 
     private void setCmbServico() {
@@ -101,7 +150,7 @@ public class AgendaConsultaController implements Initializable {
             alerta.setTitle("ERRO");
             alerta.setHeaderText("INFORMACOES");
             alerta.setContentText("Erro ao procurar!" + ex.getMessage());
-            
+
             alerta.showAndWait();
 
         }
@@ -110,16 +159,14 @@ public class AgendaConsultaController implements Initializable {
     }
 
     private void setCmbFuncionario() {
-        funcionario.add("Marcio");
-        funcionario.add("Mario");
-        funcionario.add("Flavio");
-        funcionario.add("Maria");
-        funcionario.add("Julia");
+
+        funcionario.addAll(FuncionarioDAO.funcionarios);
 
         cmbFuncionario.setItems(funcionario);
     }
 
     private void setCmbHorario() {
+
         horario.add("9:00");
         horario.add("10:00");
         horario.add("11:00");
@@ -129,6 +176,18 @@ public class AgendaConsultaController implements Initializable {
         horario.add("15:00");
         horario.add("16:00");
 
+        cmbHorario.setItems(horario);
+    }
+
+    private void clearCmbHorario() {
+        horario.remove("9:00");
+        horario.remove("10:00");
+        horario.remove("11:00");
+        horario.remove("12:00");
+        horario.remove("13:00");
+        horario.remove("14:00");
+        horario.remove("15:00");
+        horario.remove("16:00");
         cmbHorario.setItems(horario);
     }
 
@@ -156,11 +215,10 @@ public class AgendaConsultaController implements Initializable {
 
     @FXML
     private void cmbServico_selected(ActionEvent event) {
-        Locale s = new Locale("PT", "BR");
         NumberFormat defaultFormat = NumberFormat.getCurrencyInstance(s);
 
         Servico servico = cmbServico.getValue();
-        
+
         Float valor = servico.getPreco();
         lblPreco.setText(defaultFormat.format(valor));
     }
@@ -177,6 +235,65 @@ public class AgendaConsultaController implements Initializable {
         tff.setCaracteresValidos("0123456789");
         tff.setTf(txtCpfDono);
         tff.formatter();
+    }
+
+    @FXML
+    private void dpData_selected(ActionEvent event) {
+        clearCmbHorario();
+        setCmbHorario();
+        ObservableList<Agenda> horasMarcadas = FXCollections.observableArrayList();
+        LocalDate data = dpData.getValue();
+        String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+        try {
+
+            horasMarcadas.addAll(agendaDAO.lista("data=" + "'" + dataPickerString + "'"));
+
+        } catch (SQLException ex) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("ERRO");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Erro ao Buscar os Dados!" + ex.getMessage());
+
+            alerta.showAndWait();
+        }
+
+        for (Agenda horaMarcada : horasMarcadas) {
+            horario.remove(horaMarcada.getHora());
+        }
+
+    }
+
+    @FXML
+    private void cmbPet_selected(ActionEvent event) {
+        currentPet = cmbPet.getValue();
+    }
+
+    @FXML
+    private void cmbFuncionario_selected(ActionEvent event) {
+        currentFuncionaro = cmbFuncionario.getValue();
+    }
+
+    @FXML
+    private void btnCancelar_click(ActionEvent event) {
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle("Cancelar");
+        alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
+        
+        if (alerta.showAndWait().get() == ButtonType.OK) {
+            limparCampos();
+        }
+    }
+    
+    public void limparCampos() {
+        txtCpfDono.setText("");
+        txtObservacao.setText("");
+        dpData.setValue(null);
+        cmbHorario.setValue("");
+        cmbPet.setValue(null);
+        cmbServico.setValue(null);
+        cmbFuncionario.setValue(null);
+        lblPreco.setText("R$: 00,00");
     }
 
 }

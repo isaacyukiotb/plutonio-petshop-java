@@ -6,8 +6,10 @@ package br.com.fatec.DAO;
 
 import br.com.fatec.model.Agenda;
 import br.com.fatec.model.Cliente;
+import br.com.fatec.model.Proprietario;
 import br.com.fatec.persistencia.Banco;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -26,7 +28,7 @@ public class AgendaDAO implements DAO<Agenda> {
     private java.sql.ResultSet rs;
 
     //representar os dados do  meu negócio
-    private Cliente cliente;
+    private Agenda agenda;
 
     @Override
     public boolean insere(Agenda obj) throws SQLException {
@@ -73,7 +75,48 @@ public class AgendaDAO implements DAO<Agenda> {
 
     @Override
     public Collection<Agenda> lista(String criterio) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //cria uma lista para armazenar os dados vindos do banco
+        ArrayList<Agenda> lista = new ArrayList<>();
+
+        String sql = "SELECT * FROM agenda ";
+
+        //precisa fazer filtro para listagem
+        if (criterio != null && criterio.length() > 0) {
+            sql += " WHERE " + criterio;
+        }
+
+        //abre a conexao com o banco
+        Banco.conectar();
+
+        //preparar o comando PST
+        pst = Banco.obterConexao().prepareStatement(sql);
+
+        //executar o comando
+        rs = pst.executeQuery(); //esse método serve para SELECT
+
+        //Varre todo o resultado da consulta e coloca cada registro dentro
+        //de um objeto e coloca o objeto dentro da coleção
+        while (rs.next()) {
+            //criar o objeto
+            agenda = new Agenda();
+
+            //mover os dados do resultSet para o objeto proprietário
+            agenda.setId_agenda(rs.getInt("id_agend"));
+            agenda.setData(rs.getString("data"));
+            agenda.setHora(rs.getString("hora"));
+            agenda.setObservacao(rs.getString("observacao"));
+            agenda.setId_pet(rs.getInt("id_pet"));
+            agenda.setId_func(rs.getInt("id_func"));
+
+            //move o objeto para a coleção
+            lista.add(agenda);
+        }
+
+        //fecha a conexao
+        Banco.desconectar(); 
+        
+        return lista;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

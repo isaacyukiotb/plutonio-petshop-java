@@ -18,6 +18,12 @@ public class Funcionario {
     private String rg;
     private String data_nasc;
     private String cep;
+
+    @Override
+    public String toString() {
+        return this.nome;
+    }
+    
     
     
     public Funcionario(){

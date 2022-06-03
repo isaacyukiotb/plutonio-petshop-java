@@ -10,12 +10,22 @@ package br.com.fatec.model;
  */
 public class Agenda {
     
+    
+    private int id_agenda;
     private String data;
     private String hora;
     private String observacao;
     private int id_pet;
     private int id_func;
 
+    public int getId_agenda() {
+        return id_agenda;
+    }
+
+    public void setId_agenda(int id_agenda) {
+        this.id_agenda = id_agenda;
+    }
+ 
     public String getData() {
         return data;
     }

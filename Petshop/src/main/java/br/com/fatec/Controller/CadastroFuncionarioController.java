@@ -70,10 +70,6 @@ public class CadastroFuncionarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        for (Funcionario func : FuncionarioDAO.funcionarios) {
-            System.out.println("ID: " + func.getId_funcionario() + " Nome: " + func.getNome() + " CPF: " + func.getCpf());
-        }
-
     }
 
     @FXML

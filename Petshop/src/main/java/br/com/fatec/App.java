@@ -19,6 +19,9 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {  
         FuncionarioDAO.inserirFuncionariosPadroes();
         scene = new Scene(loadFXML("home"));
+        stage.setTitle("Home");
+        stage.setResizable(false);
+        stage.centerOnScreen();
         stage.setScene(scene);
         stage.show();
     }

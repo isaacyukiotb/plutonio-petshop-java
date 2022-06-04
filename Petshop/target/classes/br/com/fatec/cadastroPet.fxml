@@ -17,7 +17,7 @@
     </stylesheets>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="146.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="904.0" />
-      <GridPane layoutX="48.0" layoutY="209.0" prefHeight="461.0" prefWidth="809.0">
+      <GridPane layoutX="48.0" layoutY="213.0" prefHeight="461.0" prefWidth="809.0">
         <columnConstraints>
             <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="269.0" />
           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="486.0" minWidth="10.0" prefWidth="221.0" />
@@ -31,9 +31,9 @@
           <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="190.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label stylesheets="@css/default.css" text="Nome" textFill="#052f5f" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
@@ -76,7 +76,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtCpfDono" alignment="CENTER" onKeyReleased="#txtCpfDono_KeyRealased" prefHeight="34.0" prefWidth="136.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="1">
+            <TextField fx:id="txtCpfDono" onKeyReleased="#txtCpfDono_KeyRealased" prefHeight="34.0" prefWidth="136.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
@@ -113,7 +113,7 @@
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
                <padding>
-                  <Insets left="10.0" />
+                  <Insets left="20.0" />
                </padding>
             </Label>
             <TextField fx:id="txtRaca" prefHeight="34.0" prefWidth="293.0" promptText="Pincher" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
@@ -132,14 +132,6 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <ImageView fitHeight="54.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@resources/img/Very-Basic-Search-icon.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="60.0" />
-               </GridPane.margin>
-            </ImageView>
          </children>
       </GridPane>
       <Button layoutX="32.0" layoutY="55.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
@@ -157,7 +149,7 @@
             <Image url="@resources/img/titulo_cadas_pet.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="txtRestricao" layoutX="57.0" layoutY="471.0" prefHeight="169.0" prefWidth="411.0" styleClass="txtArea" stylesheets="@css/default.css" wrapText="true">
+      <TextArea fx:id="txtRestricao" layoutX="57.0" layoutY="479.0" prefHeight="169.0" prefWidth="411.0" styleClass="txtArea" stylesheets="@css/default.css" wrapText="true">
          <font>
             <Font name="Yu Gothic UI Semibold" size="14.0" />
          </font>

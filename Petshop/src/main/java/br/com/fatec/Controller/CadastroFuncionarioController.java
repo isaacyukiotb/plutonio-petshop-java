@@ -13,6 +13,8 @@ import br.com.fatec.model.Funcionario;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
@@ -42,8 +45,6 @@ public class CadastroFuncionarioController implements Initializable {
     @FXML
     private TextField txtCpf;
     @FXML
-    private TextField txtDataNasc;
-    @FXML
     private TextField txtEmail;
     @FXML
     private TextField txtCep;
@@ -63,6 +64,10 @@ public class CadastroFuncionarioController implements Initializable {
     private TextField txtTelefone;
     @FXML
     private Button btnCancelar;
+    @FXML
+    private DatePicker dpDataNasc;
+    @FXML
+    private TextField txtUf1;
 
     /**
      * Initializes the controller class.
@@ -90,14 +95,6 @@ public class CadastroFuncionarioController implements Initializable {
         tff.formatter();
     }
 
-    @FXML
-    private void txtDataNasc_KeyReleased(KeyEvent event) {
-        TextFieldFormatter tff = new TextFieldFormatter();
-        tff.setMask("##/##/####");
-        tff.setCaracteresValidos("0123456789");
-        tff.setTf(txtDataNasc);
-        tff.formatter();
-    }
 
     @FXML
     private void txtCep_enter(ActionEvent event) {
@@ -136,7 +133,9 @@ public class CadastroFuncionarioController implements Initializable {
 
     @FXML
     private void btnCadastrar_click(ActionEvent event) {
-        Funcionario novoFuncionario = new Funcionario(FuncionarioDAO.idCount++, txtNome.getText(), txtCargo.getText(), txtTelefone.getText(), txtEmail.getText(), txtCpf.getText(), txtRg.getText(), txtDataNasc.getText(), txtCep.getText());
+        LocalDate data = dpDataNasc.getValue();
+        String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        Funcionario novoFuncionario = new Funcionario(FuncionarioDAO.idCount++, txtNome.getText(), txtCargo.getText(), txtTelefone.getText(), txtEmail.getText(), txtCpf.getText(), txtRg.getText(), dataPickerString, txtCep.getText());
 
         try {
             dao.insere(novoFuncionario);
@@ -185,7 +184,7 @@ public class CadastroFuncionarioController implements Initializable {
         txtCep.setText("");
         txtCidade.setText("");
         txtCpf.setText("");
-        txtDataNasc.setText("");
+        dpDataNasc.setValue(null);
         txtEmail.setText("");
         txtEndereco.setText("");
         txtNome.setText("");

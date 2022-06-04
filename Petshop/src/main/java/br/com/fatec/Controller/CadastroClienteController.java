@@ -13,12 +13,15 @@ import br.com.fatec.model.Cliente;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,15 +43,11 @@ public class CadastroClienteController implements Initializable {
     @FXML
     private TextField txtCpf;
     @FXML
-    private TextField txtDataNasc;
-    @FXML
     private TextField txtEmail;
     @FXML
     private TextField txtCep;
     @FXML
     private Button btnCadastrar;
-    @FXML
-    private Button btnCadastrar1;
     @FXML
     private TextField txtBairro;
     @FXML
@@ -57,6 +56,14 @@ public class CadastroClienteController implements Initializable {
     private TextField txtUf;
     @FXML
     private TextField txtEndereco;
+    @FXML
+    private DatePicker dpDataNasc;
+    @FXML
+    private TextField txtTelefone;
+    @FXML
+    private Button btnCancelar;
+    @FXML
+    private TextField txtNumero;
 
     /**
      * Initializes the controller class.
@@ -71,11 +78,13 @@ public class CadastroClienteController implements Initializable {
     private void btnCadastrar_click(ActionEvent event) {
         Cliente cliente = new Cliente();
         ClienteDAO dao = new ClienteDAO();
+        LocalDate data = dpDataNasc.getValue();
+        String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
         cliente.setCpf(txtCpf.getText());
         cliente.setRg(txtRg.getText());
         cliente.setNome(txtNome.getText());
-        cliente.setDataNasc(txtDataNasc.getText());
+        cliente.setDataNasc(dataPickerString);
         cliente.setCep(txtCep.getText());
         cliente.setEmail(txtEmail.getText());
 
@@ -159,21 +168,25 @@ public class CadastroClienteController implements Initializable {
     }
 
     @FXML
-    private void txtDataNasc_KeyReleased(KeyEvent event) {
-        TextFieldFormatter tff = new TextFieldFormatter();
-        tff.setMask("##/##/####");
-        tff.setCaracteresValidos("0123456789");
-        tff.setTf(txtDataNasc);
-        tff.formatter();
-    }
-
-    @FXML
     private void txtCep_KeyReleased(KeyEvent event) {
         TextFieldFormatter tff = new TextFieldFormatter();
         tff.setMask("#####-###");
         tff.setCaracteresValidos("0123456789");
         tff.setTf(txtCep);
         tff.formatter();
+    }
+
+    @FXML
+    private void txtTelefone_KeyReleased(KeyEvent event) {
+        TextFieldFormatter tff = new TextFieldFormatter();
+        tff.setMask("(##)#####-####");
+        tff.setCaracteresValidos("0123456789");
+        tff.setTf(txtTelefone);
+        tff.formatter();
+    }
+
+    @FXML
+    private void btnCancelar_click(ActionEvent event) {
     }
 
 }

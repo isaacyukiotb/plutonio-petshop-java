@@ -26,7 +26,7 @@
             <Image url="@resources/img/plutonio_cabeça.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="592.0" layoutY="460.0" prefHeight="111.0" prefWidth="200.0" style="-fx-background-color: #0a457f; -fx-background-radius: 17;" />
+      <AnchorPane layoutX="597.0" layoutY="460.0" prefHeight="111.0" prefWidth="200.0" style="-fx-background-color: #0a457f; -fx-background-radius: 17;" />
       <GridPane layoutX="92.0" layoutY="214.0" prefHeight="552.0" prefWidth="721.0">
         <columnConstraints>
           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -56,12 +56,18 @@
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
             </Label>
             <Label GridPane.rowIndex="2" />
             <Label stylesheets="@css/default.css" text="Tipo do Serviço" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
             </Label>
             <TextField fx:id="txtCpfDono" onAction="#txtCpfDono_focus" onKeyReleased="#txtCpfDono_KeyRealased" prefHeight="36.0" prefWidth="171.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="1">
                <font>
@@ -73,6 +79,9 @@
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
             </Label>
             <Label fx:id="lblPreco" styleClass="labelPreco" text="R$: 00,00" textFill="#50c5b7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                <font>
@@ -99,23 +108,35 @@
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
             </Label>
             <ComboBox fx:id="cmbServico" onAction="#cmbServico_selected" prefHeight="36.0" prefWidth="212.0" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label stylesheets="@css/default.css" text="Horario:" GridPane.columnIndex="2">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
             </Label>
             <ComboBox fx:id="cmbHorario" prefHeight="36.0" prefWidth="162.0" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label stylesheets="@css/default.css" text="Observação" GridPane.rowIndex="6">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Label>
             <Label stylesheets="@css/default.css" text="Funcionário" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
             </Label>
             <ComboBox fx:id="cmbFuncionario" onAction="#cmbFuncionario_selected" prefHeight="36.0" prefWidth="234.0" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>

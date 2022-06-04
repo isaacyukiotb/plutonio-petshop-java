@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -12,22 +15,57 @@
         <URL value="@css/consultas.css" />
     </stylesheets>
    <children>
-      <Label fx:id="lblConsulta" layoutX="399.0" layoutY="34.0" text="Consultas" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="146.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="904.0" />
       <Label layoutX="48.0" layoutY="70.0" />
-      <TextField fx:id="txtDados" layoutX="205.0" layoutY="149.0" onKeyReleased="#txtDados_KeyReleased" />
+      <TextField fx:id="txtDados" layoutX="264.0" layoutY="220.0" onKeyReleased="#txtDados_KeyReleased" prefHeight="43.0" prefWidth="229.0" styleClass="input" stylesheets="@css/default.css">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="14.0" />
+         </font></TextField>
       <Label layoutX="368.0" layoutY="131.0" />
-      <Button fx:id="btnPesquisar" layoutX="384.0" layoutY="149.0" mnemonicParsing="false" onAction="#btnPesquisar_click" text="Pesquisar" />
-      <Button layoutX="22.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchPage_home" text="Voltar" />
-      <ComboBox fx:id="cmTipoPesquisa" layoutX="35.0" layoutY="149.0" onAction="#cmTipoPesquisa_selected" prefWidth="150.0" />
-      <Label layoutX="34.0" layoutY="128.0" text="Pesquisar por:" />
-      <Label layoutX="205.0" layoutY="128.0" text="Dado:" />
-      <Button fx:id="btnDeletar" layoutX="628.0" layoutY="508.0" mnemonicParsing="false" onAction="#btnDeletar_click" text="Deletar" />
-      <Button fx:id="btnEditar" layoutX="632.0" layoutY="400.0" mnemonicParsing="false" onAction="#btnEditar_click" text="Editar" />
-      <TableView fx:id="tbvPet" layoutX="35.0" layoutY="184.0" prefHeight="636.0" prefWidth="435.0">
+      <Button fx:id="btnPesquisar" layoutX="524.0" layoutY="220.0" mnemonicParsing="false" onAction="#btnPesquisar_click" prefHeight="44.0" prefWidth="142.0" styleClass="btnPesquisar" stylesheets="@css/default.css" text="🔍 Pesquisar" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button layoutX="24.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <ComboBox fx:id="cmTipoPesquisa" layoutX="81.0" layoutY="220.0" onAction="#cmTipoPesquisa_selected" prefHeight="43.0" prefWidth="162.0" stylesheets="@css/default.css" />
+      <Label layoutX="92.0" layoutY="196.0" stylesheets="@css/default.css" text="Pesquisar por:">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="14.0" />
+         </font></Label>
+      <Label layoutX="273.0" layoutY="196.0" stylesheets="@css/default.css" text="Dado:">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="14.0" />
+         </font></Label>
+      <Button fx:id="btnDeletar" layoutX="633.0" layoutY="530.0" mnemonicParsing="false" onAction="#btnDeletar_click" styleClass="btnDeletar" stylesheets="@css/default.css" text="Deletar ✘" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="btnEditar" layoutX="639.0" layoutY="403.0" mnemonicParsing="false" onAction="#btnEditar_click" styleClass="btnEditar" stylesheets="@css/default.css" text="Editar ☛" textFill="#df3b57">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <TableView fx:id="tbvPet" layoutX="74.0" layoutY="289.0" prefHeight="511.0" prefWidth="424.0" stylesheets="@css/default.css">
         <columns>
-          <TableColumn fx:id="nome" prefWidth="75.0" text="Nome" />
-          <TableColumn fx:id="genero" prefWidth="75.0" text="Genero" />
+          <TableColumn fx:id="nome" prefWidth="239.0" text="Nome" />
+          <TableColumn fx:id="genero" prefWidth="101.0" text="Gênero" />
         </columns>
       </TableView>
+      <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="768.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/plutonio_cabeça.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="612.0" layoutX="145.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/titulo_consul_func.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="676.0" layoutY="665.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/plutonio_logo.png" />
+         </image></ImageView>
    </children>
 </AnchorPane>

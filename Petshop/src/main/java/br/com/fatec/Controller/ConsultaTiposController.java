@@ -42,7 +42,8 @@ public class ConsultaTiposController implements Initializable {
     }    
 
     @FXML
-    private void btnConsultaFunc_click(ActionEvent event) {
+    private void btnConsultaFunc_click(ActionEvent event) throws IOException{
+        sceneController.switchToSceneConsultaDeFuncionarios(event);
     }
 
     @FXML
@@ -56,7 +57,8 @@ public class ConsultaTiposController implements Initializable {
     }
 
     @FXML
-    private void btnConsultaAgen_click(ActionEvent event) {
+    private void btnConsultaAgen_click(ActionEvent event) throws IOException{
+        sceneController.switchToSceneConsultaDeServicos(event);
     }
 
     @FXML

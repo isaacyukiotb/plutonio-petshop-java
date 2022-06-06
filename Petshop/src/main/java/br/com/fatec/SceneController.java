@@ -108,4 +108,25 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void switchToSceneConsultaDeFuncionarios(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("consultasDeFuncionarios.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Consulta de Funcionarios");
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToSceneConsultaDeServicos(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("consultasDeServicos.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Consulta de Serviços");
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

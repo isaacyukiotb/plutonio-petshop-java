@@ -12,6 +12,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 
 /**
  * FXML Controller class
@@ -25,6 +28,16 @@ public class HomeController implements Initializable {
      */
     
     SceneController sceneController = new SceneController();
+    @FXML
+    private MenuItem menuFuncionario;
+    @FXML
+    private MenuItem menuCliente;
+    @FXML
+    private MenuItem menuServico;
+    @FXML
+    private MenuItem menuPet;
+    @FXML
+    private MenuButton menuConsultar;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO  
@@ -44,11 +57,6 @@ public class HomeController implements Initializable {
     @FXML
     private void switchPage_cadastroCliente(ActionEvent event) throws IOException{
         sceneController.switchToSceneCadastroCliente(event);
-    }
-
-    @FXML
-    private void switchPage_consultar(ActionEvent event) throws IOException{
-        sceneController.switchToSceneConsultar(event);
     }
 
     @FXML

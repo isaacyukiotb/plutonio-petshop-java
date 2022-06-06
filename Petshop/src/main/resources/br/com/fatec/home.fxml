@@ -19,12 +19,12 @@
       <Button layoutX="406.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_agendaServico" styleClass="navButton" text="Servicos/Agenda" textAlignment="CENTER" />
       <Button layoutX="638.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_cadastroCliente" styleClass="navButton" text="Cliente" textAlignment="CENTER" />
       <Button layoutX="753.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_cadastroFuncionario" styleClass="navButton" text="Funcionario" textAlignment="CENTER" />
-      <MenuButton layoutX="876.0" layoutY="170.0" mnemonicParsing="false" styleClass="navButton" text="Consultar">
+      <MenuButton fx:id="menuConsultar" layoutX="876.0" layoutY="170.0" mnemonicParsing="false" styleClass="navButton" text="Consultar">
         <items>
-            <MenuItem mnemonicParsing="false" text="Funcionário" />
-          <MenuItem mnemonicParsing="false" text="Cliente" />
-          <MenuItem mnemonicParsing="false" text="Serviço" />
-            <MenuItem mnemonicParsing="false" text="Pet" />
+            <MenuItem fx:id="menuFuncionario" mnemonicParsing="false" onAction="#menuFuncionario_click" text="Funcionário" />
+          <MenuItem fx:id="menuCliente" mnemonicParsing="false" onAction="#menuCliente_click" text="Cliente" />
+          <MenuItem fx:id="menuServico" mnemonicParsing="false" onAction="#menuServico_click" text="Serviço" />
+            <MenuItem fx:id="menuPet" mnemonicParsing="false" onAction="#menuPet_click" text="Pet" />
         </items>
       </MenuButton>
    </children>

@@ -55,7 +55,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToSceneConsultar(ActionEvent event) throws IOException {
+    public void switchToSceneConsultaDePet(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("consultasDePets.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Consulta de Pets");

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="br.com.fatec.Controller.ConsultaTiposController">
+    <stylesheets>
+        <URL value="@/br/com/fatec/css/consultatipos.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="btnConsultaFunc" layoutX="81.0" layoutY="118.0" mnemonicParsing="false" text="Funcionario" />
+      <Button fx:id="btnConsultaCli" layoutX="194.0" layoutY="118.0" mnemonicParsing="false" text="Cliente" />
+      <Button fx:id="btnConsultaPet" layoutX="314.0" layoutY="118.0" mnemonicParsing="false" text="Pet" />
+      <Button fx:id="btnConsultaAgen" layoutX="455.0" layoutY="118.0" mnemonicParsing="false" text="Agenda" />
+   </children>
+</AnchorPane>

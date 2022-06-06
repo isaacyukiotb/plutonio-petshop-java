@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,14 +8,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="br.com.fatec.Controller.ConsultaTiposController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.ConsultaTiposController">
     <stylesheets>
         <URL value="@/br/com/fatec/css/consultatipos.css" />
     </stylesheets>
    <children>
-      <Button fx:id="btnConsultaFunc" layoutX="81.0" layoutY="118.0" mnemonicParsing="false" text="Funcionario" />
-      <Button fx:id="btnConsultaCli" layoutX="194.0" layoutY="118.0" mnemonicParsing="false" text="Cliente" />
-      <Button fx:id="btnConsultaPet" layoutX="314.0" layoutY="118.0" mnemonicParsing="false" text="Pet" />
-      <Button fx:id="btnConsultaAgen" layoutX="455.0" layoutY="118.0" mnemonicParsing="false" text="Agenda" />
+      <Button fx:id="btnConsultaFunc" layoutX="159.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnConsultaFunc_click" text="Funcionario" />
+      <Button fx:id="btnConsultaCli" layoutX="399.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnConsultaCli_click" text="Cliente" />
+      <Button fx:id="btnConsultaPet" layoutX="542.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnConsultaPet_click" text="Pet" />
+      <Button fx:id="btnConsultaAgen" layoutX="658.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnConsultaAgen_click" text="Agenda" />
+      <Button fx:id="btnVoltar" layoutX="59.0" layoutY="36.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

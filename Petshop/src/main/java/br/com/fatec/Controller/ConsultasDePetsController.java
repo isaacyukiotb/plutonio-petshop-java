@@ -84,7 +84,7 @@ public class ConsultasDePetsController implements Initializable {
 
     @FXML
     private void switchPage_home(ActionEvent event) throws IOException {
-        sceneController.switchToSceneHome(event);
+        sceneController.switchToSceneConsultaTipos(event);
     }
 
     private void carregaCmbOptions() {

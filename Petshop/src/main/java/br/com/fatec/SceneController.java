@@ -87,4 +87,15 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void switchToSceneConsultaTipos(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("consultaTipos.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Consultas");
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

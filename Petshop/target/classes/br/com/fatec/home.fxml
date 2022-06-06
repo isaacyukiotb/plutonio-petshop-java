@@ -19,6 +19,6 @@
       <Button layoutX="406.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_agendaServico" styleClass="navButton" text="Servicos/Agenda" textAlignment="CENTER" />
       <Button layoutX="638.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_cadastroCliente" styleClass="navButton" text="Cliente" textAlignment="CENTER" />
       <Button layoutX="753.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_cadastroFuncionario" styleClass="navButton" text="Funcionario" textAlignment="CENTER" />
-      <Button fx:id="btnConsultar" layoutX="920.0" layoutY="170.0" mnemonicParsing="false" text="Consultar" />
+      <Button fx:id="btnConsultar" layoutX="920.0" layoutY="170.0" mnemonicParsing="false" onAction="#switchPage_consultaTipos" text="Consultar" />
    </children>
 </AnchorPane>

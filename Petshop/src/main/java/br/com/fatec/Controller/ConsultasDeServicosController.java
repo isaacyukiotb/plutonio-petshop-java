@@ -24,8 +24,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -44,8 +44,7 @@ public class ConsultasDeServicosController implements Initializable {
     PetDAO petDao = new PetDAO();
     ClienteDAO clienteDao = new ClienteDAO();
     AgendaDAO agendaDao = new AgendaDAO();
-    
-    
+
     Agenda currentAgenda = new Agenda();
 
     String argumentos = "";
@@ -89,7 +88,7 @@ public class ConsultasDeServicosController implements Initializable {
 
         ObservableList<String> obsTipos = FXCollections.observableArrayList();
         obsTipos.add("Todos");
-        obsTipos.add("id_agenda");
+        obsTipos.add("id_agend");
         obsTipos.add("data");
         obsTipos.add("hora");
         obsTipos.add("observacao");
@@ -129,30 +128,30 @@ public class ConsultasDeServicosController implements Initializable {
 
     @FXML
     private void btnDeletar_click(ActionEvent event) {
-        /*
-        Cliente cliente = new Cliente();
-        cliente.setId(currentCliente.getId_dono());
+
+        Agenda agenda = new Agenda();
+        agenda.setId_agenda(currentAgenda.getId_agenda());
 
         try {
-            cliente = clienteDao.buscaID(cliente);
+            agenda = agendaDao.buscaID(agenda);
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultasDePetsController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
 
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Excluir");
         alerta.setHeaderText("Deseja Realmente deletar o PET:");
-        alerta.setContentText("CPF do Dono: " + cliente.getCpf() + "\n\n" + "Nome do Pet: " + currentPet.getNome() + "\n" + "Gênero do Pet: " + currentPet.getGenero() + "\n" + "Raça do Pet: " + currentPet.getRaca());
+        alerta.setContentText("Id da consulta: " + agenda.getId_agenda()+ "\n\n" + "Data: " + currentAgenda.getData()+ "\n" + "Hora: " + currentAgenda.getHora()+ "\n" + "Observação:  " + currentAgenda.getObservacao());
 
         if (alerta.showAndWait().get() == ButtonType.OK) {
             try {
-                petDao.remove(currentCliente);
+                agendaDao.remove(currentAgenda);
                 Alert alerta3 = new Alert(Alert.AlertType.INFORMATION);
                 alerta3.setTitle("Sucesso!");
                 alerta3.setHeaderText("INFORMACOES");
                 alerta3.setContentText("Dados deletados com Sucesso! ");
                 alerta3.showAndWait();
-                carregaClientes("");
+                carregaAgendas("");
             } catch (SQLException ex) {
                 Alert alerta2 = new Alert(Alert.AlertType.ERROR);
                 alerta2.setTitle("ERRO");
@@ -162,7 +161,6 @@ public class ConsultasDeServicosController implements Initializable {
                 alerta2.showAndWait();
             }
         }
-         */
 
     }
 
@@ -198,5 +196,5 @@ public class ConsultasDeServicosController implements Initializable {
 
         });
     }
-    
+
 }

@@ -60,7 +60,25 @@ public class AgendaDAO implements DAO<Agenda> {
 
     @Override
     public boolean remove(Agenda obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "DELETE FROM agenda WHERE id_agend = ?"; //a ? indica parametros
+        
+        //abre a conexao com o banco
+        Banco.conectar();
+        //preparar o comando PST
+        pst = Banco.obterConexao().prepareStatement(sql);
+        
+        //associar os dados do objeto Proprietario com o comando DELETE
+        pst.setInt(1, obj.getId_agenda());
+        
+        //executar o comando
+        int res = pst.executeUpdate(); //esse método serve para Insert, delete e update
+        
+        //fecha a conexao
+        Banco.desconectar();
+        
+        //devolve se funcionoou ou nao
+        return res != 0;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -70,7 +88,45 @@ public class AgendaDAO implements DAO<Agenda> {
 
     @Override
     public Agenda buscaID(Agenda obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT * FROM agenda "
+                + "WHERE id_agend = ?"; //a ? indica parametros
+        
+        //abre a conexao com o banco
+        Banco.conectar();
+        //preparar o comando PST
+        pst = Banco.obterConexao().prepareStatement(sql);
+        
+        //associar os dados do objeto Proprietario com o comando UPDATE
+        pst.setInt(1, obj.getId_agenda());
+        
+        //executar o comando
+        rs = pst.executeQuery(); //esse método serve para SELECT
+        
+        //verificar se trouxe algum registro
+        //rs.next() faz a leitura do próximo registro, se existir devolve true
+        //se nao devolve false
+        if(rs.next()) {
+            //mover os dados(campos da tab) do resultSet para o objeto proprietário
+            agenda = new Agenda();
+            agenda.setId_agenda(rs.getInt("id_agend"));
+            agenda.setData(rs.getString("data"));
+            agenda.setHora(rs.getString("hora"));
+            agenda.setObservacao(rs.getString("observacao"));
+            agenda.setId_pet(rs.getInt("id_pet"));
+            agenda.setId_func(rs.getInt("id_func"));
+        }
+        else {
+            //não encontrou o registro solicitado
+            agenda = null;
+        }
+                
+        //fecha a conexao
+        Banco.desconectar();
+        
+        //devolve o objeto proprietario
+        return agenda;
+        
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

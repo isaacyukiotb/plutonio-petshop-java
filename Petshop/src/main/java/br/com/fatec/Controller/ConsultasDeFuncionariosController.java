@@ -4,16 +4,11 @@
  */
 package br.com.fatec.Controller;
 
-import br.com.fatec.DAO.ClienteDAO;
 import br.com.fatec.DAO.FuncionarioDAO;
-import br.com.fatec.DAO.PetDAO;
 import br.com.fatec.SceneController;
-import br.com.fatec.model.Cliente;
 import br.com.fatec.model.Funcionario;
-import br.com.fatec.model.Pet;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -26,7 +21,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;

@@ -51,8 +51,6 @@ public class ConsultasDePetsController implements Initializable {
     String argumentos = "";
 
     @FXML
-    private Label lblConsulta;
-    @FXML
     private TextField txtDados;
     @FXML
     private Button btnPesquisar;
@@ -194,8 +192,7 @@ public class ConsultasDePetsController implements Initializable {
 
             @Override
             public void changed(ObservableValue<? extends Pet> ov, Pet t, Pet t1) {
-                currentPet = (Pet) tbvPet.getSelectionModel().getSelectedItem();
-                lblConsulta.setText(currentPet.getNome());
+                currentPet = (Pet) tbvPet.getSelectionModel().getSelectedItem(); 
             }
 
         });

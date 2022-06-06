@@ -48,8 +48,6 @@ public class ConsultasDeClientesController implements Initializable {
     String argumentos = "";
 
     @FXML
-    private Label lblConsulta;
-    @FXML
     private TextField txtDados;
     @FXML
     private Button btnPesquisar;
@@ -194,7 +192,6 @@ public class ConsultasDeClientesController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Cliente> ov, Cliente t, Cliente t1) {
                 currentCliente = (Cliente) tbvPet.getSelectionModel().getSelectedItem();
-                lblConsulta.setText(currentCliente.getNome());
             }
 
         });

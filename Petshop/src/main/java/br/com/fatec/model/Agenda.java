@@ -17,6 +17,26 @@ public class Agenda {
     private String observacao;
     private int id_pet;
     private int id_func;
+    private int id_cli;
+    private int id_serv;
+
+    public int getId_cli() {
+        return id_cli;
+    }
+
+    public void setId_cli(int id_cli) {
+        this.id_cli = id_cli;
+    }
+
+    public int getId_serv() {
+        return id_serv;
+    }
+
+    public void setId_serv(int id_serv) {
+        this.id_serv = id_serv;
+    }
+    
+    
 
     public int getId_agenda() {
         return id_agenda;

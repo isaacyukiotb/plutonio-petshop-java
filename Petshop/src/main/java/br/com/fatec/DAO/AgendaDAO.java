@@ -5,8 +5,6 @@
 package br.com.fatec.DAO;
 
 import br.com.fatec.model.Agenda;
-import br.com.fatec.model.Cliente;
-import br.com.fatec.model.Proprietario;
 import br.com.fatec.persistencia.Banco;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,8 +30,8 @@ public class AgendaDAO implements DAO<Agenda> {
 
     @Override
     public boolean insere(Agenda obj) throws SQLException {
-        String sql = "INSERT INTO agenda (data, hora, observacao, id_pet, id_func) "
-                + " VALUES (?,?,?,?,?)"; //a ? indica parametros
+        String sql = "INSERT INTO agenda (data, hora, observacao, id_pet, id_func,id_cli,id_serv) "
+                + " VALUES (?,?,?,?,?,?,?)"; //a ? indica parametros
 
         //abre a conexao com o banco
         Banco.conectar();
@@ -46,6 +44,8 @@ public class AgendaDAO implements DAO<Agenda> {
         pst.setString(3, obj.getObservacao());
         pst.setInt(4, obj.getId_pet());
         pst.setInt(5, obj.getId_func());
+        pst.setInt(6, obj.getId_cli());
+        pst.setInt(7, obj.getId_serv());
 
         //executar o comando
         int res = pst.executeUpdate(); //esse método serve para Insert, delete e update
@@ -114,6 +114,8 @@ public class AgendaDAO implements DAO<Agenda> {
             agenda.setObservacao(rs.getString("observacao"));
             agenda.setId_pet(rs.getInt("id_pet"));
             agenda.setId_func(rs.getInt("id_func"));
+            agenda.setId_cli(rs.getInt("id_cli"));
+            agenda.setId_serv(rs.getInt("id_serv"));
         }
         else {
             //não encontrou o registro solicitado
@@ -163,6 +165,8 @@ public class AgendaDAO implements DAO<Agenda> {
             agenda.setObservacao(rs.getString("observacao"));
             agenda.setId_pet(rs.getInt("id_pet"));
             agenda.setId_func(rs.getInt("id_func"));
+            agenda.setId_cli(rs.getInt("id_cli"));
+            agenda.setId_serv(rs.getInt("id_serv"));
 
             //move o objeto para a coleção
             lista.add(agenda);

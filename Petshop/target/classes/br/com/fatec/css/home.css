@@ -6,11 +6,19 @@
 
 }
 .navButton{
-    -fx-background-color: #ddd;
+     -fx-background-color: transparent;
     -fx-border-width: 0;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-style: bold;
+    -fx-font-size: 15;
+    -fx-text-fill: white;
 }
 
 
 .navButton:hover{
-    -fx-background-color: #aaa;
+    -fx-background-color: linear-gradient(to right, #50c5b7, #052f5f, transparent, transparent);
+    -fx-border-width: 0;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-text-fill: #eee;
 }

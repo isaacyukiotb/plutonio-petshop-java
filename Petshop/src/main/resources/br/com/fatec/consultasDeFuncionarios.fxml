@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -9,53 +10,71 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="br.com.fatec.Controller.ConsultasDeFuncionariosController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.ConsultasDeFuncionariosController">
     <stylesheets>
         <URL value="@/br/com/fatec/css/consultasdefuncionarios.css" />
     </stylesheets>
    <children>
-      <ComboBox fx:id="cmTipoPesquisa" layoutX="60.0" layoutY="240.0" onAction="#cmTipoPesquisa_selected" prefHeight="43.0" prefWidth="162.0" stylesheets="@css/default.css" />
-      <Label layoutX="68.0" layoutY="216.0" stylesheets="@css/default.css" text="Pesquisar por:">
+      <ComboBox fx:id="cmTipoPesquisa" layoutX="60.0" layoutY="223.0" onAction="#cmTipoPesquisa_selected" prefHeight="40.0" prefWidth="162.0" stylesheets="@css/default.css" />
+      <Label layoutX="68.0" layoutY="199.0" stylesheets="@css/default.css" text="Pesquisar por:">
          <font>
             <Font name="Yu Gothic UI Semibold" size="14.0" />
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="146.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="904.0" />
-      <Button layoutX="51.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
+      <Button layoutX="11.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnPesquisar" layoutX="661.0" layoutY="261.0" mnemonicParsing="false" onAction="#btnPesquisar_click" prefHeight="44.0" prefWidth="142.0" styleClass="btnPesquisar" stylesheets="@css/default.css" text="🔍 Pesquisar" textFill="WHITE">
+      <Button fx:id="btnPesquisar" layoutX="530.0" layoutY="223.0" mnemonicParsing="false" onAction="#btnPesquisar_click" prefHeight="44.0" prefWidth="142.0" styleClass="btnPesquisar" stylesheets="@css/default.css" text="🔍 Pesquisar" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnEditar" layoutX="689.0" layoutY="453.0" mnemonicParsing="false" onAction="#btnEditar_click" styleClass="btnEditar" stylesheets="@css/default.css" text="Editar ☛" textFill="#df3b57">
+      <Button fx:id="btnEditar" layoutX="733.0" layoutY="381.0" mnemonicParsing="false" onAction="#btnEditar_click" styleClass="btnEditar" stylesheets="@css/default.css" text="Editar ☛" textFill="#df3b57">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnDeletar" layoutX="683.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnDeletar_click" styleClass="btnDeletar" stylesheets="@css/default.css" text="Deletar ✘" textFill="WHITE">
+      <Button fx:id="btnDeletar" layoutX="727.0" layoutY="498.0" mnemonicParsing="false" onAction="#btnDeletar_click" styleClass="btnDeletar" stylesheets="@css/default.css" text="Deletar ✘" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <TableView fx:id="tbvPet" layoutX="60.0" layoutY="296.0" prefHeight="511.0" prefWidth="424.0" stylesheets="@css/default.css">
+      <TableView fx:id="tbvPet" focusTraversable="false" layoutX="60.0" layoutY="296.0" prefHeight="511.0" prefWidth="617.0" stylesheets="@css/default.css">
          <columns>
-            <TableColumn fx:id="nome" prefWidth="239.0" text="Nome" />
-            <TableColumn fx:id="genero" prefWidth="101.0" text="Gênero" />
+            <TableColumn fx:id="nome" prefWidth="190.0" text="Nome" />
+            <TableColumn fx:id="genero" prefWidth="114.0" text="CPF" />
+            <TableColumn prefWidth="93.0" text="RG" />
+            <TableColumn prefWidth="106.0" text="Dta. Nasc." />
+            <TableColumn prefWidth="113.0" text="Cargo" />
          </columns>
       </TableView>
-      <TextField fx:id="txtDados" layoutX="285.0" layoutY="240.0" onKeyReleased="#txtDados_KeyReleased" prefHeight="43.0" prefWidth="229.0" styleClass="input" stylesheets="@css/default.css">
+      <TextField fx:id="txtDados" focusTraversable="false" layoutX="285.0" layoutY="223.0" onKeyReleased="#txtDados_KeyReleased" prefHeight="40.0" prefWidth="229.0" styleClass="input" stylesheets="@css/default.css">
          <font>
             <Font name="Yu Gothic UI Semibold" size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="293.0" layoutY="216.0" stylesheets="@css/default.css" text="Dado:">
+      <Label layoutX="293.0" layoutY="199.0" stylesheets="@css/default.css" text="Dado:">
          <font>
             <Font name="Yu Gothic UI Semibold" size="14.0" />
          </font>
       </Label>
+      <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="788.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/plutonio_cabeça.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="197.0" fitWidth="105.0" layoutX="736.0" layoutY="607.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/plutonio_solo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="612.0" layoutX="146.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/titulo_consul_func.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -5,3 +5,22 @@
 .mainFxmlClass {
 
 }
+
+.navButton{
+     -fx-background-color: #052f5f;
+     -fx-border-width: 0;
+     -fx-border-radius: 17;
+    -fx-background-radius: 17;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 18;
+    -fx-text-fill: #fca227;
+}
+
+
+.navButton:hover{
+    -fx-background-color: linear-gradient(to left, #50c5b7, #0a457f);
+    -fx-border-width: 0;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-text-fill: #eee;
+}

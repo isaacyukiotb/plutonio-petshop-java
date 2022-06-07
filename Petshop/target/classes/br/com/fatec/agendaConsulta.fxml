@@ -74,7 +74,7 @@
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
             </TextField>
-            <DatePicker fx:id="dpData" onAction="#dpData_selected" prefHeight="34.0" prefWidth="175.0" styleClass="date-picker" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="dpData" focusTraversable="false" onAction="#dpData_selected" prefHeight="34.0" prefWidth="175.0" styleClass="date-picker" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label stylesheets="@css/default.css" text="Data:" GridPane.columnIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
@@ -103,7 +103,7 @@
                   <Font name="Yu Gothic UI Semibold" size="15.0" />
                </font>
             </Button>
-            <ComboBox fx:id="cmbPet" onAction="#cmbPet_selected" prefHeight="36.0" prefWidth="209.0" stylesheets="@css/default.css" GridPane.rowIndex="4" />
+            <ComboBox fx:id="cmbPet" focusTraversable="false" onAction="#cmbPet_selected" prefHeight="36.0" prefWidth="209.0" stylesheets="@css/default.css" GridPane.rowIndex="4" />
             <Label stylesheets="@css/default.css" text="Selecionar Pet" GridPane.rowIndex="3">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
@@ -112,7 +112,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <ComboBox fx:id="cmbServico" onAction="#cmbServico_selected" prefHeight="36.0" prefWidth="212.0" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="cmbServico" focusTraversable="false" onAction="#cmbServico_selected" prefHeight="36.0" prefWidth="212.0" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label stylesheets="@css/default.css" text="Horario:" GridPane.columnIndex="2">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
@@ -121,7 +121,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <ComboBox fx:id="cmbHorario" prefHeight="36.0" prefWidth="162.0" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cmbHorario" focusTraversable="false" prefHeight="36.0" prefWidth="162.0" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label stylesheets="@css/default.css" text="Observação" GridPane.rowIndex="6">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
@@ -138,14 +138,14 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <ComboBox fx:id="cmbFuncionario" onAction="#cmbFuncionario_selected" prefHeight="36.0" prefWidth="234.0" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <ComboBox fx:id="cmbFuncionario" focusTraversable="false" onAction="#cmbFuncionario_selected" prefHeight="36.0" prefWidth="234.0" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <Button layoutX="33.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <TextArea fx:id="txtObservacao" layoutX="79.0" layoutY="428.0" prefHeight="146.0" prefWidth="461.0" styleClass="txtArea" stylesheets="@css/default.css" wrapText="true">
+      <TextArea fx:id="txtObservacao" focusTraversable="false" layoutX="79.0" layoutY="428.0" prefHeight="146.0" prefWidth="461.0" styleClass="txtArea" stylesheets="@css/default.css" wrapText="true">
          <font>
             <Font name="Yu Gothic UI Semibold" size="14.0" />
          </font>

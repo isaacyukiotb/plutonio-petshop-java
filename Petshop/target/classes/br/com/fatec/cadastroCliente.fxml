@@ -118,11 +118,11 @@
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Label>
-            <TextField fx:id="txtNome" prefHeight="43.0" prefWidth="266.0" promptText="Flávio Viotti" style="-fx-border-image-slice: xx.xx.xx;" styleClass="input" GridPane.rowIndex="1">
+            <TextField fx:id="txtNome" prefHeight="43.0" prefWidth="266.0" promptText="Flávio Viotti" styleClass="input" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtRg" onKeyReleased="#txtRg_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="12.345.678-9" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="txtRg" focusTraversable="false" onKeyReleased="#txtRg_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="12.345.678-9" styleClass="input" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font></TextField>
@@ -204,7 +204,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="txtTelefone" onKeyReleased="#txtTelefone_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="  (11) 91111-1111" styleClass="input" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <TextField fx:id="txtTelefone" focusTraversable="false" onKeyReleased="#txtTelefone_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="  (11)91111-1111" styleClass="input" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>

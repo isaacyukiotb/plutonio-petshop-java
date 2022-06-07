@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
@@ -13,14 +15,74 @@
         <URL value="@/br/com/fatec/css/consultatipos.css" />
     </stylesheets>
    <children>
-      <Button fx:id="btnConsultaFunc" layoutX="159.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnConsultaFunc_click" text="Funcionario" />
-      <Button fx:id="btnConsultaCli" layoutX="399.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnConsultaCli_click" text="Cliente" />
-      <Button fx:id="btnConsultaPet" layoutX="542.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnConsultaPet_click" text="Pet" />
-      <Button fx:id="btnConsultaAgen" layoutX="658.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnConsultaAgen_click" text="Agenda" />
-      <Button fx:id="btnVoltar" layoutX="59.0" layoutY="36.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="153.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="863.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="856.0" layoutX="626.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="237.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a457f" height="746.0" layoutX="646.0" layoutY="49.0" stroke="#052f5f" strokeType="INSIDE" strokeWidth="0.0" width="196.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="153.0" layoutY="708.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="859.0" />
+      <Button fx:id="btnConsultaFunc" alignment="BASELINE_RIGHT" layoutX="664.0" layoutY="314.0" mnemonicParsing="false" onAction="#btnConsultaFunc_click" prefHeight="40.0" prefWidth="165.0" styleClass="navButton" stylesheets="@css/consultatipos.css" text="Funcionário" />
+      <Button fx:id="btnConsultaCli" alignment="BASELINE_RIGHT" layoutX="663.0" layoutY="114.0" mnemonicParsing="false" onAction="#btnConsultaCli_click" prefHeight="40.0" prefWidth="165.0" styleClass="navButton" stylesheets="@css/consultatipos.css" text="Cliente" textAlignment="RIGHT" />
+      <Button fx:id="btnConsultaPet" alignment="BASELINE_RIGHT" layoutX="662.0" layoutY="214.0" mnemonicParsing="false" onAction="#btnConsultaPet_click" prefHeight="40.0" prefWidth="165.0" styleClass="navButton" stylesheets="@css/consultatipos.css" text="Pet" />
+      <Button fx:id="btnConsultaAgen" alignment="BASELINE_RIGHT" layoutX="664.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnConsultaAgen_click" prefHeight="40.0" prefWidth="165.0" styleClass="navButton" stylesheets="@css/consultatipos.css" text="Agenda Serviço" />
+      <Button fx:id="btnVoltar" layoutX="24.0" layoutY="55.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
+      <ImageView fitHeight="54.0" fitWidth="57.0" layoutX="793.0" layoutY="795.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/plutonio_cabeça.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="450.0" layoutY="833.0" text="Ⓒ 2022" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="9.0" />
+         </font>
+      </Label>
+      <Label layoutX="403.0" layoutY="806.0" text="Rafaela Alves de Jesus" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="392.0" layoutY="787.0" text="Isaac Yukio Tagawa Barros" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="418.0" layoutY="766.0" text="ADSMA4 • Viotti" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="426.0" layoutY="723.0" prefHeight="34.0" prefWidth="79.0">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@resources/img/facebook.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@resources/img/instagram.png" />
+               </image>
+            </ImageView>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="37.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="49.0" minWidth="3.0" prefWidth="36.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <ImageView fitHeight="356.0" fitWidth="196.0" layoutX="207.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/plutonio_solo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="90.0" fitWidth="554.0" layoutX="170.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/titulo_consultas.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -4,9 +4,11 @@
  */
 package br.com.fatec.Controller;
 
+import br.com.fatec.DAO.AgendaDAO;
 import br.com.fatec.DAO.ClienteDAO;
 import br.com.fatec.DAO.PetDAO;
 import br.com.fatec.SceneController;
+import br.com.fatec.model.Agenda;
 import br.com.fatec.model.Cliente;
 import br.com.fatec.model.Pet;
 import java.io.IOException;
@@ -14,6 +16,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -27,6 +31,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -46,6 +51,7 @@ public class ConsultasDeClientesController implements Initializable {
 
     PetDAO petDao = new PetDAO();
     ClienteDAO clienteDao = new ClienteDAO();
+    AgendaDAO agendaDao = new AgendaDAO();
 
     Cliente currentCliente = new Cliente();
 
@@ -73,7 +79,7 @@ public class ConsultasDeClientesController implements Initializable {
      *
      */
     ObservableList<Pet> list = FXCollections.observableArrayList();
-    
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -135,24 +141,50 @@ public class ConsultasDeClientesController implements Initializable {
 
     @FXML
     private void btnDeletar_click(ActionEvent event) {
-        /*
-        Cliente cliente = new Cliente();
-        cliente.setId(currentCliente.getId_dono());
 
-        try {
-            cliente = clienteDao.buscaID(cliente);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConsultasDePetsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ArrayList<Pet> pets = new ArrayList();
+        ArrayList<Agenda> agendas = new ArrayList();
 
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Excluir");
-        alerta.setHeaderText("Deseja Realmente deletar o PET:");
-        alerta.setContentText("CPF do Dono: " + cliente.getCpf() + "\n\n" + "Nome do Pet: " + currentPet.getNome() + "\n" + "Gênero do Pet: " + currentPet.getGenero() + "\n" + "Raça do Pet: " + currentPet.getRaca());
+        alerta.setHeaderText("Deseja Realmente deletar o Cliente:");
+        alerta.setContentText("CPF: " + currentCliente.getCpf() + "\n\n" + "Nome: " + currentCliente.getNome() + "\n" + "Data de Nasc. : " + currentCliente.getDataNasc() + "\n" + "Email: " + currentCliente.getEmail());
 
         if (alerta.showAndWait().get() == ButtonType.OK) {
+
             try {
-                petDao.remove(currentCliente);
+                pets.addAll(petDao.lista("id_dono = " + currentCliente.getId()));
+            } catch (SQLException ex) {
+                //Logger.getLogger(ConsultasDeClientesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Pet pet : pets) {
+                try {
+                    agendas.addAll(agendaDao.lista("id_pet =" + pet.getId_pet()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConsultasDeClientesController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            for (Agenda agenda : agendas) {
+                try {
+                    agendaDao.remove(agenda);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConsultasDeClientesController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            for (Pet pet : pets) {
+                try {
+                    petDao.remove(pet);
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConsultasDeClientesController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            try {
+                clienteDao.remove(currentCliente);
                 Alert alerta3 = new Alert(Alert.AlertType.INFORMATION);
                 alerta3.setTitle("Sucesso!");
                 alerta3.setHeaderText("INFORMACOES");
@@ -168,21 +200,18 @@ public class ConsultasDeClientesController implements Initializable {
                 alerta2.showAndWait();
             }
         }
-         */
-
     }
 
     @FXML
     private void btnEditar_click(ActionEvent event) throws IOException {
-        
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../cadastroCliente.fxml"));
         root = loader.load();
-        
+
         CadastroClienteController cadastroClienteController = loader.getController();
-        
+
         cadastroClienteController.onBtnEditar_click(currentCliente);
-        
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         //stage.setTitle("Cadastro de Pets");
         //stage.setResizable(false);
@@ -190,7 +219,7 @@ public class ConsultasDeClientesController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void carregaClientes(String args) {

@@ -24,6 +24,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -70,6 +72,8 @@ public class AgendaConsultaController implements Initializable {
     //Variables
     Locale s = new Locale("PT", "BR");
 
+    Agenda agendaEdit = null;
+
     //Currents
     Pet currentPet;
     Funcionario currentFuncionaro;
@@ -86,6 +90,8 @@ public class AgendaConsultaController implements Initializable {
     ClienteDAO clienteDao = new ClienteDAO();
     PetDAO petDao = new PetDAO();
     AgendaDAO agendaDAO = new AgendaDAO();
+    FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+
     @FXML
     private Button btnCancelar;
 
@@ -105,7 +111,7 @@ public class AgendaConsultaController implements Initializable {
 
     @FXML
     private void btnCadastrar_click(ActionEvent event) {
-        
+
         Agenda agenda = new Agenda();
 
         LocalDate data = dpData.getValue();
@@ -272,16 +278,30 @@ public class AgendaConsultaController implements Initializable {
     }
 
     @FXML
-    private void btnCancelar_click(ActionEvent event) {
-        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-        alerta.setTitle("Cancelar");
-        alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
-        
-        if (alerta.showAndWait().get() == ButtonType.OK) {
-            limparCampos();
+    private void btnCancelar_click(ActionEvent event) throws IOException {
+
+        if (agendaEdit != null) {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Cancelar");
+            alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
+
+            if (alerta.showAndWait().get() == ButtonType.OK) {
+                sceneController.switchToSceneConsultaDeServicos(event);
+                limparCampos();
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Cancelar");
+            alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
+
+            if (alerta.showAndWait().get() == ButtonType.OK) {
+
+                limparCampos();
+            }
         }
+
     }
-    
+
     public void limparCampos() {
         txtCpfDono.setText("");
         txtObservacao.setText("");
@@ -291,6 +311,33 @@ public class AgendaConsultaController implements Initializable {
         cmbServico.setValue(null);
         cmbFuncionario.setValue(null);
         lblPreco.setText("R$: 00,00");
+    }
+
+    public void onBtnEditar_click(Agenda agenda) {
+
+        Cliente dono = new Cliente();
+        Pet pet = new Pet();
+
+        pet.setId_pet(agenda.getId_pet());
+
+        try {
+            pet = petDao.buscaID(pet);
+        } catch (SQLException ex) {
+            Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String date = agenda.getData();
+        LocalDate localDate = LocalDate.parse(date, formatter);
+
+        dpData.setValue(localDate);
+        cmbHorario.setValue(agenda.getHora());
+        txtObservacao.setText(agenda.getObservacao());
+        cmbPet.setValue(pet);
+
+        btnCadastrar.setText("Atualizar");
+        agendaEdit = agenda;
+
     }
 
 }

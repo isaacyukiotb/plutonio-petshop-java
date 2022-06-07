@@ -104,6 +104,10 @@ public class AgendaConsultaController implements Initializable {
         // TODO
 
         //PetDAO petdao = new PetDAO();
+        if (agendaEdit != null) {
+            cmbHorario.setValue(agendaEdit.getHora());
+        }
+
         setCmbHorario();
         setCmbFuncionario();
         setCmbServico();
@@ -111,36 +115,88 @@ public class AgendaConsultaController implements Initializable {
     }
 
     @FXML
-    private void btnCadastrar_click(ActionEvent event) {
+    private void btnCadastrar_click(ActionEvent event) throws IOException {
 
-        Agenda agenda = new Agenda();
+        if (agendaEdit == null) {
+            Agenda agenda = new Agenda();
+            LocalDate data = dpData.getValue();
+            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-        LocalDate data = dpData.getValue();
-        String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            Cliente cliente = new Cliente();
+            cliente.setCpf(txtCpfDono.getText());
 
-        agenda.setData(dataPickerString);
-        agenda.setHora(cmbHorario.getValue());
-        agenda.setObservacao(txtObservacao.getText());
-        agenda.setId_pet(currentPet.getId_pet());
-        agenda.setId_func(currentFuncionaro.getId_funcionario());
+            try {
+                cliente = clienteDao.buscaCPF(cliente);
+            } catch (SQLException ex) {
+                Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        try {
-            agendaDAO.insere(agenda);
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("SUCESSO");
-            alerta.setHeaderText("INFORMACOES");
-            alerta.setContentText("Agenda cadastrada com SUCESSO !!!");
+            agenda.setData(dataPickerString);
+            agenda.setHora(cmbHorario.getValue());
+            agenda.setObservacao(txtObservacao.getText());
+            agenda.setId_pet(cmbPet.getValue().getId_pet());
+            agenda.setId_func(cmbFuncionario.getValue().getId_funcionario());
+            agenda.setId_cli(cliente.getId());
+            agenda.setId_serv(cmbServico.getValue().getId_servico());
 
-            alerta.showAndWait();
-            limparCampos();
+            try {
+                agendaDAO.insere(agenda);
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("SUCESSO");
+                alerta.setHeaderText("INFORMACOES");
+                alerta.setContentText("Agenda cadastrada com SUCESSO !!!");
 
-        } catch (SQLException ex) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("ERRO");
-            alerta.setHeaderText("INFORMACOES");
-            alerta.setContentText("Erro ao cadastrar!" + ex.getMessage());
+                alerta.showAndWait();
+                limparCampos();
 
-            alerta.showAndWait();
+            } catch (SQLException ex) {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("ERRO");
+                alerta.setHeaderText("INFORMACOES");
+                alerta.setContentText("Erro ao cadastrar!" + ex.getMessage());
+
+                alerta.showAndWait();
+            }
+        } else {
+            LocalDate data = dpData.getValue();
+            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+            Cliente cliente = new Cliente();
+            cliente.setCpf(txtCpfDono.getText());
+
+            try {
+                cliente = clienteDao.buscaCPF(cliente);
+            } catch (SQLException ex) {
+                Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            agendaEdit.setData(dataPickerString);
+            agendaEdit.setHora(cmbHorario.getValue());
+            agendaEdit.setObservacao(txtObservacao.getText());
+            agendaEdit.setId_pet(cmbPet.getValue().getId_pet());
+            agendaEdit.setId_func(cmbFuncionario.getValue().getId_funcionario());
+            agendaEdit.setId_cli(cliente.getId());
+            agendaEdit.setId_serv(cmbServico.getValue().getId_servico());
+
+            try {
+                agendaDAO.altera(agendaEdit);
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("SUCESSO");
+                alerta.setHeaderText("INFORMACOES");
+                alerta.setContentText("Agenda Alterada com SUCESSO !!!");
+
+                alerta.showAndWait();
+                sceneController.switchToSceneConsultaDeServicos(event);
+                limparCampos();
+
+            } catch (SQLException ex) {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("ERRO");
+                alerta.setHeaderText("INFORMACOES");
+                alerta.setContentText("Erro ao Alterar!" + ex.getMessage());
+
+                alerta.showAndWait();
+            }
         }
     }
 
@@ -170,7 +226,7 @@ public class AgendaConsultaController implements Initializable {
     }
 
     private void setCmbHorario() {
-
+   
         horario.add("9:00");
         horario.add("10:00");
         horario.add("11:00");
@@ -212,9 +268,7 @@ public class AgendaConsultaController implements Initializable {
 
             alerta.showAndWait();
         }
-
         cmbPet.setItems(pet);
-        txtObservacao.setText(cliente.getEmail());
     }
 
     @FXML
@@ -243,28 +297,8 @@ public class AgendaConsultaController implements Initializable {
 
     @FXML
     private void dpData_selected(ActionEvent event) {
-        clearCmbHorario();
-        setCmbHorario();
-        ObservableList<Agenda> horasMarcadas = FXCollections.observableArrayList();
-        LocalDate data = dpData.getValue();
-        String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-        try {
-
-            horasMarcadas.addAll(agendaDAO.lista("data=" + "'" + dataPickerString + "'"));
-
-        } catch (SQLException ex) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("ERRO");
-            alerta.setHeaderText("INFORMACOES");
-            alerta.setContentText("Erro ao Buscar os Dados!" + ex.getMessage());
-
-            alerta.showAndWait();
-        }
-
-        for (Agenda horaMarcada : horasMarcadas) {
-            horario.remove(horaMarcada.getHora());
-        }
+        atualizaHorarios();
 
     }
 
@@ -312,6 +346,8 @@ public class AgendaConsultaController implements Initializable {
         cmbServico.setValue(null);
         cmbFuncionario.setValue(null);
         lblPreco.setText("R$: 00,00");
+
+        agendaEdit = null;
     }
 
     public void onBtnEditar_click(Agenda agenda) {
@@ -344,6 +380,15 @@ public class AgendaConsultaController implements Initializable {
             Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        Funcionario funcionario = new Funcionario();
+        funcionario.setId_funcionario(agenda.getId_func());
+
+        try {
+            funcionario = funcionarioDao.buscaID(funcionario);
+        } catch (Exception ex) {
+            Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String date = agenda.getData();
         LocalDate localDate = LocalDate.parse(date, formatter);
@@ -354,10 +399,39 @@ public class AgendaConsultaController implements Initializable {
         cmbPet.setValue(pet);
         txtCpfDono.setText(dono.getCpf());
         cmbServico.setValue(servico);
+        NumberFormat defaultFormat = NumberFormat.getCurrencyInstance(s);
+        Float valor = servico.getPreco();
+        lblPreco.setText(defaultFormat.format(valor));
+        cmbFuncionario.setValue(funcionario);
 
         btnCadastrar.setText("Atualizar");
         agendaEdit = agenda;
 
+        atualizaHorarios();
     }
 
+    public void atualizaHorarios() {
+        clearCmbHorario();
+        setCmbHorario();
+        ObservableList<Agenda> horasMarcadas = FXCollections.observableArrayList();
+        LocalDate data = dpData.getValue();
+        String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+        try {
+
+            horasMarcadas.addAll(agendaDAO.lista("data=" + "'" + dataPickerString + "'"));
+
+        } catch (SQLException ex) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("ERRO");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Erro ao Buscar os Dados!" + ex.getMessage());
+
+            alerta.showAndWait();
+        }
+
+        for (Agenda horaMarcada : horasMarcadas) {
+            horario.remove(horaMarcada.getHora());
+        }
+    }
 }

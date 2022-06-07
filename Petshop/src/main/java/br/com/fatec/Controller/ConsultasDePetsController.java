@@ -4,9 +4,11 @@
  */
 package br.com.fatec.Controller;
 
+import br.com.fatec.DAO.AgendaDAO;
 import br.com.fatec.DAO.ClienteDAO;
 import br.com.fatec.DAO.PetDAO;
 import br.com.fatec.SceneController;
+import br.com.fatec.model.Agenda;
 import br.com.fatec.model.Cliente;
 import br.com.fatec.model.Pet;
 import java.io.IOException;
@@ -38,8 +40,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-
-
 /**
  * FXML Controller class
  *
@@ -48,7 +48,7 @@ import javafx.stage.Stage;
 public class ConsultasDePetsController implements Initializable {
 
     SceneController sceneController = new SceneController();
-
+    AgendaDAO agendaDao = new AgendaDAO();
     PetDAO petDao = new PetDAO();
     ClienteDAO clienteDao = new ClienteDAO();
 
@@ -72,7 +72,7 @@ public class ConsultasDePetsController implements Initializable {
     private TableColumn<Pet, String> nome;
     @FXML
     private TableColumn<Pet, String> genero;
-    
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -143,8 +143,16 @@ public class ConsultasDePetsController implements Initializable {
         Cliente cliente = new Cliente();
         cliente.setId(currentPet.getId_dono());
 
+        ArrayList<Agenda> agendas = new ArrayList();
+
         try {
             cliente = clienteDao.buscaID(cliente);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasDePetsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            agendas.addAll(agendaDao.lista("id_pet =" + currentPet.getId_pet()));
         } catch (SQLException ex) {
             Logger.getLogger(ConsultasDePetsController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -155,6 +163,13 @@ public class ConsultasDePetsController implements Initializable {
         alerta.setContentText("CPF do Dono: " + cliente.getCpf() + "\n\n" + "Nome do Pet: " + currentPet.getNome() + "\n" + "Gênero do Pet: " + currentPet.getGenero() + "\n" + "Raça do Pet: " + currentPet.getRaca());
 
         if (alerta.showAndWait().get() == ButtonType.OK) {
+            for (Agenda agenda : agendas) {
+                try {
+                    agendaDao.remove(agenda);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConsultasDePetsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             try {
                 petDao.remove(currentPet);
                 Alert alerta3 = new Alert(Alert.AlertType.INFORMATION);
@@ -176,7 +191,7 @@ public class ConsultasDePetsController implements Initializable {
     }
 
     @FXML
-    private void btnEditar_click(ActionEvent event) throws IOException{
+    private void btnEditar_click(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../cadastroPet.fxml"));
         root = loader.load();
 
@@ -216,7 +231,7 @@ public class ConsultasDePetsController implements Initializable {
 
             @Override
             public void changed(ObservableValue<? extends Pet> ov, Pet t, Pet t1) {
-                currentPet = (Pet) tbvPet.getSelectionModel().getSelectedItem(); 
+                currentPet = (Pet) tbvPet.getSelectionModel().getSelectedItem();
             }
 
         });

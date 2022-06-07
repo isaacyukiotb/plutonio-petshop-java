@@ -213,9 +213,9 @@ public class ConsultasDeClientesController implements Initializable {
         cadastroClienteController.onBtnEditar_click(currentCliente);
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //stage.setTitle("Cadastro de Pets");
-        //stage.setResizable(false);
-        //stage.centerOnScreen();
+        stage.setTitle("Edicao de cliente");
+        stage.setResizable(false);
+        stage.centerOnScreen();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

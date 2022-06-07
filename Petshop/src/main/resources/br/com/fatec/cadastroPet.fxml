@@ -154,7 +154,7 @@
             <Font name="Yu Gothic UI Semibold" size="14.0" />
          </font>
       </TextArea>
-      <Button contentDisplay="CENTER" layoutX="690.0" layoutY="726.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="btnCancelar" stylesheets="@css/default.css" text="Cancelar" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnCancelar" contentDisplay="CENTER" layoutX="690.0" layoutY="726.0" mnemonicParsing="false" onAction="#btnCancelar_click" prefHeight="34.0" prefWidth="95.0" styleClass="btnCancelar" stylesheets="@css/default.css" text="Cancelar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Yu Gothic UI Semibold" size="15.0" />
          </font>

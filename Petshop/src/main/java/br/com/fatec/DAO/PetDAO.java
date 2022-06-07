@@ -85,7 +85,34 @@ public class PetDAO implements DAO<Pet> {
 
     @Override
     public boolean altera(Pet obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "UPDATE pet SET id_pet = ?, nome = ?, categoria = ?, raca = ?, genero = ?, restricao = ?, id_dono = ? "
+                + "WHERE id_pet = ?"; //a ? indica parametros
+        
+        //abre a conexao com o banco
+        Banco.conectar();
+        //preparar o comando PST
+        pst = Banco.obterConexao().prepareStatement(sql);
+        
+        //associar os dados do objeto Proprietario com o comando UPDATE
+        pst.setInt(1, obj.getId_pet());
+        pst.setString(2, obj.getNome());
+        pst.setString(3, obj.getCategoria());
+        pst.setString(4, obj.getRaca()); 
+        pst.setString(5, obj.getGenero());
+        pst.setString(6, obj.getRestricao());
+        pst.setInt(7, obj.getId_dono());
+        pst.setInt(8, obj.getId_pet());
+        
+        
+        //executar o comando
+        int res = pst.executeUpdate(); //esse método serve para Insert, delete e update
+        
+        //fecha a conexao
+        Banco.desconectar();
+        
+        //devolve se funcionoou ou nao
+        return res != 0;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

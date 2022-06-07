@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -36,12 +39,17 @@ public class CadastroPetController implements Initializable {
 
     SceneController sceneController = new SceneController();
     ObservableList<String> categoria = FXCollections.observableArrayList();
-    
+
+    PetDAO dao = new PetDAO();
+    ClienteDAO clienteDao = new ClienteDAO();
+
+    Pet petEdit = null;
+
     @FXML
     private TextField txtNome;
     @FXML
     private ComboBox<String> cmbCategoria;
-    
+
     @FXML
     private CheckBox ckMasculino;
     @FXML
@@ -56,6 +64,8 @@ public class CadastroPetController implements Initializable {
     private String sexo;
     @FXML
     private TextField txtCpfDono;
+    @FXML
+    private Button btnCancelar;
 
     /**
      * Initializes the controller class.
@@ -89,59 +99,106 @@ public class CadastroPetController implements Initializable {
     }
 
     @FXML
-    private void btnCadastrar_click(ActionEvent event) {
+    private void btnCadastrar_click(ActionEvent event)throws IOException {
 
-        Pet pet = new Pet();
-        PetDAO dao = new PetDAO();
-        
-        ClienteDAO clienteDao = new ClienteDAO();
-        
-        Cliente dono = new Cliente();
-        dono.setCpf(txtCpfDono.getText());
-        
-        try {
-            dono = clienteDao.buscaCPF(dono);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            //Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        if (petEdit == null) {
+            
+            Pet pet = new Pet();
+            Cliente dono = new Cliente();
+            dono.setCpf(txtCpfDono.getText());
 
-        pet.setNome(txtNome.getText());
-        pet.setCategoria(cmbCategoria.getValue());
-        pet.setRaca(txtRaca.getText());
-        pet.setGenero(this.sexo);
-        pet.setRestricao(txtRestricao.getText());
-        pet.setId_dono(dono.getId());
+            try {
+                dono = clienteDao.buscaCPF(dono);
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                //Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        try {
-            if (dao.insere(pet)) {
-                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                alerta.setTitle("SUCESSO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Dados gravados com SUCESSO!");
+            pet.setNome(txtNome.getText());
+            pet.setCategoria(cmbCategoria.getValue());
+            pet.setRaca(txtRaca.getText());
+            pet.setGenero(this.sexo);
+            pet.setRestricao(txtRestricao.getText());
+            pet.setId_dono(dono.getId());
 
-                alerta.showAndWait();
+            try {
+                if (dao.insere(pet)) {
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("SUCESSO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Dados gravados com SUCESSO!");
 
-            } else {
+                    alerta.showAndWait();
+                    limparTela();
+
+                } else {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("ERRO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Erro ao gravar os Dados!");
+
+                    alerta.showAndWait();
+                }
+
+            } catch (SQLException ex) {
                 Alert alerta = new Alert(Alert.AlertType.ERROR);
                 alerta.setTitle("ERRO");
                 alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Erro ao gravar os Dados!");
+                alerta.setContentText("Erro na gravacao: " + ex.getMessage());
 
                 alerta.showAndWait();
+
+            }
+        }else{
+            
+            Cliente dono = new Cliente();
+            dono.setCpf(txtCpfDono.getText());
+
+            try {
+                dono = clienteDao.buscaCPF(dono);
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                //Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        } catch (SQLException ex) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("ERRO");
-            alerta.setHeaderText("INFORMACOES");
-            alerta.setContentText("Erro na gravacao: " + ex.getMessage());
+            petEdit.setNome(txtNome.getText());
+            petEdit.setCategoria(cmbCategoria.getValue());
+            petEdit.setRaca(txtRaca.getText());
+            petEdit.setGenero(this.sexo);
+            petEdit.setRestricao(txtRestricao.getText());
+            petEdit.setId_dono(dono.getId());
 
-            alerta.showAndWait();
+            try {
+                if (dao.altera(petEdit)) {
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("SUCESSO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Dados Alterados com SUCESSO!");
 
+                    alerta.showAndWait();
+                    limparTela();
+                    sceneController.switchToSceneConsultaDePet(event);
+
+                } else {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("ERRO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Erro ao Alterar os Dados!");
+
+                    alerta.showAndWait();
+                }
+
+            } catch (SQLException ex) {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("ERRO");
+                alerta.setHeaderText("INFORMACOES");
+                alerta.setContentText("Erro na gravacao: " + ex.getMessage());
+
+                alerta.showAndWait();
+
+            }
+            
         }
-
     }
 
     @FXML
@@ -157,6 +214,72 @@ public class CadastroPetController implements Initializable {
         tff.setCaracteresValidos("0123456789");
         tff.setTf(txtCpfDono);
         tff.formatter();
+    }
+
+    public void onBtnEditar_click(Pet pet) {
+
+        Cliente cliente = new Cliente();
+        cliente.setId(pet.getId_dono());
+
+        try {
+            cliente = clienteDao.buscaID(cliente);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        txtCpfDono.setText(cliente.getCpf());
+        txtNome.setText(pet.getNome());
+        txtRaca.setText(pet.getRaca());
+        txtRestricao.setText(pet.getRestricao());
+        cmbCategoria.setValue(pet.getCategoria());
+        
+        if ("M".equals(pet.getGenero())) {
+            ckMasculino.setSelected(true);
+            this.sexo = pet.getGenero();
+        } else {
+            ckFeminino.setSelected(true);
+            this.sexo = pet.getGenero(); 
+        }
+
+        btnCadastro.setText("Atualizar");
+
+        petEdit = pet;
+    }
+
+    public void limparTela() {
+        txtCpfDono.setText("");
+        txtNome.setText("");
+        cmbCategoria.setValue(null);
+        txtRaca.setText("");
+        ckFeminino.setSelected(false);
+        ckMasculino.setSelected(false);
+        txtRestricao.setText("");
+
+        petEdit = null;
+    }
+
+    @FXML
+    private void btnCancelar_click(ActionEvent event)throws IOException {
+        
+        if (petEdit != null) {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Cancelar");
+            alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
+
+            if (alerta.showAndWait().get() == ButtonType.OK) {
+                sceneController.switchToSceneConsultaDePet(event);
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Cancelar");
+            alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
+
+            if (alerta.showAndWait().get() == ButtonType.OK) {
+                limparTela();
+            }
+        }
+        
+        limparTela();
     }
 
 }

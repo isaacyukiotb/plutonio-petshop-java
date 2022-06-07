@@ -44,7 +44,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtNome" prefHeight="34.0" prefWidth="260.0" promptText="Bruce" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="4">
+            <TextField fx:id="txtNome" focusTraversable="false" prefHeight="34.0" prefWidth="260.0" promptText="Bruce" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="4">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
@@ -60,7 +60,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <ComboBox fx:id="cmbCategoria" prefHeight="33.0" prefWidth="175.0" styleClass="combo-box" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+            <ComboBox fx:id="cmbCategoria" focusTraversable="false" prefHeight="33.0" prefWidth="175.0" styleClass="combo-box" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
@@ -116,7 +116,7 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtRaca" prefHeight="34.0" prefWidth="293.0" promptText="Pincher" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <TextField fx:id="txtRaca" focusTraversable="false" prefHeight="34.0" prefWidth="293.0" promptText="Pincher" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -149,7 +149,7 @@
             <Image url="@resources/img/titulo_cadas_pet.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="txtRestricao" layoutX="57.0" layoutY="479.0" prefHeight="169.0" prefWidth="411.0" styleClass="txtArea" stylesheets="@css/default.css" wrapText="true">
+      <TextArea fx:id="txtRestricao" focusTraversable="false" layoutX="57.0" layoutY="479.0" prefHeight="169.0" prefWidth="411.0" styleClass="txtArea" stylesheets="@css/default.css" wrapText="true">
          <font>
             <Font name="Yu Gothic UI Semibold" size="14.0" />
          </font>

@@ -104,42 +104,42 @@
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtRg" onKeyReleased="#txtRg_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="12.345.678-9" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="txtRg" focusTraversable="false" onKeyReleased="#txtRg_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="12.345.678-9" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtCpf" onKeyReleased="#txtCpf_KeyReleased" prefHeight="43.0" prefWidth="182.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="4">
+            <TextField fx:id="txtCpf" focusTraversable="false" onKeyReleased="#txtCpf_KeyReleased" prefHeight="43.0" prefWidth="182.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="4">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtEmail" prefHeight="43.0" prefWidth="244.0" promptText="plutonio@email.com" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="7">
+            <TextField fx:id="txtEmail" focusTraversable="false" prefHeight="43.0" prefWidth="244.0" promptText="plutonio@email.com" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="7">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtCep" onAction="#txtCep_enter" onKeyReleased="#txtCep_KeyReleased" prefHeight="43.0" prefWidth="102.0" promptText="0000-000" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="10">
+            <TextField fx:id="txtCep" focusTraversable="false" onAction="#txtCep_enter" onKeyReleased="#txtCep_KeyReleased" prefHeight="43.0" prefWidth="102.0" promptText="0000-000" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="10">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtBairro" disable="true" prefHeight="43.0" prefWidth="249.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="13">
+            <TextField fx:id="txtBairro" disable="true" focusTraversable="false" prefHeight="43.0" prefWidth="249.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="13">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtCidade" disable="true" prefHeight="43.0" prefWidth="269.0" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="16">
+            <TextField fx:id="txtCidade" disable="true" focusTraversable="false" prefHeight="43.0" prefWidth="269.0" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="16">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtUf" alignment="CENTER" disable="true" prefHeight="43.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="16">
+            <TextField fx:id="txtUf" alignment="CENTER" disable="true" focusTraversable="false" prefHeight="43.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="16">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtEndereco" disable="true" prefHeight="43.0" prefWidth="280.0" promptText="avenida, rua, alameda..." styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="13">
+            <TextField fx:id="txtEndereco" disable="true" focusTraversable="false" prefHeight="43.0" prefWidth="280.0" promptText="avenida, rua, alameda..." styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="13">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
@@ -170,7 +170,7 @@
                   <Insets bottom="70.0" />
                </GridPane.margin>
             </ImageView>
-            <TextField fx:id="txtCargo" prefHeight="43.0" prefWidth="244.0" promptText="Medica Veterinaria" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <TextField fx:id="txtCargo" focusTraversable="false" prefHeight="43.0" prefWidth="244.0" promptText="Medica Veterinaria" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
@@ -183,7 +183,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="txtTelefone" onKeyReleased="#txtTelefone_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="  (11) 91111-1111" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <TextField fx:id="txtTelefone" focusTraversable="false" onKeyReleased="#txtTelefone_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="  (11) 91111-1111" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
@@ -196,7 +196,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <DatePicker fx:id="dpDataNasc" prefHeight="43.0" prefWidth="191.0" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dpDataNasc" focusTraversable="false" prefHeight="43.0" prefWidth="191.0" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Nº" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="12">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
@@ -205,7 +205,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="txtUf1" alignment="CENTER" prefHeight="43.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="13">
+            <TextField fx:id="txtUf1" alignment="CENTER" focusTraversable="false" prefHeight="43.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="13">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>

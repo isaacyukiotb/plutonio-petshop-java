@@ -4,7 +4,6 @@
  */
 package br.com.fatec.DAO;
 
-import br.com.fatec.model.Proprietario;
 import br.com.fatec.model.Servico;
 import br.com.fatec.persistencia.Banco;
 import java.sql.SQLException;

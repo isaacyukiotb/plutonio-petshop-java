@@ -226,7 +226,7 @@ public class AgendaConsultaController implements Initializable {
     }
 
     private void setCmbHorario() {
-   
+
         horario.add("9:00");
         horario.add("10:00");
         horario.add("11:00");

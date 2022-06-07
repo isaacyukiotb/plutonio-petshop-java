@@ -91,6 +91,12 @@ public class CadastroClienteController implements Initializable {
             clienteEdit.setDataNasc(dataPickerString);
             clienteEdit.setCep(txtCep.getText());
             clienteEdit.setEmail(txtEmail.getText());
+            clienteEdit.setTelefone(txtTelefone.getText());
+            clienteEdit.setEndereco(txtEndereco.getText());
+            clienteEdit.setCidade(txtCidade.getText());
+            clienteEdit.setBairro(txtBairro.getText());
+            clienteEdit.setUf(txtUf.getText());
+            clienteEdit.setNumero(txtNumero.getText());
 
             try {
                 dao.altera(clienteEdit);
@@ -116,6 +122,13 @@ public class CadastroClienteController implements Initializable {
             cliente.setDataNasc(dataPickerString);
             cliente.setCep(txtCep.getText());
             cliente.setEmail(txtEmail.getText());
+            cliente.setTelefone(txtTelefone.getText());
+            cliente.setEndereco(txtEndereco.getText());
+            cliente.setCidade(txtCidade.getText());
+            cliente.setBairro(txtBairro.getText());
+            cliente.setUf(txtUf.getText());
+            cliente.setNumero(txtNumero.getText());
+            
             try {
 
                 if (dao.insere(cliente)) {
@@ -250,6 +263,13 @@ public class CadastroClienteController implements Initializable {
         dpDataNasc.setValue(localDate);
         txtCep.setText(cliente.getCep());
         txtEmail.setText(cliente.getEmail());
+        txtTelefone.setText(cliente.getTelefone());
+        txtEndereco.setText(cliente.getEndereco());
+        txtCidade.setText(cliente.getCidade());
+        txtBairro.setText(cliente.getBairro());
+        txtUf.setText(cliente.getUf());
+        txtNumero.setText(cliente.getNumero());
+            
 
         clienteEdit = cliente;
 

@@ -12,6 +12,8 @@ C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\c
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\TextFieldFormatter.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\Controller\ConsultaTiposController.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\model\Cliente.java
+C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\Controller\ConsultasDeFuncionariosController.java
+C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\Controller\ConsultasDeServicosController.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\Controller\AgendaConsultaController.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\DAO\ProprietarioDAO.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\DAO\ClienteDAO.java
@@ -20,6 +22,7 @@ C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\c
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\model\Servico.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\model\Veiculo.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\persistencia\Banco.java
+C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\Controller\ConsultasDeClientesController.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\DAO\PetDAO.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\DAO\CepDAO.java
 C:\Users\isaac\Desktop\Projects\plutonio-petshop-java\Petshop\src\main\java\br\com\fatec\model\Funcionario.java

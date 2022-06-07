@@ -14,39 +14,40 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author isaac
  */
-public class ConsultasDePetsController implements Initializable {
+public class ConsultasDeClientesController implements Initializable {
 
     SceneController sceneController = new SceneController();
 
     PetDAO petDao = new PetDAO();
     ClienteDAO clienteDao = new ClienteDAO();
 
-    Pet currentPet = new Pet();
+    Cliente currentCliente = new Cliente();
 
     String argumentos = "";
 
@@ -61,22 +62,26 @@ public class ConsultasDePetsController implements Initializable {
     @FXML
     private ComboBox<String> cmTipoPesquisa;
     @FXML
-    private TableView<Pet> tbvPet;
+    private TableView<Cliente> tbvPet;
     @FXML
-    private TableColumn<Pet, String> nome;
+    private TableColumn<Cliente, String> nome;
     @FXML
-    private TableColumn<Pet, String> genero;
+    private TableColumn<Cliente, String> genero;
 
     /**
      * Initializes the controller class.
      *
      */
     ObservableList<Pet> list = FXCollections.observableArrayList();
+    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        carregaPets("");
+        carregaClientes("");
         carregaCmbOptions();
     }
 
@@ -89,12 +94,13 @@ public class ConsultasDePetsController implements Initializable {
 
         ObservableList<String> obsTipos = FXCollections.observableArrayList();
         obsTipos.add("Todos");
-        obsTipos.add("id_pet");
+        obsTipos.add("id_cliente");
+        obsTipos.add("cpf");
+        obsTipos.add("rg");
         obsTipos.add("nome");
-        obsTipos.add("categoria");
-        obsTipos.add("raca");
-        obsTipos.add("genero");
-        obsTipos.add("id_dono");
+        obsTipos.add("data_nasc");
+        obsTipos.add("email");
+        obsTipos.add("cep");
 
         cmTipoPesquisa.setItems(obsTipos);
 
@@ -105,12 +111,12 @@ public class ConsultasDePetsController implements Initializable {
     private void btnPesquisar_click(ActionEvent event) {
         if (cmTipoPesquisa.getValue() == "Todos") {
             argumentos = "";
-            carregaPets(argumentos);
+            carregaClientes(argumentos);
         } else {
             argumentos = "";
             argumentos = cmTipoPesquisa.getValue();
             argumentos += " = " + "'" + txtDados.getText() + "'";
-            carregaPets(argumentos);
+            carregaClientes(argumentos);
         }
     }
 
@@ -129,9 +135,9 @@ public class ConsultasDePetsController implements Initializable {
 
     @FXML
     private void btnDeletar_click(ActionEvent event) {
-
+        /*
         Cliente cliente = new Cliente();
-        cliente.setId(currentPet.getId_dono());
+        cliente.setId(currentCliente.getId_dono());
 
         try {
             cliente = clienteDao.buscaID(cliente);
@@ -146,13 +152,13 @@ public class ConsultasDePetsController implements Initializable {
 
         if (alerta.showAndWait().get() == ButtonType.OK) {
             try {
-                petDao.remove(currentPet);
+                petDao.remove(currentCliente);
                 Alert alerta3 = new Alert(Alert.AlertType.INFORMATION);
                 alerta3.setTitle("Sucesso!");
                 alerta3.setHeaderText("INFORMACOES");
                 alerta3.setContentText("Dados deletados com Sucesso! ");
                 alerta3.showAndWait();
-                carregaPets("");
+                carregaClientes("");
             } catch (SQLException ex) {
                 Alert alerta2 = new Alert(Alert.AlertType.ERROR);
                 alerta2.setTitle("ERRO");
@@ -162,18 +168,36 @@ public class ConsultasDePetsController implements Initializable {
                 alerta2.showAndWait();
             }
         }
+         */
 
     }
 
     @FXML
-    private void btnEditar_click(ActionEvent event) {
+    private void btnEditar_click(ActionEvent event) throws IOException {
+        
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../cadastroCliente.fxml"));
+        root = loader.load();
+        
+        CadastroClienteController cadastroClienteController = loader.getController();
+        
+        cadastroClienteController.onBtnEditar_click(currentCliente);
+        
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        //stage.setTitle("Cadastro de Pets");
+        //stage.setResizable(false);
+        //stage.centerOnScreen();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        
     }
 
-    public void carregaPets(String args) {
-        ObservableList<Pet> obsPets = FXCollections.observableArrayList();
-        ArrayList<Pet> lista = new ArrayList<>();
+    public void carregaClientes(String args) {
+        ObservableList<Cliente> obsCliente = FXCollections.observableArrayList();
+        ArrayList<Cliente> lista = new ArrayList<>();
         try {
-            lista.addAll(petDao.lista(args));
+            lista.addAll(clienteDao.lista(args));
         } catch (SQLException ex) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("ERRO");
@@ -181,18 +205,18 @@ public class ConsultasDePetsController implements Initializable {
             alerta.setContentText("Erro na consulta: " + ex.getMessage());
             alerta.showAndWait();
         }
-        obsPets.addAll(lista);
+        obsCliente.addAll(lista);
 
-        nome.setCellValueFactory(new PropertyValueFactory<Pet, String>("nome"));
-        genero.setCellValueFactory(new PropertyValueFactory<Pet, String>("genero"));
+        nome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
+        genero.setCellValueFactory(new PropertyValueFactory<Cliente, String>("cpf"));
 
-        tbvPet.setItems(obsPets);
+        tbvPet.setItems(obsCliente);
 
-        tbvPet.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pet>() {
+        tbvPet.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Cliente>() {
 
             @Override
-            public void changed(ObservableValue<? extends Pet> ov, Pet t, Pet t1) {
-                currentPet = (Pet) tbvPet.getSelectionModel().getSelectedItem(); 
+            public void changed(ObservableValue<? extends Cliente> ov, Cliente t, Cliente t1) {
+                currentCliente = (Cliente) tbvPet.getSelectionModel().getSelectedItem();
             }
 
         });

@@ -4,18 +4,17 @@
  */
 package br.com.fatec.Controller;
 
+import br.com.fatec.DAO.AgendaDAO;
 import br.com.fatec.DAO.ClienteDAO;
 import br.com.fatec.DAO.PetDAO;
 import br.com.fatec.SceneController;
-import br.com.fatec.model.Cliente;
+import br.com.fatec.model.Agenda;
 import br.com.fatec.model.Pet;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -27,7 +26,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -39,14 +37,15 @@ import javafx.scene.input.KeyEvent;
  *
  * @author isaac
  */
-public class ConsultasDePetsController implements Initializable {
+public class ConsultasDeServicosController implements Initializable {
 
     SceneController sceneController = new SceneController();
 
     PetDAO petDao = new PetDAO();
     ClienteDAO clienteDao = new ClienteDAO();
+    AgendaDAO agendaDao = new AgendaDAO();
 
-    Pet currentPet = new Pet();
+    Agenda currentAgenda = new Agenda();
 
     String argumentos = "";
 
@@ -61,11 +60,11 @@ public class ConsultasDePetsController implements Initializable {
     @FXML
     private ComboBox<String> cmTipoPesquisa;
     @FXML
-    private TableView<Pet> tbvPet;
+    private TableView<Agenda> tbvPet;
     @FXML
-    private TableColumn<Pet, String> nome;
+    private TableColumn<Agenda, String> nome;
     @FXML
-    private TableColumn<Pet, String> genero;
+    private TableColumn<Agenda, String> genero;
 
     /**
      * Initializes the controller class.
@@ -76,7 +75,7 @@ public class ConsultasDePetsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        carregaPets("");
+        carregaAgendas("");
         carregaCmbOptions();
     }
 
@@ -89,12 +88,12 @@ public class ConsultasDePetsController implements Initializable {
 
         ObservableList<String> obsTipos = FXCollections.observableArrayList();
         obsTipos.add("Todos");
+        obsTipos.add("id_agend");
+        obsTipos.add("data");
+        obsTipos.add("hora");
+        obsTipos.add("observacao");
         obsTipos.add("id_pet");
-        obsTipos.add("nome");
-        obsTipos.add("categoria");
-        obsTipos.add("raca");
-        obsTipos.add("genero");
-        obsTipos.add("id_dono");
+        obsTipos.add("id_func");
 
         cmTipoPesquisa.setItems(obsTipos);
 
@@ -105,12 +104,12 @@ public class ConsultasDePetsController implements Initializable {
     private void btnPesquisar_click(ActionEvent event) {
         if (cmTipoPesquisa.getValue() == "Todos") {
             argumentos = "";
-            carregaPets(argumentos);
+            carregaAgendas(argumentos);
         } else {
             argumentos = "";
             argumentos = cmTipoPesquisa.getValue();
             argumentos += " = " + "'" + txtDados.getText() + "'";
-            carregaPets(argumentos);
+            carregaAgendas(argumentos);
         }
     }
 
@@ -130,29 +129,29 @@ public class ConsultasDePetsController implements Initializable {
     @FXML
     private void btnDeletar_click(ActionEvent event) {
 
-        Cliente cliente = new Cliente();
-        cliente.setId(currentPet.getId_dono());
+        Agenda agenda = new Agenda();
+        agenda.setId_agenda(currentAgenda.getId_agenda());
 
         try {
-            cliente = clienteDao.buscaID(cliente);
+            agenda = agendaDao.buscaID(agenda);
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultasDePetsController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
 
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Excluir");
         alerta.setHeaderText("Deseja Realmente deletar o PET:");
-        alerta.setContentText("CPF do Dono: " + cliente.getCpf() + "\n\n" + "Nome do Pet: " + currentPet.getNome() + "\n" + "Gênero do Pet: " + currentPet.getGenero() + "\n" + "Raça do Pet: " + currentPet.getRaca());
+        alerta.setContentText("Id da consulta: " + agenda.getId_agenda()+ "\n\n" + "Data: " + currentAgenda.getData()+ "\n" + "Hora: " + currentAgenda.getHora()+ "\n" + "Observação:  " + currentAgenda.getObservacao());
 
         if (alerta.showAndWait().get() == ButtonType.OK) {
             try {
-                petDao.remove(currentPet);
+                agendaDao.remove(currentAgenda);
                 Alert alerta3 = new Alert(Alert.AlertType.INFORMATION);
                 alerta3.setTitle("Sucesso!");
                 alerta3.setHeaderText("INFORMACOES");
                 alerta3.setContentText("Dados deletados com Sucesso! ");
                 alerta3.showAndWait();
-                carregaPets("");
+                carregaAgendas("");
             } catch (SQLException ex) {
                 Alert alerta2 = new Alert(Alert.AlertType.ERROR);
                 alerta2.setTitle("ERRO");
@@ -169,11 +168,11 @@ public class ConsultasDePetsController implements Initializable {
     private void btnEditar_click(ActionEvent event) {
     }
 
-    public void carregaPets(String args) {
-        ObservableList<Pet> obsPets = FXCollections.observableArrayList();
-        ArrayList<Pet> lista = new ArrayList<>();
+    public void carregaAgendas(String args) {
+        ObservableList<Agenda> obsAgenda = FXCollections.observableArrayList();
+        ArrayList<Agenda> lista = new ArrayList<>();
         try {
-            lista.addAll(petDao.lista(args));
+            lista.addAll(agendaDao.lista(args));
         } catch (SQLException ex) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("ERRO");
@@ -181,18 +180,18 @@ public class ConsultasDePetsController implements Initializable {
             alerta.setContentText("Erro na consulta: " + ex.getMessage());
             alerta.showAndWait();
         }
-        obsPets.addAll(lista);
+        obsAgenda.addAll(lista);
 
-        nome.setCellValueFactory(new PropertyValueFactory<Pet, String>("nome"));
-        genero.setCellValueFactory(new PropertyValueFactory<Pet, String>("genero"));
+        nome.setCellValueFactory(new PropertyValueFactory<Agenda, String>("data"));
+        genero.setCellValueFactory(new PropertyValueFactory<Agenda, String>("hora"));
 
-        tbvPet.setItems(obsPets);
+        tbvPet.setItems(obsAgenda);
 
-        tbvPet.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pet>() {
+        tbvPet.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Agenda>() {
 
             @Override
-            public void changed(ObservableValue<? extends Pet> ov, Pet t, Pet t1) {
-                currentPet = (Pet) tbvPet.getSelectionModel().getSelectedItem(); 
+            public void changed(ObservableValue<? extends Agenda> ov, Agenda t, Agenda t1) {
+                currentAgenda = (Agenda) tbvPet.getSelectionModel().getSelectedItem();
             }
 
         });

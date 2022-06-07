@@ -16,15 +16,16 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 
 /**
@@ -33,9 +34,11 @@ import javafx.scene.input.KeyEvent;
  * @author isaac
  */
 public class CadastroClienteController implements Initializable {
-    
+
     SceneController sceneController = new SceneController();
-    
+
+    Cliente clienteEdit = null;
+
     @FXML
     private TextField txtNome;
     @FXML
@@ -71,49 +74,78 @@ public class CadastroClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
     }
 
     @FXML
-    private void btnCadastrar_click(ActionEvent event) {
-        Cliente cliente = new Cliente();
+    private void btnCadastrar_click(ActionEvent event) throws IOException {
+
         ClienteDAO dao = new ClienteDAO();
-        LocalDate data = dpDataNasc.getValue();
-        String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-        cliente.setCpf(txtCpf.getText());
-        cliente.setRg(txtRg.getText());
-        cliente.setNome(txtNome.getText());
-        cliente.setDataNasc(dataPickerString);
-        cliente.setCep(txtCep.getText());
-        cliente.setEmail(txtEmail.getText());
+        if (clienteEdit != null) {
+            LocalDate data = dpDataNasc.getValue();
+            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-        try {
-            if (dao.insere(cliente)) {
+            clienteEdit.setCpf(txtCpf.getText());
+            clienteEdit.setRg(txtRg.getText());
+            clienteEdit.setNome(txtNome.getText());
+            clienteEdit.setDataNasc(dataPickerString);
+            clienteEdit.setCep(txtCep.getText());
+            clienteEdit.setEmail(txtEmail.getText());
+
+            try {
+                dao.altera(clienteEdit);
                 Alert alerta = new Alert(Alert.AlertType.INFORMATION);
                 alerta.setTitle("SUCESSO");
                 alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Dados gravados com SUCESSO!");
-
+                alerta.setContentText("Dados Alterados com SUCESSO!");
                 alerta.showAndWait();
+                limparCampos();
+                clienteEdit = null;
+                sceneController.switchToSceneConsultaDeClientes(event);
+            } catch (SQLException ex) {
+                Logger.getLogger(CadastroClienteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            Cliente cliente = new Cliente();
+            LocalDate data = dpDataNasc.getValue();
+            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-            } else {
+            cliente.setCpf(txtCpf.getText());
+            cliente.setRg(txtRg.getText());
+            cliente.setNome(txtNome.getText());
+            cliente.setDataNasc(dataPickerString);
+            cliente.setCep(txtCep.getText());
+            cliente.setEmail(txtEmail.getText());
+            try {
+
+                if (dao.insere(cliente)) {
+
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("SUCESSO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Dados gravados com SUCESSO!");
+
+                    alerta.showAndWait();
+                    limparCampos();
+
+                } else {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("ERRO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Erro ao gravar os Dados!");
+
+                    alerta.showAndWait();
+                }
+
+            } catch (SQLException ex) {
                 Alert alerta = new Alert(Alert.AlertType.ERROR);
                 alerta.setTitle("ERRO");
                 alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Erro ao gravar os Dados!");
+                alerta.setContentText("Erro na gravacao: " + ex.getMessage());
 
                 alerta.showAndWait();
+
             }
-
-        } catch (SQLException ex) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("ERRO");
-            alerta.setHeaderText("INFORMACOES");
-            alerta.setContentText("Erro na gravacao: " + ex.getMessage());
-
-            alerta.showAndWait();
-
         }
 
     }
@@ -134,18 +166,17 @@ public class CadastroClienteController implements Initializable {
             alerta.setContentText("Erro ao Buscar: " + ex.getMessage());
             alerta.showAndWait();
         }
-        
+
         txtCep.setText(cep.getCep());
         txtEndereco.setText(cep.getEndereco());
         txtCidade.setText(cep.getCidade());
         txtBairro.setText(cep.getBairro());
         txtUf.setText(cep.getUf());
-        
-        
+
     }
 
     @FXML
-    private void switchPage_home(ActionEvent event) throws IOException{
+    private void switchPage_home(ActionEvent event) throws IOException {
         sceneController.switchToSceneHome(event);
     }
 
@@ -186,7 +217,63 @@ public class CadastroClienteController implements Initializable {
     }
 
     @FXML
-    private void btnCancelar_click(ActionEvent event) {
+    private void btnCancelar_click(ActionEvent event) throws IOException {
+        if (clienteEdit != null) {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Cancelar");
+            alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
+
+            if (alerta.showAndWait().get() == ButtonType.OK) {
+                sceneController.switchToSceneConsultaDeClientes(event);
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Cancelar");
+            alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
+
+            if (alerta.showAndWait().get() == ButtonType.OK) {
+                limparCampos();
+            }
+        }
+
+    }
+
+    public void onBtnEditar_click(Cliente cliente) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String date = cliente.getDataNasc();
+        LocalDate localDate = LocalDate.parse(date, formatter);
+
+        txtNome.setText(cliente.getNome());
+        txtCpf.setText(cliente.getCpf());
+        txtRg.setText(cliente.getRg());
+        dpDataNasc.setValue(localDate);
+        txtCep.setText(cliente.getCep());
+        txtEmail.setText(cliente.getEmail());
+
+        clienteEdit = cliente;
+
+        btnCadastrar.setText("Atualizar");
+    }
+
+    private void limparCampos() {
+
+        txtNome.setText("");
+        txtRg.setText("");
+        txtTelefone.setText("");
+        txtCpf.setText("");
+        dpDataNasc.setValue(null);
+        txtEmail.setText("");
+        txtCep.setText("");
+        txtEndereco.setText("");
+        txtCidade.setText("");
+        txtBairro.setText("");
+        txtUf.setText("");
+        txtNumero.setText("");
+        
+        clienteEdit = null;
+
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

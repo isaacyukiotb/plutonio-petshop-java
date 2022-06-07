@@ -51,8 +51,8 @@
         <columns>
           <TableColumn fx:id="nome" prefWidth="212.0" text="Nome" />
           <TableColumn fx:id="genero" prefWidth="68.0" text="Gênero" />
-            <TableColumn prefWidth="135.0" text="Raça" />
-            <TableColumn prefWidth="114.0" text="CPF do Dono" />
+            <TableColumn fx:id="raca" prefWidth="135.0" text="Raça" />
+            <TableColumn fx:id="id_dono" prefWidth="114.0" text="ID Dono" />
         </columns>
       </TableView>
       <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="768.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">

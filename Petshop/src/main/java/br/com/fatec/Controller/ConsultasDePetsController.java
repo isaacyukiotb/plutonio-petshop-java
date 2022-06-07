@@ -72,6 +72,10 @@ public class ConsultasDePetsController implements Initializable {
     private TableColumn<Pet, String> nome;
     @FXML
     private TableColumn<Pet, String> genero;
+    @FXML
+    private TableColumn<Pet, String> raca;
+    @FXML
+    private TableColumn<Pet, String> id_dono;
 
     private Stage stage;
     private Scene scene;
@@ -224,6 +228,8 @@ public class ConsultasDePetsController implements Initializable {
 
         nome.setCellValueFactory(new PropertyValueFactory<Pet, String>("nome"));
         genero.setCellValueFactory(new PropertyValueFactory<Pet, String>("genero"));
+        raca.setCellValueFactory(new PropertyValueFactory<Pet, String>("raca"));
+        id_dono.setCellValueFactory(new PropertyValueFactory<Pet, String>("id_dono"));
 
         tbvPet.setItems(obsPets);
 

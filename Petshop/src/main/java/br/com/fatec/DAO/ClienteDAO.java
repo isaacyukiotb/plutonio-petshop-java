@@ -76,7 +76,34 @@ public class ClienteDAO implements DAO <Cliente>{
 
     @Override
     public boolean altera(Cliente obj) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "UPDATE cliente SET id_cliente = ?, cpf = ?, rg = ?, nome = ?, data_nasc = ?, cep = ?, email = ? "
+                + "WHERE id_cliente = ?"; //a ? indica parametros
+        
+        //abre a conexao com o banco
+        Banco.conectar();
+        //preparar o comando PST
+        pst = Banco.obterConexao().prepareStatement(sql);
+        
+        //associar os dados do objeto Proprietario com o comando UPDATE
+        pst.setInt(1, obj.getId());
+        pst.setString(2, obj.getCpf());
+        pst.setString(3, obj.getRg());
+        pst.setString(4, obj.getNome()); 
+        pst.setString(5, obj.getDataNasc());
+        pst.setString(6, obj.getCep());
+        pst.setString(7, obj.getEmail());
+        pst.setInt(8, obj.getId());
+        
+        
+        //executar o comando
+        int res = pst.executeUpdate(); //esse método serve para Insert, delete e update
+        
+        //fecha a conexao
+        Banco.desconectar();
+        
+        //devolve se funcionoou ou nao
+        return res != 0;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

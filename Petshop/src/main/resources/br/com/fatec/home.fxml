@@ -10,41 +10,98 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" style="-fx-background-color: #eee;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.HomeController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="850.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.HomeController">
     <stylesheets>
         <URL value="@css/home.css" />
     </stylesheets>
    <children>
-      <AnchorPane layoutX="14.0" layoutY="11.0" prefHeight="828.0" prefWidth="256.0" style="-fx-background-color: #052f5f; -fx-background-radius: 60;" />
-      <AnchorPane layoutX="32.0" layoutY="37.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="778.0" prefWidth="219.0" style="-fx-background-color: #0a457f; -fx-background-radius: 50;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="856.0" layoutX="-2.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="237.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a457f" height="746.0" layoutX="17.0" layoutY="32.0" stroke="#052f5f" strokeType="INSIDE" strokeWidth="0.0" width="196.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="153.0" layoutX="234.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="619.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="153.0" layoutX="-6.0" layoutY="697.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="859.0" />
+      <Label layoutX="70.0" layoutY="60.0" text="Cadastro" textFill="#eeeeee">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button alignment="BASELINE_LEFT" layoutX="27.0" layoutY="177.0" mnemonicParsing="false" onAction="#switchPage_cadastroCliente" prefHeight="40.0" prefWidth="176.0" styleClass="navButton" text="Clientes">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="53.0" />
+         </font>
+      </Button>
+      <Button alignment="BASELINE_LEFT" layoutX="27.0" layoutY="277.0" mnemonicParsing="false" onAction="#switchPage_cadastroPet" prefHeight="40.0" prefWidth="176.0" styleClass="navButton" text="Pets" />
+      <Button alignment="BASELINE_LEFT" layoutX="27.0" layoutY="377.0" mnemonicParsing="false" onAction="#switchPage_cadastroFuncionario" prefHeight="40.0" prefWidth="176.0" styleClass="navButton" text="Funcionários" />
+      <Button fx:id="btnConsultar" alignment="BASELINE_LEFT" layoutX="27.0" layoutY="577.0" mnemonicParsing="false" onAction="#switchPage_consultaTipos" prefHeight="40.0" prefWidth="176.0" styleClass="navButton" text="Consultas" />
+      <Button alignment="BASELINE_LEFT" layoutX="27.0" layoutY="477.0" mnemonicParsing="false" onAction="#switchPage_agendaServico" prefHeight="40.0" prefWidth="176.0" styleClass="navButton" text="Agendar Serviço">
+         <font>
+            <Font name="Yu Gothic UI Semilight" size="12.0" />
+         </font>
+      </Button>
+      <GridPane layoutX="416.0" layoutY="713.0" prefHeight="34.0" prefWidth="79.0">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="37.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="49.0" minWidth="3.0" prefWidth="36.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <Label layoutX="20.0" layoutY="35.0" text="cadastro e consulta" textFill="WHITE">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="18.0" />
-               </font>
-            </Label>
-            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="92.0" mnemonicParsing="false" onAction="#switchPage_cadastroCliente" prefHeight="40.0" prefWidth="281.0" styleClass="navButton" text="Clientes">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="53.0" />
-               </font>
-            </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="247.0" mnemonicParsing="false" onAction="#switchPage_cadastroFuncionario" prefHeight="40.0" prefWidth="226.0" styleClass="navButton" text="Funcionários" />
-            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="370.0" mnemonicParsing="false" onAction="#switchPage_agendaServico" prefHeight="40.0" prefWidth="281.0" styleClass="navButton" text="Agendar Serviço">
-               <font>
-                  <Font name="Yu Gothic UI Semilight" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnConsultar" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="443.0" mnemonicParsing="false" onAction="#switchPage_consultaTipos" prefHeight="40.0" prefWidth="246.0" styleClass="navButton" text="Consultas" />
-            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="172.0" mnemonicParsing="false" onAction="#switchPage_cadastroPet" prefHeight="40.0" prefWidth="256.0" styleClass="navButton" text="Pets" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="284.0" layoutY="11.0" prefHeight="201.0" prefWidth="753.0" style="-fx-background-color: #052f5f; -fx-background-radius: 50;" />
-      <AnchorPane layoutX="281.0" layoutY="635.0" prefHeight="201.0" prefWidth="753.0" style="-fx-background-color: #052f5f; -fx-background-radius: 50;">
-         <children>
-            <ImageView fitHeight="51.0" fitWidth="53.0" layoutX="671.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@resources/img/plutonio_cabeça.png" />
-               </image></ImageView>
-         </children></AnchorPane>
+                  <Image url="@resources/img/facebook.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@resources/img/instagram.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+      <Label layoutX="408.0" layoutY="756.0" text="ADSMA4 • Viotti" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="382.0" layoutY="777.0" text="Isaac Yukio Tagawa barros" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="393.0" layoutY="796.0" text="Rafaela Alves de Jesus" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="440.0" layoutY="823.0" text="Ⓒ 2022" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="9.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="54.0" fitWidth="57.0" layoutX="783.0" layoutY="785.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/plutonio_cabeça.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a457f" height="13.0" layoutX="234.0" layoutY="146.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="619.0" />
+      <Label layoutX="105.0" layoutY="80.0" text="e" textFill="#eeeeee">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="101.0" text="Consulta" textFill="#eeeeee">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="90.0" fitWidth="554.0" layoutX="408.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/titulo_home.png" />
+         </image></ImageView>
+      <ImageView fitHeight="189.0" fitWidth="252.0" layoutX="418.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/img/plutonio_logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

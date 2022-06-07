@@ -53,14 +53,21 @@ public class ConsultasDeFuncionariosController implements Initializable {
     private TableView<Funcionario> tbvPet;
     @FXML
     private TableColumn<Funcionario, String> nome;
+    
     @FXML
-    private TableColumn<Funcionario, String> genero;
-
+    private TableColumn<Funcionario, String> cpf;
+    @FXML
+    private TableColumn<Funcionario, String> rg;
+    @FXML
+    private TableColumn<Funcionario, String> dataNasc;
+    @FXML
+    private TableColumn<Funcionario, String> cargo;
     /**
      * Initializes the controller class.
      *
      */
     ObservableList<Funcionario> list = FXCollections.observableArrayList();
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -176,7 +183,10 @@ public class ConsultasDeFuncionariosController implements Initializable {
         obsCliente.addAll(lista);
 
         nome.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
-        genero.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
+        cpf.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
+        rg.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("rg"));
+        dataNasc.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("data_nasc"));
+        cargo.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
 
         tbvPet.setItems(obsCliente);
 

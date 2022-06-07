@@ -71,8 +71,6 @@ public class ConsultasDeClientesController implements Initializable {
     private TableView<Cliente> tbvPet;
     @FXML
     private TableColumn<Cliente, String> nome;
-    @FXML
-    private TableColumn<Cliente, String> genero;
 
     /**
      * Initializes the controller class.
@@ -83,6 +81,14 @@ public class ConsultasDeClientesController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    @FXML
+    private TableColumn<Cliente, String> cpf;
+    @FXML
+    private TableColumn<Cliente, String> rg;
+    @FXML
+    private TableColumn<Cliente, String> dataNasc;
+    @FXML
+    private TableColumn<Cliente, String> email;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -237,7 +243,10 @@ public class ConsultasDeClientesController implements Initializable {
         obsCliente.addAll(lista);
 
         nome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
-        genero.setCellValueFactory(new PropertyValueFactory<Cliente, String>("cpf"));
+        cpf.setCellValueFactory(new PropertyValueFactory<Cliente, String>("cpf"));
+        rg.setCellValueFactory(new PropertyValueFactory<Cliente, String>("rg"));
+        dataNasc.setCellValueFactory(new PropertyValueFactory<Cliente, String>("dataNasc"));
+        email.setCellValueFactory(new PropertyValueFactory<Cliente, String>("email"));
 
         tbvPet.setItems(obsCliente);
 

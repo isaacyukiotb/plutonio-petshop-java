@@ -40,10 +40,10 @@
       <TableView fx:id="tbvPet" focusTraversable="false" layoutX="84.0" layoutY="299.0" prefHeight="511.0" prefWidth="641.0" stylesheets="@css/default.css">
          <columns>
             <TableColumn fx:id="nome" prefWidth="201.0" text="Nome" />
-            <TableColumn fx:id="genero" prefWidth="107.0" text="CPF" />
-            <TableColumn prefWidth="91.0" text="RG" />
-            <TableColumn prefWidth="116.0" text="Dta. Nasc." />
-            <TableColumn prefWidth="125.0" text="E-mail" />
+            <TableColumn fx:id="cpf" prefWidth="107.0" text="CPF" />
+            <TableColumn fx:id="rg" prefWidth="91.0" text="RG" />
+            <TableColumn fx:id="dataNasc" prefWidth="116.0" text="Dta. Nasc." />
+            <TableColumn fx:id="email" prefWidth="125.0" text="E-mail" />
          </columns>
       </TableView>
       <Button fx:id="btnDeletar" layoutX="760.0" layoutY="486.0" mnemonicParsing="false" onAction="#btnDeletar_click" styleClass="btnDeletar" stylesheets="@css/default.css" text="Deletar ✘" textFill="WHITE">

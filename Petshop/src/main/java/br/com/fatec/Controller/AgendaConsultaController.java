@@ -87,6 +87,7 @@ public class AgendaConsultaController implements Initializable {
 
     //DAOS
     Cliente cliente = new Cliente();
+    ServicoDAO servicoDao = new ServicoDAO();
     ClienteDAO clienteDao = new ClienteDAO();
     PetDAO petDao = new PetDAO();
     AgendaDAO agendaDAO = new AgendaDAO();
@@ -317,11 +318,28 @@ public class AgendaConsultaController implements Initializable {
 
         Cliente dono = new Cliente();
         Pet pet = new Pet();
+        Servico servico = new Servico();
 
         pet.setId_pet(agenda.getId_pet());
 
         try {
             pet = petDao.buscaID(pet);
+        } catch (SQLException ex) {
+            Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        dono.setId(agenda.getId_cli());
+
+        try {
+            dono = clienteDao.buscaID(dono);
+        } catch (SQLException ex) {
+            Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        servico.setId_servico(agenda.getId_serv());
+
+        try {
+            servico = servicoDao.buscaID(servico);
         } catch (SQLException ex) {
             Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -334,6 +352,8 @@ public class AgendaConsultaController implements Initializable {
         cmbHorario.setValue(agenda.getHora());
         txtObservacao.setText(agenda.getObservacao());
         cmbPet.setValue(pet);
+        txtCpfDono.setText(dono.getCpf());
+        cmbServico.setValue(servico);
 
         btnCadastrar.setText("Atualizar");
         agendaEdit = agenda;

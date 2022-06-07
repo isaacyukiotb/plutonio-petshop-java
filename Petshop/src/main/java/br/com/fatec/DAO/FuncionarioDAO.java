@@ -50,6 +50,13 @@ public class FuncionarioDAO {
                 funcionario.setCep(obj.getCep());
                 funcionario.setCargo(obj.getCargo());
                 funcionario.setEmail(obj.getEmail());
+                funcionario.setTelefone(obj.getTelefone());
+                funcionario.setEndereco(obj.getEndereco());
+                funcionario.setBairro(obj.getBairro());
+                funcionario.setCidade(obj.getCidade());
+                funcionario.setUf(obj.getUf());
+                funcionario.setNumero(obj.getNumero());
+
                 return true;
             }
         }
@@ -77,7 +84,7 @@ public class FuncionarioDAO {
         Funcionario f2 = new Funcionario(FuncionarioDAO.idCount++, "Maria", "Medica Veterinaria", "(11)99888-8888", "Maria@gmail", "123.111.222-33", "23.111.222-3", "21-05-1988", "23131-444");
         Funcionario f3 = new Funcionario(FuncionarioDAO.idCount++, "Marcelo", "Tosadora", "(11)99888-8888", "Marcelo@gmail", "123.111.222-33", "23.111.222-3", "25-2-1990", "23131-444");
         Funcionario f4 = new Funcionario(FuncionarioDAO.idCount++, "Marilene", "Assistente", "(11)99888-8888", "Marilene@gmail", "123.111.222-33", "23.111.222-3", "1-01-1983", "23131-444");
-
+                                                                                                                
         try {
             dao.insere(f1);
             dao.insere(f2);

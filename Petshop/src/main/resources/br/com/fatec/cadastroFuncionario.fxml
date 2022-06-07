@@ -205,7 +205,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="txtUf1" alignment="CENTER" prefHeight="43.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="13">
+            <TextField fx:id="txtNumero" alignment="CENTER" prefHeight="43.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="13">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>

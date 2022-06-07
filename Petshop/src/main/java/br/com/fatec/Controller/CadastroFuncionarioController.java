@@ -67,7 +67,7 @@ public class CadastroFuncionarioController implements Initializable {
     @FXML
     private DatePicker dpDataNasc;
     @FXML
-    private TextField txtUf1;
+    private TextField txtNumero;
 
     /**
      * Initializes the controller class.
@@ -135,7 +135,7 @@ public class CadastroFuncionarioController implements Initializable {
     private void btnCadastrar_click(ActionEvent event) {
         LocalDate data = dpDataNasc.getValue();
         String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        Funcionario novoFuncionario = new Funcionario(FuncionarioDAO.idCount++, txtNome.getText(), txtCargo.getText(), txtTelefone.getText(), txtEmail.getText(), txtCpf.getText(), txtRg.getText(), dataPickerString, txtCep.getText());
+        Funcionario novoFuncionario = new Funcionario(FuncionarioDAO.idCount++, txtNome.getText(), txtCargo.getText(), txtTelefone.getText(), txtEmail.getText(), txtCpf.getText(), txtRg.getText(), dataPickerString, txtCep.getText(),txtEndereco.getText(),txtBairro.getText(),txtCidade.getText(),txtUf.getText(),txtNumero.getText() );
 
         try {
             dao.insere(novoFuncionario);

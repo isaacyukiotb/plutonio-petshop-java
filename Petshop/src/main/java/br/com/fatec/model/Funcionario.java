@@ -18,7 +18,54 @@ public class Funcionario {
     private String rg;
     private String data_nasc;
     private String cep;
+    private String endereco;
+    private String bairro;
+    private String cidade;
+    private String uf;
+    private String numero;
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    
+    
     @Override
     public String toString() {
         return this.nome;
@@ -29,6 +76,24 @@ public class Funcionario {
     public Funcionario(){
         
     }
+
+    public Funcionario(int id_funcionario, String nome, String cargo, String telefone, String email, String cpf, String rg, String data_nasc, String cep, String endereco, String bairro, String cidade, String uf, String numero) {
+        this.id_funcionario = id_funcionario;
+        this.nome = nome;
+        this.cargo = cargo;
+        this.telefone = telefone;
+        this.email = email;
+        this.cpf = cpf;
+        this.rg = rg;
+        this.data_nasc = data_nasc;
+        this.cep = cep;
+        this.endereco = endereco;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.numero = numero;
+    }
+    
 
     public Funcionario(int id_funcionario, String nome, String cargo, String telefone, String email, String cpf, String rg, String data_nasc, String cep) {
         this.id_funcionario = id_funcionario;

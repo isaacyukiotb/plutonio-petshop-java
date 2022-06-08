@@ -38,11 +38,11 @@
       </Button>
       <TableView fx:id="tbvPet" focusTraversable="false" layoutX="77.0" layoutY="283.0" prefHeight="520.0" prefWidth="584.0" stylesheets="@css/default.css">
          <columns>
-            <TableColumn fx:id="nome" prefWidth="97.0" text="Data" />
-            <TableColumn fx:id="genero" prefWidth="87.0" text="Hora" />
-            <TableColumn prefWidth="109.0" text="Pet" />
-            <TableColumn prefWidth="128.0" text="Serviço" />
-            <TableColumn prefWidth="162.0" text="Funcionário" />
+            <TableColumn fx:id="data" prefWidth="97.0" text="Data" />
+            <TableColumn fx:id="hora" prefWidth="87.0" text="Hora" />
+            <TableColumn fx:id="pet" prefWidth="109.0" text="Pet" />
+            <TableColumn fx:id="servico" prefWidth="128.0" text="Serviço" />
+            <TableColumn fx:id="funcionario" prefWidth="162.0" text="Funcionário" />
          </columns>
       </TableView>
       <TextField fx:id="txtDados" focusTraversable="false" layoutX="296.0" layoutY="217.0" onKeyReleased="#txtDados_KeyReleased" prefHeight="43.0" prefWidth="229.0" styleClass="input" stylesheets="@css/default.css">

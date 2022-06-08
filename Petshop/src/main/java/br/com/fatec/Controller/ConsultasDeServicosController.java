@@ -67,9 +67,16 @@ public class ConsultasDeServicosController implements Initializable {
     @FXML
     private TableView<Agenda> tbvPet;
     @FXML
-    private TableColumn<Agenda, String> nome;
+    private TableColumn<Agenda, String> data;
     @FXML
-    private TableColumn<Agenda, String> genero;
+    private TableColumn<Agenda, String> hora;
+    @FXML
+    private TableColumn<Agenda, Integer> pet;
+    @FXML
+    private TableColumn<Agenda, Integer> servico;
+    @FXML
+    private TableColumn<Agenda, Integer> funcionario;
+
 
     /**
      * Initializes the controller class.
@@ -80,7 +87,7 @@ public class ConsultasDeServicosController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -206,8 +213,11 @@ public class ConsultasDeServicosController implements Initializable {
         }
         obsAgenda.addAll(lista);
 
-        nome.setCellValueFactory(new PropertyValueFactory<Agenda, String>("data"));
-        genero.setCellValueFactory(new PropertyValueFactory<Agenda, String>("hora"));
+        data.setCellValueFactory(new PropertyValueFactory<Agenda, String>("data"));
+        hora.setCellValueFactory(new PropertyValueFactory<Agenda, String>("hora"));
+        pet.setCellValueFactory(new PropertyValueFactory<Agenda, Integer>("id_pet"));
+        servico.setCellValueFactory(new PropertyValueFactory<Agenda, Integer>("id_serv"));
+        funcionario.setCellValueFactory(new PropertyValueFactory<Agenda, Integer>("id_func"));
 
         tbvPet.setItems(obsAgenda);
 

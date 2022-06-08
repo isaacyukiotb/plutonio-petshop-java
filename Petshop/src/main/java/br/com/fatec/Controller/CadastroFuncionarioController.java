@@ -38,6 +38,8 @@ public class CadastroFuncionarioController implements Initializable {
     FuncionarioDAO dao = new FuncionarioDAO();
     SceneController sceneController = new SceneController();
 
+    Funcionario funcionarioEdit = null;
+
     @FXML
     private TextField txtNome;
     @FXML
@@ -95,7 +97,6 @@ public class CadastroFuncionarioController implements Initializable {
         tff.formatter();
     }
 
-
     @FXML
     private void txtCep_enter(ActionEvent event) {
         CepDAO cepDao = new CepDAO();
@@ -127,28 +128,55 @@ public class CadastroFuncionarioController implements Initializable {
         tff.setCaracteresValidos("0123456789");
         tff.setTf(txtCep);
         tff.formatter();
-        
-        
+
     }
 
     @FXML
     private void btnCadastrar_click(ActionEvent event) {
-        LocalDate data = dpDataNasc.getValue();
-        String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        Funcionario novoFuncionario = new Funcionario(FuncionarioDAO.idCount++, txtNome.getText(), txtCargo.getText(), txtTelefone.getText(), txtEmail.getText(), txtCpf.getText(), txtRg.getText(), dataPickerString, txtCep.getText(),txtEndereco.getText(),txtBairro.getText(),txtCidade.getText(),txtUf.getText(),txtNumero.getText() );
 
-        try {
-            dao.insere(novoFuncionario);
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("SUCESSO");
-            alerta.setHeaderText("INFORMACOES");
-            alerta.setContentText("Dados gravados com SUCESSO!");
-            alerta.showAndWait();
-            limparCampos();
+        if (funcionarioEdit == null) {
+            LocalDate data = dpDataNasc.getValue();
+            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            Funcionario novoFuncionario = new Funcionario(FuncionarioDAO.idCount++, txtNome.getText(), txtCargo.getText(), txtTelefone.getText(), txtEmail.getText(), txtCpf.getText(), txtRg.getText(), dataPickerString, txtCep.getText(), txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(), txtUf.getText(), txtNumero.getText());
 
-        } catch (Exception ex) {
-            Logger.getLogger(CadastroFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                dao.insere(novoFuncionario);
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("SUCESSO");
+                alerta.setHeaderText("INFORMACOES");
+                alerta.setContentText("Dados gravados com SUCESSO!");
+                alerta.showAndWait();
+                limparCampos();
+
+            } catch (Exception ex) {
+                Logger.getLogger(CadastroFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            
+            LocalDate data = dpDataNasc.getValue();
+            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+            funcionarioEdit.setNome(txtNome.getText());
+            funcionarioEdit.setCargo(txtCargo.getText());
+            funcionarioEdit.setTelefone(txtTelefone.getText());
+            funcionarioEdit.setEmail(txtEmail.getText());
+            funcionarioEdit.setCpf(txtCpf.getText());
+            funcionarioEdit.setRg(txtRg.getText());
+            funcionarioEdit.setData_nasc(dataPickerString);
+            funcionarioEdit.setCep(txtCep.getText());
+            funcionarioEdit.setEndereco(txtEndereco.getText());
+            funcionarioEdit.setBairro(txtBairro.getText());
+            funcionarioEdit.setCidade(txtCidade.getText());
+            funcionarioEdit.setUf(txtUf.getText());
+            funcionarioEdit.setNumero(txtNumero.getText());
+
+            try {
+                dao.altera(funcionarioEdit);
+            } catch (Exception ex) {
+                Logger.getLogger(CadastroFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
     }
 
     @FXML
@@ -167,7 +195,7 @@ public class CadastroFuncionarioController implements Initializable {
         }
 
     }
-    
+
     @FXML
     private void txtTelefone_KeyReleased(KeyEvent event) {
         TextFieldFormatter tff = new TextFieldFormatter();
@@ -176,7 +204,6 @@ public class CadastroFuncionarioController implements Initializable {
         tff.setTf(txtTelefone);
         tff.formatter();
     }
-    
 
     public void limparCampos() {
         txtBairro.setText("");
@@ -193,6 +220,38 @@ public class CadastroFuncionarioController implements Initializable {
         txtUf.setText("");
     }
 
-    
+    public void onBtnEditar_click(Funcionario func) {
+
+        Funcionario funcionario = new Funcionario();
+        funcionario.setId_funcionario(func.getId_funcionario());
+
+        try {
+            funcionario = dao.buscaID(funcionario);
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MM-yyyy");
+        String date = funcionario.getData_nasc();
+        LocalDate localDate = LocalDate.parse(date, formatter);
+
+        txtNome.setText(funcionario.getNome());
+        txtRg.setText(funcionario.getRg());
+        txtTelefone.setText(funcionario.getTelefone());
+        txtCpf.setText(funcionario.getCpf());
+        dpDataNasc.setValue(localDate);
+        txtEmail.setText(funcionario.getEmail());
+        txtCargo.setText(funcionario.getCargo());
+        txtCep.setText(funcionario.getCep());
+        txtEndereco.setText(funcionario.getEndereco());
+        txtCidade.setText(funcionario.getCidade());
+        txtBairro.setText(funcionario.getBairro());
+        txtUf.setText(funcionario.getUf());
+        txtNumero.setText(funcionario.getNumero());
+
+        btnCadastrar.setText("Atualizar");
+        funcionarioEdit = funcionario;
+
+    }
 
 }

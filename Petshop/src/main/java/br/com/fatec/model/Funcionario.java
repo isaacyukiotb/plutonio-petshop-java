@@ -71,7 +71,9 @@ public class Funcionario {
         return this.nome;
     }
     
-    
+    public Funcionario(int id){
+        this.id_funcionario = id;
+    }
     
     public Funcionario(){
         

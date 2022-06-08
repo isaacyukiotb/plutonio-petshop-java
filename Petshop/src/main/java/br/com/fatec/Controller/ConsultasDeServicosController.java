@@ -6,15 +6,22 @@ package br.com.fatec.Controller;
 
 import br.com.fatec.DAO.AgendaDAO;
 import br.com.fatec.DAO.ClienteDAO;
+import br.com.fatec.DAO.FuncionarioDAO;
 import br.com.fatec.DAO.PetDAO;
+import br.com.fatec.DAO.ServicoDAO;
 import br.com.fatec.SceneController;
 import br.com.fatec.model.Agenda;
+import br.com.fatec.model.Cliente;
+import br.com.fatec.model.Funcionario;
 import br.com.fatec.model.Pet;
+import br.com.fatec.model.Servico;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -49,7 +56,8 @@ public class ConsultasDeServicosController implements Initializable {
     PetDAO petDao = new PetDAO();
     ClienteDAO clienteDao = new ClienteDAO();
     AgendaDAO agendaDao = new AgendaDAO();
-
+    FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+    ServicoDAO servicoDao = new ServicoDAO();
     Agenda currentAgenda = new Agenda();
 
     String argumentos = "";
@@ -71,23 +79,24 @@ public class ConsultasDeServicosController implements Initializable {
     @FXML
     private TableColumn<Agenda, String> hora;
     @FXML
-    private TableColumn<Agenda, Integer> pet;
+    private TableColumn<Agenda, String> pet;
     @FXML
-    private TableColumn<Agenda, Integer> servico;
+    private TableColumn<Agenda, String> servico;
     @FXML
-    private TableColumn<Agenda, Integer> funcionario;
-
+    private TableColumn<Agenda, String> funcionario;
+    @FXML
+    private TableColumn<Agenda, String> cpfDono;
 
     /**
      * Initializes the controller class.
      *
      */
     ObservableList<Pet> list = FXCollections.observableArrayList();
-    
+
     private Stage stage;
     private Scene scene;
     private Parent root;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -108,8 +117,6 @@ public class ConsultasDeServicosController implements Initializable {
         obsTipos.add("data");
         obsTipos.add("hora");
         obsTipos.add("observacao");
-        obsTipos.add("id_pet");
-        obsTipos.add("id_func");
 
         cmTipoPesquisa.setItems(obsTipos);
 
@@ -157,7 +164,7 @@ public class ConsultasDeServicosController implements Initializable {
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Excluir");
         alerta.setHeaderText("Deseja Realmente deletar o PET:");
-        alerta.setContentText("Id da consulta: " + agenda.getId_agenda()+ "\n\n" + "Data: " + currentAgenda.getData()+ "\n" + "Hora: " + currentAgenda.getHora()+ "\n" + "Observação:  " + currentAgenda.getObservacao());
+        alerta.setContentText("Id da consulta: " + agenda.getId_agenda() + "\n\n" + "Data: " + currentAgenda.getData() + "\n" + "Hora: " + currentAgenda.getHora() + "\n" + "Observação:  " + currentAgenda.getObservacao());
 
         if (alerta.showAndWait().get() == ButtonType.OK) {
             try {
@@ -181,7 +188,7 @@ public class ConsultasDeServicosController implements Initializable {
     }
 
     @FXML
-    private void btnEditar_click(ActionEvent event) throws IOException{
+    private void btnEditar_click(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../agendaConsulta.fxml"));
         root = loader.load();
 
@@ -196,7 +203,7 @@ public class ConsultasDeServicosController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     public void carregaAgendas(String args) {
@@ -211,13 +218,47 @@ public class ConsultasDeServicosController implements Initializable {
             alerta.setContentText("Erro na consulta: " + ex.getMessage());
             alerta.showAndWait();
         }
+
+        Cliente clienteDono = new Cliente();
+        Funcionario funcionarioAgenda;
+        Servico servicoAgenda = new Servico();
+        Pet petAgenda = new Pet();
+
+        for (Agenda agenda : lista) {
+
+            funcionarioAgenda = new Funcionario(agenda.getId_func());
+            
+            clienteDono.setId(agenda.getId_cli());
+            servicoAgenda.setId_servico(agenda.getId_serv());
+            petAgenda.setId_pet(agenda.getId_pet());
+            try {
+                funcionarioAgenda = funcionarioDao.buscaID(funcionarioAgenda);
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultasDeServicosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            try {
+                servicoAgenda = servicoDao.buscaID(servicoAgenda);
+                petAgenda = petDao.buscaID(petAgenda);
+                clienteDono = clienteDao.buscaID(clienteDono);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(ConsultasDeServicosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            agenda.setCpfCliente(clienteDono.getCpf());
+            agenda.setNomeFunc(funcionarioAgenda.getNome());
+            agenda.setNomePet(petAgenda.getNome());
+            agenda.setTipoServ(servicoAgenda.getNome());
+        }
+
         obsAgenda.addAll(lista);
 
         data.setCellValueFactory(new PropertyValueFactory<Agenda, String>("data"));
         hora.setCellValueFactory(new PropertyValueFactory<Agenda, String>("hora"));
-        pet.setCellValueFactory(new PropertyValueFactory<Agenda, Integer>("id_pet"));
-        servico.setCellValueFactory(new PropertyValueFactory<Agenda, Integer>("id_serv"));
-        funcionario.setCellValueFactory(new PropertyValueFactory<Agenda, Integer>("id_func"));
+        pet.setCellValueFactory(new PropertyValueFactory<Agenda, String>("nomePet"));
+        servico.setCellValueFactory(new PropertyValueFactory<Agenda, String>("tipoServ"));
+        funcionario.setCellValueFactory(new PropertyValueFactory<Agenda, String>("nomeFunc"));
+        cpfDono.setCellValueFactory(new PropertyValueFactory<Agenda, String>("cpfCliente"));
 
         tbvPet.setItems(obsAgenda);
 

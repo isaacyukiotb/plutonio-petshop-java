@@ -19,6 +19,46 @@ public class Agenda {
     private int id_func;
     private int id_cli;
     private int id_serv;
+    
+    private String nomePet;
+    private String nomeFunc;
+    private String cpfCliente;
+    private String tipoServ;
+
+    
+    public String getNomePet() {
+        return nomePet;
+    }
+
+    public void setNomePet(String nomePet) {
+        this.nomePet = nomePet;
+    }
+
+    public String getNomeFunc() {
+        return nomeFunc;
+    }
+
+    public void setNomeFunc(String nomeFunc) {
+        this.nomeFunc = nomeFunc;
+    }
+
+    public String getCpfCliente() {
+        return cpfCliente;
+    }
+
+    public void setCpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
+    }
+
+    public String getTipoServ() {
+        return tipoServ;
+    }
+
+    public void setTipoServ(String tipoServ) {
+        this.tipoServ = tipoServ;
+    }
+    
+    
 
     public int getId_cli() {
         return id_cli;

@@ -17,7 +17,18 @@ public class Pet {
     private String genero;
     private String restricao;
     private int id_dono;
+    private String cpf_dono;
 
+    public String getCpf_dono() {
+        return cpf_dono;
+    }
+
+    public void setCpf_dono(String cpf_dono) {
+        this.cpf_dono = cpf_dono;
+    }
+
+    
+    
     public String getNome() {
         return nome;
     }

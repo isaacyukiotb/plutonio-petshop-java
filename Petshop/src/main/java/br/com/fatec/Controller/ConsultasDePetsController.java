@@ -75,7 +75,7 @@ public class ConsultasDePetsController implements Initializable {
     @FXML
     private TableColumn<Pet, String> raca;
     @FXML
-    private TableColumn<Pet, String> id_dono;
+    private TableColumn<Pet, String> cpf_dono;
 
     private Stage stage;
     private Scene scene;
@@ -86,6 +86,7 @@ public class ConsultasDePetsController implements Initializable {
      *
      */
     ObservableList<Pet> list = FXCollections.observableArrayList();
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -224,12 +225,25 @@ public class ConsultasDePetsController implements Initializable {
             alerta.setContentText("Erro na consulta: " + ex.getMessage());
             alerta.showAndWait();
         }
+         
+        Cliente clienteDono = new Cliente();
+        for (Pet pet : lista) {
+            clienteDono.setId(pet.getId_dono());
+            try {
+                clienteDono = clienteDao.buscaID(clienteDono);
+            } catch (SQLException ex) {
+                Logger.getLogger(ConsultasDePetsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            pet.setCpf_dono(clienteDono.getCpf());
+        }
+        
         obsPets.addAll(lista);
 
         nome.setCellValueFactory(new PropertyValueFactory<Pet, String>("nome"));
         genero.setCellValueFactory(new PropertyValueFactory<Pet, String>("genero"));
         raca.setCellValueFactory(new PropertyValueFactory<Pet, String>("raca"));
-        id_dono.setCellValueFactory(new PropertyValueFactory<Pet, String>("id_dono"));
+        cpf_dono.setCellValueFactory(new PropertyValueFactory<Pet, String>("cpf_dono"));
 
         tbvPet.setItems(obsPets);
 

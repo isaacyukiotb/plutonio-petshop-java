@@ -49,10 +49,10 @@
          </font></Button>
       <TableView fx:id="tbvPet" focusTraversable="false" layoutX="74.0" layoutY="289.0" prefHeight="511.0" prefWidth="530.0" stylesheets="@css/default.css">
         <columns>
-          <TableColumn fx:id="nome" prefWidth="212.0" text="Nome" />
-          <TableColumn fx:id="genero" prefWidth="68.0" text="Gênero" />
-            <TableColumn fx:id="raca" prefWidth="135.0" text="Raça" />
-            <TableColumn fx:id="id_dono" prefWidth="114.0" text="ID Dono" />
+          <TableColumn fx:id="nome" prefWidth="133.0" text="Nome" />
+          <TableColumn fx:id="genero" prefWidth="112.0" text="Gênero" />
+            <TableColumn fx:id="raca" prefWidth="114.0" text="Raça" />
+            <TableColumn fx:id="cpf_dono" prefWidth="170.0" text="CPF Dono" />
         </columns>
       </TableView>
       <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="768.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">

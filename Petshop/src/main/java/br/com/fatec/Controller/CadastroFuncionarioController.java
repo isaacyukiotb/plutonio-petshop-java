@@ -134,51 +134,59 @@ public class CadastroFuncionarioController implements Initializable {
 
     @FXML
     private void btnCadastrar_click(ActionEvent event) throws IOException {
-        
 
-        if (funcionarioEdit == null) {
-            LocalDate data = dpDataNasc.getValue();
-            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            Funcionario novoFuncionario = new Funcionario(FuncionarioDAO.idCount++, txtNome.getText(), txtCargo.getText(), txtTelefone.getText(), txtEmail.getText(), txtCpf.getText(), txtRg.getText(), dataPickerString, txtCep.getText(), txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(), txtUf.getText(), txtNumero.getText());
-
-            try {
-                dao.insere(novoFuncionario);
-                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                alerta.setTitle("SUCESSO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Dados gravados com SUCESSO!");
-                alerta.showAndWait();
-                limparCampos();
-
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if ("".equals(txtNome.getText()) || "".equals(txtRg.getText()) || "".equals(txtTelefone.getText()) || "".equals(txtCpf.getText()) || dpDataNasc.getValue() == null || "".equals(txtEmail.getText()) || "".equals(txtCargo.getText()) || "".equals(txtCep.getText()) || "".equals(txtNumero.getText())) {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("PREENCHA TODOS OS CAMPOS");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Preencha Todos os campos!");
+            alerta.showAndWait();
         } else {
 
-            LocalDate data = dpDataNasc.getValue();
-            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            if (funcionarioEdit == null) {
+                LocalDate data = dpDataNasc.getValue();
+                String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                Funcionario novoFuncionario = new Funcionario(FuncionarioDAO.idCount++, txtNome.getText(), txtCargo.getText(), txtTelefone.getText(), txtEmail.getText(), txtCpf.getText(), txtRg.getText(), dataPickerString, txtCep.getText(), txtEndereco.getText(), txtBairro.getText(), txtCidade.getText(), txtUf.getText(), txtNumero.getText());
 
-            funcionarioEdit.setNome(txtNome.getText());
-            funcionarioEdit.setCargo(txtCargo.getText());
-            funcionarioEdit.setTelefone(txtTelefone.getText());
-            funcionarioEdit.setEmail(txtEmail.getText());
-            funcionarioEdit.setCpf(txtCpf.getText());
-            funcionarioEdit.setRg(txtRg.getText());
-            funcionarioEdit.setData_nasc(dataPickerString);
-            funcionarioEdit.setCep(txtCep.getText());
-            funcionarioEdit.setEndereco(txtEndereco.getText());
-            funcionarioEdit.setBairro(txtBairro.getText());
-            funcionarioEdit.setCidade(txtCidade.getText());
-            funcionarioEdit.setUf(txtUf.getText());
-            funcionarioEdit.setNumero(txtNumero.getText());
+                try {
+                    dao.insere(novoFuncionario);
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("SUCESSO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Dados gravados com SUCESSO!");
+                    alerta.showAndWait();
+                    limparCampos();
 
-            sceneController.switchToSceneConsultaDeFuncionarios(event);
-            limparCampos();
+                } catch (Exception ex) {
+                    Logger.getLogger(CadastroFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
 
-            try {
-                dao.altera(funcionarioEdit);
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+                LocalDate data = dpDataNasc.getValue();
+                String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+                funcionarioEdit.setNome(txtNome.getText());
+                funcionarioEdit.setCargo(txtCargo.getText());
+                funcionarioEdit.setTelefone(txtTelefone.getText());
+                funcionarioEdit.setEmail(txtEmail.getText());
+                funcionarioEdit.setCpf(txtCpf.getText());
+                funcionarioEdit.setRg(txtRg.getText());
+                funcionarioEdit.setData_nasc(dataPickerString);
+                funcionarioEdit.setCep(txtCep.getText());
+                funcionarioEdit.setEndereco(txtEndereco.getText());
+                funcionarioEdit.setBairro(txtBairro.getText());
+                funcionarioEdit.setCidade(txtCidade.getText());
+                funcionarioEdit.setUf(txtUf.getText());
+                funcionarioEdit.setNumero(txtNumero.getText());
+
+                sceneController.switchToSceneConsultaDeFuncionarios(event);
+                limparCampos();
+
+                try {
+                    dao.altera(funcionarioEdit);
+                } catch (Exception ex) {
+                    Logger.getLogger(CadastroFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
 
@@ -191,6 +199,7 @@ public class CadastroFuncionarioController implements Initializable {
 
     @FXML
     private void btnCancelar_click(ActionEvent event) throws IOException {
+
         if (funcionarioEdit == null) {
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Cancelar");
@@ -199,7 +208,7 @@ public class CadastroFuncionarioController implements Initializable {
             if (alerta.showAndWait().get() == ButtonType.OK) {
                 limparCampos();
             }
-        }else{
+        } else {
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Cancelar");
             alerta.setHeaderText("Deseja Realmente Cancelar a operação?");

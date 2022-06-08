@@ -117,85 +117,94 @@ public class AgendaConsultaController implements Initializable {
     @FXML
     private void btnCadastrar_click(ActionEvent event) throws IOException {
 
-        if (agendaEdit == null) {
-            Agenda agenda = new Agenda();
-            LocalDate data = dpData.getValue();
-            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-
-            Cliente cliente = new Cliente();
-            cliente.setCpf(txtCpfDono.getText());
-
-            try {
-                cliente = clienteDao.buscaCPF(cliente);
-            } catch (SQLException ex) {
-                Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            agenda.setData(dataPickerString);
-            agenda.setHora(cmbHorario.getValue());
-            agenda.setObservacao(txtObservacao.getText());
-            agenda.setId_pet(cmbPet.getValue().getId_pet());
-            agenda.setId_func(cmbFuncionario.getValue().getId_funcionario());
-            agenda.setId_cli(cliente.getId());
-            agenda.setId_serv(cmbServico.getValue().getId_servico());
-
-            try {
-                agendaDAO.insere(agenda);
-                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                alerta.setTitle("SUCESSO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Agenda cadastrada com SUCESSO !!!");
-
-                alerta.showAndWait();
-                limparCampos();
-
-            } catch (SQLException ex) {
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
-                alerta.setTitle("ERRO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Erro ao cadastrar!" + ex.getMessage());
-
-                alerta.showAndWait();
-            }
+        if ("".equals(txtCpfDono.getText()) || "".equals(cmbHorario.getValue()) || cmbPet.getValue() == null || cmbServico.getValue() == null || dpData.getValue() == null || cmbFuncionario.getValue() == null) {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("PREENCHA TODOS OS CAMPOS");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Preencha Todos os campos!");
+            alerta.showAndWait();
         } else {
-            LocalDate data = dpData.getValue();
-            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-            Cliente cliente = new Cliente();
-            cliente.setCpf(txtCpfDono.getText());
+            if (agendaEdit == null) {
+                Agenda agenda = new Agenda();
+                LocalDate data = dpData.getValue();
+                String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-            try {
-                cliente = clienteDao.buscaCPF(cliente);
-            } catch (SQLException ex) {
-                Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                Cliente cliente = new Cliente();
+                cliente.setCpf(txtCpfDono.getText());
 
-            agendaEdit.setData(dataPickerString);
-            agendaEdit.setHora(cmbHorario.getValue());
-            agendaEdit.setObservacao(txtObservacao.getText());
-            agendaEdit.setId_pet(cmbPet.getValue().getId_pet());
-            agendaEdit.setId_func(cmbFuncionario.getValue().getId_funcionario());
-            agendaEdit.setId_cli(cliente.getId());
-            agendaEdit.setId_serv(cmbServico.getValue().getId_servico());
+                try {
+                    cliente = clienteDao.buscaCPF(cliente);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-            try {
-                agendaDAO.altera(agendaEdit);
-                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                alerta.setTitle("SUCESSO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Agenda Alterada com SUCESSO !!!");
+                agenda.setData(dataPickerString);
+                agenda.setHora(cmbHorario.getValue());
+                agenda.setObservacao(txtObservacao.getText());
+                agenda.setId_pet(cmbPet.getValue().getId_pet());
+                agenda.setId_func(cmbFuncionario.getValue().getId_funcionario());
+                agenda.setId_cli(cliente.getId());
+                agenda.setId_serv(cmbServico.getValue().getId_servico());
 
-                alerta.showAndWait();
-                sceneController.switchToSceneConsultaDeServicos(event);
-                limparCampos();
+                try {
+                    agendaDAO.insere(agenda);
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("SUCESSO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Agenda cadastrada com SUCESSO !!!");
 
-            } catch (SQLException ex) {
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
-                alerta.setTitle("ERRO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Erro ao Alterar!" + ex.getMessage());
+                    alerta.showAndWait();
+                    limparCampos();
 
-                alerta.showAndWait();
+                } catch (SQLException ex) {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("ERRO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Erro ao cadastrar!" + ex.getMessage());
+
+                    alerta.showAndWait();
+                }
+            } else {
+                LocalDate data = dpData.getValue();
+                String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+                Cliente cliente = new Cliente();
+                cliente.setCpf(txtCpfDono.getText());
+
+                try {
+                    cliente = clienteDao.buscaCPF(cliente);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AgendaConsultaController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                agendaEdit.setData(dataPickerString);
+                agendaEdit.setHora(cmbHorario.getValue());
+                agendaEdit.setObservacao(txtObservacao.getText());
+                agendaEdit.setId_pet(cmbPet.getValue().getId_pet());
+                agendaEdit.setId_func(cmbFuncionario.getValue().getId_funcionario());
+                agendaEdit.setId_cli(cliente.getId());
+                agendaEdit.setId_serv(cmbServico.getValue().getId_servico());
+
+                try {
+                    agendaDAO.altera(agendaEdit);
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("SUCESSO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Agenda Alterada com SUCESSO !!!");
+
+                    alerta.showAndWait();
+                    sceneController.switchToSceneConsultaDeServicos(event);
+                    limparCampos();
+
+                } catch (SQLException ex) {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("ERRO");
+                    alerta.setHeaderText("INFORMACOES");
+                    alerta.setContentText("Erro ao Alterar!" + ex.getMessage());
+
+                    alerta.showAndWait();
+                }
             }
         }
     }

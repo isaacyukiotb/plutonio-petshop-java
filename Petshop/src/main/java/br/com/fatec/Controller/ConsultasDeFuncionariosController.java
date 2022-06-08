@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -24,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,6 +46,7 @@ public class ConsultasDeFuncionariosController implements Initializable {
     Funcionario currentFuncionario = new Funcionario();
     FuncionarioDAO funcionarioDao = new FuncionarioDAO();
     String argumentos = "";
+    String tipo = "";
 
     private Stage stage;
     private Scene scene;
@@ -80,7 +84,7 @@ public class ConsultasDeFuncionariosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        carregaFuncionarios("");
+        carregaFuncionarios("","");
         carregaCmbOptions();
     }
 
@@ -93,13 +97,11 @@ public class ConsultasDeFuncionariosController implements Initializable {
 
         ObservableList<String> obsTipos = FXCollections.observableArrayList();
         obsTipos.add("Todos");
-        obsTipos.add("id_cliente");
-        obsTipos.add("cpf");
-        obsTipos.add("rg");
-        obsTipos.add("nome");
-        obsTipos.add("data_nasc");
+        obsTipos.add("id_funcionario");
+        obsTipos.add("cpf");  
+        obsTipos.add("nome");    
         obsTipos.add("email");
-        obsTipos.add("cep");
+        obsTipos.add("cargo");
 
         cmTipoPesquisa.setItems(obsTipos);
 
@@ -110,18 +112,21 @@ public class ConsultasDeFuncionariosController implements Initializable {
     private void btnPesquisar_click(ActionEvent event) {
         if (cmTipoPesquisa.getValue() == "Todos") {
             argumentos = "";
-            carregaFuncionarios(argumentos);
+            tipo = "";
+            carregaFuncionarios(tipo,argumentos);
         } else {
             argumentos = "";
-            argumentos = cmTipoPesquisa.getValue();
-            argumentos += " = " + "'" + txtDados.getText() + "'";
-            carregaFuncionarios(argumentos);
+            tipo = cmTipoPesquisa.getValue();
+            argumentos +=txtDados.getText();
+            
+            carregaFuncionarios(tipo,argumentos);
         }
     }
 
     @FXML
     private void txtDados_KeyReleased(KeyEvent event) {
         argumentos = "";
+        tipo="";
     }
 
     @FXML
@@ -129,45 +134,25 @@ public class ConsultasDeFuncionariosController implements Initializable {
 
         txtDados.setText("");
         argumentos = "";
+        tipo="";
 
     }
 
     @FXML
     private void btnDeletar_click(ActionEvent event) {
-        /*
-        Cliente cliente = new Cliente();
-        cliente.setId(currentCliente.getId_dono());
-
-        try {
-            cliente = clienteDao.buscaID(cliente);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConsultasDePetsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Excluir");
-        alerta.setHeaderText("Deseja Realmente deletar o PET:");
-        alerta.setContentText("CPF do Dono: " + cliente.getCpf() + "\n\n" + "Nome do Pet: " + currentPet.getNome() + "\n" + "Gênero do Pet: " + currentPet.getGenero() + "\n" + "Raça do Pet: " + currentPet.getRaca());
+        alerta.setHeaderText("Deseja Realmente deletar o Funcionario:");
+        alerta.setContentText("CPF: " + currentFuncionario.getCpf() + "\n\n" + "Nome: " + currentFuncionario.getNome() + "\n" + "Data Nasc. : " + currentFuncionario.getData_nasc() + "\n" + "Email: " + currentFuncionario.getEmail());
 
         if (alerta.showAndWait().get() == ButtonType.OK) {
             try {
-                petDao.remove(currentCliente);
-                Alert alerta3 = new Alert(Alert.AlertType.INFORMATION);
-                alerta3.setTitle("Sucesso!");
-                alerta3.setHeaderText("INFORMACOES");
-                alerta3.setContentText("Dados deletados com Sucesso! ");
-                alerta3.showAndWait();
-                carregaClientes("");
-            } catch (SQLException ex) {
-                Alert alerta2 = new Alert(Alert.AlertType.ERROR);
-                alerta2.setTitle("ERRO");
-                alerta2.setHeaderText("INFORMACOES");
-                alerta2.setContentText("Erro ao excluir: " + ex.getMessage());
-
-                alerta2.showAndWait();
+                funcionarioDao.remove(currentFuncionario);
+                carregaFuncionarios("", "");
+            } catch (Exception ex) {
+                Logger.getLogger(ConsultasDeFuncionariosController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-         */
 
     }
 
@@ -190,11 +175,11 @@ public class ConsultasDeFuncionariosController implements Initializable {
 
     }
 
-    public void carregaFuncionarios(String args) {
+    public void carregaFuncionarios(String tipo,String args) {
         ObservableList<Funcionario> obsCliente = FXCollections.observableArrayList();
         ArrayList<Funcionario> lista = new ArrayList<>();
         try {
-            lista.addAll(funcionarioDao.lista(args));
+            lista.addAll(funcionarioDao.lista(tipo,args));
         } catch (Exception ex) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("ERRO");

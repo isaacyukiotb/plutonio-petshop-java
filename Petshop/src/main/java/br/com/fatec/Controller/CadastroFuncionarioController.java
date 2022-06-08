@@ -132,7 +132,7 @@ public class CadastroFuncionarioController implements Initializable {
     }
 
     @FXML
-    private void btnCadastrar_click(ActionEvent event) {
+    private void btnCadastrar_click(ActionEvent event) throws IOException {
 
         if (funcionarioEdit == null) {
             LocalDate data = dpDataNasc.getValue();
@@ -152,7 +152,7 @@ public class CadastroFuncionarioController implements Initializable {
                 Logger.getLogger(CadastroFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            
+
             LocalDate data = dpDataNasc.getValue();
             String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
@@ -170,6 +170,9 @@ public class CadastroFuncionarioController implements Initializable {
             funcionarioEdit.setUf(txtUf.getText());
             funcionarioEdit.setNumero(txtNumero.getText());
 
+            sceneController.switchToSceneConsultaDeFuncionarios(event);
+            limparCampos();
+
             try {
                 dao.altera(funcionarioEdit);
             } catch (Exception ex) {
@@ -185,13 +188,24 @@ public class CadastroFuncionarioController implements Initializable {
     }
 
     @FXML
-    private void btnCancelar_click(ActionEvent event) {
-        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-        alerta.setTitle("Cancelar");
-        alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
+    private void btnCancelar_click(ActionEvent event) throws IOException {
+        if (funcionarioEdit == null) {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Cancelar");
+            alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
 
-        if (alerta.showAndWait().get() == ButtonType.OK) {
-            limparCampos();
+            if (alerta.showAndWait().get() == ButtonType.OK) {
+                limparCampos();
+            }
+        }else{
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Cancelar");
+            alerta.setHeaderText("Deseja Realmente Cancelar a operação?");
+
+            if (alerta.showAndWait().get() == ButtonType.OK) {
+                sceneController.switchToSceneConsultaDeFuncionarios(event);
+                limparCampos();
+            }
         }
 
     }
@@ -218,6 +232,7 @@ public class CadastroFuncionarioController implements Initializable {
         txtRg.setText("");
         txtTelefone.setText("");
         txtUf.setText("");
+        txtNumero.setText("");
     }
 
     public void onBtnEditar_click(Funcionario func) {
@@ -231,7 +246,7 @@ public class CadastroFuncionarioController implements Initializable {
             Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String date = funcionario.getData_nasc();
         LocalDate localDate = LocalDate.parse(date, formatter);
 

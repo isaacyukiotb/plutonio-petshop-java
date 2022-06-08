@@ -11,13 +11,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.CadastroPetController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.CadastroPetController">
     <stylesheets>
         <URL value="@css/cadastropet.css" />
     </stylesheets>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="146.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="904.0" />
-      <GridPane layoutX="48.0" layoutY="213.0" prefHeight="461.0" prefWidth="809.0">
+      <GridPane layoutX="48.0" layoutY="194.0" prefHeight="461.0" prefWidth="809.0">
         <columnConstraints>
             <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="269.0" />
           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="486.0" minWidth="10.0" prefWidth="221.0" />
@@ -25,11 +25,11 @@
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="93.0" minHeight="8.0" prefHeight="15.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="111.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
@@ -44,7 +44,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtNome" focusTraversable="false" prefHeight="34.0" prefWidth="260.0" promptText="Bruce" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="4">
+            <TextField fx:id="txtNome" disable="true" focusTraversable="false" prefHeight="42.0" prefWidth="260.0" promptText="Bruce" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="4">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
@@ -60,7 +60,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <ComboBox fx:id="cmbCategoria" focusTraversable="false" prefHeight="33.0" prefWidth="175.0" styleClass="combo-box" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+            <ComboBox fx:id="cmbCategoria" disable="true" focusTraversable="false" prefHeight="42.0" prefWidth="175.0" styleClass="combo-box" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
@@ -76,7 +76,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtCpfDono" onKeyReleased="#txtCpfDono_KeyRealased" prefHeight="34.0" prefWidth="136.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="1">
+            <TextField fx:id="txtCpfDono" onKeyReleased="#txtCpfDono_KeyRealased" prefHeight="42.0" prefWidth="136.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="1">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
@@ -92,7 +92,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <CheckBox fx:id="ckMasculino" mnemonicParsing="false" onAction="#ckSetMasculino" styleClass="check" stylesheets="@css/default.css" text="M" textFill="#052f5f" GridPane.rowIndex="6">
+            <CheckBox fx:id="ckMasculino" disable="true" mnemonicParsing="false" onAction="#ckSetMasculino" styleClass="check" stylesheets="@css/default.css" text="M" textFill="#052f5f" GridPane.rowIndex="6">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="14.0" />
                </font>
@@ -100,7 +100,7 @@
                   <Insets left="110.0" />
                </GridPane.margin>
             </CheckBox>
-            <CheckBox fx:id="ckFeminino" mnemonicParsing="false" onAction="#ckSetFeminino" styleClass="check" stylesheets="@css/default.css" text="F" textFill="#052f5f" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+            <CheckBox fx:id="ckFeminino" disable="true" mnemonicParsing="false" onAction="#ckSetFeminino" styleClass="check" stylesheets="@css/default.css" text="F" textFill="#052f5f" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="130.0" />
                </GridPane.margin>
@@ -116,7 +116,7 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtRaca" focusTraversable="false" prefHeight="34.0" prefWidth="293.0" promptText="Pincher" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <TextField fx:id="txtRaca" disable="true" focusTraversable="false" prefHeight="42.0" prefWidth="293.0" promptText="Pincher" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -149,24 +149,25 @@
             <Image url="@resources/img/titulo_cadas_pet.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="txtRestricao" focusTraversable="false" layoutX="57.0" layoutY="479.0" prefHeight="169.0" prefWidth="411.0" styleClass="txtArea" stylesheets="@css/default.css" wrapText="true">
+      <TextArea fx:id="txtRestricao" disable="true" focusTraversable="false" layoutX="57.0" layoutY="479.0" prefHeight="169.0" prefWidth="411.0" styleClass="txtArea" stylesheets="@css/default.css" wrapText="true">
          <font>
             <Font name="Yu Gothic UI Semibold" size="14.0" />
          </font>
       </TextArea>
-      <Button fx:id="btnCancelar" contentDisplay="CENTER" layoutX="690.0" layoutY="726.0" mnemonicParsing="false" onAction="#btnCancelar_click" prefHeight="34.0" prefWidth="95.0" styleClass="btnCancelar" stylesheets="@css/default.css" text="Cancelar" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnCancelar" contentDisplay="CENTER" layoutX="696.0" layoutY="638.0" mnemonicParsing="false" onAction="#btnCancelar_click" prefHeight="34.0" prefWidth="95.0" styleClass="btnCancelar" stylesheets="@css/default.css" text="Cancelar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Yu Gothic UI Semibold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnCadastro" alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="726.0" mnemonicParsing="false" onAction="#btnCadastrar_click" prefHeight="34.0" prefWidth="100.0" styleClass="btnCadastrar" stylesheets="@css/default.css" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnCadastro" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="556.0" layoutY="638.0" mnemonicParsing="false" onAction="#btnCadastrar_click" prefHeight="34.0" prefWidth="100.0" styleClass="btnCadastrar" stylesheets="@css/default.css" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Yu Gothic UI Semibold" size="15.0" />
          </font>
       </Button>
-      <ImageView fitHeight="163.0" fitWidth="210.0" layoutX="569.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="163.0" fitWidth="210.0" layoutX="569.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/img/plutonio_logo.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

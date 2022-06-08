@@ -11,13 +11,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.CadastroFuncionarioController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.CadastroFuncionarioController">
     <stylesheets>
         <URL value="@/br/com/fatec/css/cadastrofuncionario.css" />
     </stylesheets>
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="146.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="904.0" />
-        <GridPane layoutX="88.0" layoutY="146.0" prefHeight="691.0" prefWidth="743.0" stylesheets="@css/default.css">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="146.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="857.0" />
+        <GridPane layoutX="54.0" layoutY="176.0" prefHeight="622.0" prefWidth="743.0" stylesheets="@css/default.css">
             <children>
                 <Label text="Nome" textFill="WHITE" GridPane.valignment="BOTTOM">
                     <font>
@@ -99,47 +99,47 @@
                         <Insets left="10.0" />
                     </GridPane.margin>
                 </Label>
-                <TextField fx:id="txtNome" prefHeight="43.0" prefWidth="266.0" promptText="Flávio Viotti" style="-fx-border-image-slice: xx.xx.xx;" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="1">
+                <TextField fx:id="txtNome" prefHeight="42.0" prefWidth="266.0" promptText="Flávio Viotti" style="-fx-border-image-slice: xx.xx.xx;" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="1">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="txtRg" focusTraversable="false" onKeyReleased="#txtRg_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="12.345.678-9" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <TextField fx:id="txtRg" focusTraversable="false" onKeyReleased="#txtRg_KeyReleased" prefHeight="42.0" prefWidth="183.0" promptText="12.345.678-9" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="txtCpf" focusTraversable="false" onKeyReleased="#txtCpf_KeyReleased" prefHeight="43.0" prefWidth="182.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="4">
+                <TextField fx:id="txtCpf" focusTraversable="false" onKeyReleased="#txtCpf_KeyReleased" prefHeight="42.0" prefWidth="182.0" promptText="123.456.789-10" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="4">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="txtEmail" focusTraversable="false" prefHeight="43.0" prefWidth="244.0" promptText="plutonio@email.com" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="7">
+                <TextField fx:id="txtEmail" focusTraversable="false" prefHeight="42.0" prefWidth="244.0" promptText="plutonio@email.com" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="7">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="txtCep" focusTraversable="false" onAction="#txtCep_enter" onKeyReleased="#txtCep_KeyReleased" prefHeight="43.0" prefWidth="102.0" promptText="0000-000" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="10">
+                <TextField fx:id="txtCep" focusTraversable="false" onAction="#txtCep_enter" onKeyReleased="#txtCep_KeyReleased" prefHeight="42.0" prefWidth="102.0" promptText="0000-000" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="10">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="txtBairro" disable="true" focusTraversable="false" prefHeight="43.0" prefWidth="249.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                <TextField fx:id="txtBairro" disable="true" focusTraversable="false" prefHeight="42.0" prefWidth="249.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="13">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="txtCidade" disable="true" focusTraversable="false" prefHeight="43.0" prefWidth="269.0" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="16">
+                <TextField fx:id="txtCidade" disable="true" focusTraversable="false" prefHeight="42.0" prefWidth="269.0" styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="16">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="txtUf" alignment="CENTER" disable="true" focusTraversable="false" prefHeight="43.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                <TextField fx:id="txtUf" alignment="CENTER" disable="true" focusTraversable="false" prefHeight="42.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="16">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="txtEndereco" disable="true" focusTraversable="false" prefHeight="43.0" prefWidth="280.0" promptText="avenida, rua, alameda..." styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="13">
+                <TextField fx:id="txtEndereco" disable="true" focusTraversable="false" prefHeight="42.0" prefWidth="280.0" promptText="avenida, rua, alameda..." styleClass="input" stylesheets="@css/default.css" GridPane.rowIndex="13">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
@@ -162,7 +162,7 @@
                         <Insets left="110.0" />
                     </GridPane.margin>
                 </ImageView>
-                <ImageView fitHeight="199.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                <ImageView fitHeight="176.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="8">
                     <image>
                         <Image url="@resources/img/plutonio_solo.png" />
                     </image>
@@ -170,7 +170,7 @@
                         <Insets bottom="70.0" />
                     </GridPane.margin>
                 </ImageView>
-                <TextField fx:id="txtCargo" focusTraversable="false" prefHeight="43.0" prefWidth="244.0" promptText="Medica Veterinaria" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                <TextField fx:id="txtCargo" focusTraversable="false" prefHeight="42.0" prefWidth="244.0" promptText="Medica Veterinaria" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="7">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
@@ -183,7 +183,7 @@
                         <Insets left="10.0" />
                     </GridPane.margin>
                 </Label>
-                <TextField fx:id="txtTelefone" focusTraversable="false" onKeyReleased="#txtTelefone_KeyReleased" prefHeight="43.0" prefWidth="183.0" promptText="  (11)91111-1111" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                <TextField fx:id="txtTelefone" focusTraversable="false" onKeyReleased="#txtTelefone_KeyReleased" prefHeight="42.0" prefWidth="183.0" promptText="  (11)91111-1111" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="1">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
                     </font>
@@ -196,7 +196,7 @@
                         <Insets left="10.0" />
                     </GridPane.margin>
                 </Label>
-                <DatePicker fx:id="dpDataNasc" focusTraversable="false" prefHeight="43.0" prefWidth="191.0" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <DatePicker fx:id="dpDataNasc" focusTraversable="false" prefHeight="42.0" prefWidth="191.0" stylesheets="@css/default.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <Label text="Nº" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="12">
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
@@ -206,7 +206,7 @@
                     </GridPane.margin>
                 </Label>
 
-                <TextField fx:id="txtNumero" alignment="CENTER" prefHeight="43.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="13">
+                <TextField fx:id="txtNumero" alignment="CENTER" prefHeight="42.0" prefWidth="67.0" styleClass="input" stylesheets="@css/default.css" GridPane.columnIndex="3" GridPane.rowIndex="13">
             
                     <font>
                         <Font name="Yu Gothic UI Semibold" size="14.0" />
@@ -220,24 +220,24 @@
                 <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="154.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="90.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="104.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="0.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="104.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="89.0" minHeight="0.0" prefHeight="43.0" vgrow="SOMETIMES" />
             </rowConstraints>
         </GridPane>
@@ -246,7 +246,7 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="763.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="68.0" fitWidth="67.0" layoutX="753.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@resources/img/plutonio_cabeça.png" />
             </image>
@@ -256,6 +256,6 @@
                 <Image url="@resources/img/titulo_cadas_func.png" />
             </image>
         </ImageView>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a457f" height="19.0" layoutX="-2.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="904.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a457f" height="19.0" layoutX="-2.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="857.0" />
     </children>
 </AnchorPane>

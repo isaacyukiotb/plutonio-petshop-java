@@ -79,85 +79,94 @@ public class CadastroClienteController implements Initializable {
     @FXML
     private void btnCadastrar_click(ActionEvent event) throws IOException {
 
-        ClienteDAO dao = new ClienteDAO();
-
-        if (clienteEdit != null) {
-            LocalDate data = dpDataNasc.getValue();
-            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-
-            clienteEdit.setCpf(txtCpf.getText());
-            clienteEdit.setRg(txtRg.getText());
-            clienteEdit.setNome(txtNome.getText());
-            clienteEdit.setDataNasc(dataPickerString);
-            clienteEdit.setCep(txtCep.getText());
-            clienteEdit.setEmail(txtEmail.getText());
-            clienteEdit.setTelefone(txtTelefone.getText());
-            clienteEdit.setEndereco(txtEndereco.getText());
-            clienteEdit.setCidade(txtCidade.getText());
-            clienteEdit.setBairro(txtBairro.getText());
-            clienteEdit.setUf(txtUf.getText());
-            clienteEdit.setNumero(txtNumero.getText());
-
-            try {
-                dao.altera(clienteEdit);
-                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                alerta.setTitle("SUCESSO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Dados Alterados com SUCESSO!");
-                alerta.showAndWait();
-                limparCampos();
-                clienteEdit = null;
-                sceneController.switchToSceneConsultaDeClientes(event);
-            } catch (SQLException ex) {
-                Logger.getLogger(CadastroClienteController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if ("".equals(txtNome.getText()) || "".equals(txtRg.getText()) || "".equals(txtTelefone.getText()) || "".equals(txtCpf.getText()) || dpDataNasc.getValue() == null || "".equals(txtEmail.getText()) || "".equals(txtCep.getText()) || "".equals(txtNumero.getText())) {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("PREENCHA TODOS OS CAMPOS");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Preencha Todos os campos!");
+            alerta.showAndWait();
         } else {
-            Cliente cliente = new Cliente();
-            LocalDate data = dpDataNasc.getValue();
-            String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-            cliente.setCpf(txtCpf.getText());
-            cliente.setRg(txtRg.getText());
-            cliente.setNome(txtNome.getText());
-            cliente.setDataNasc(dataPickerString);
-            cliente.setCep(txtCep.getText());
-            cliente.setEmail(txtEmail.getText());
-            cliente.setTelefone(txtTelefone.getText());
-            cliente.setEndereco(txtEndereco.getText());
-            cliente.setCidade(txtCidade.getText());
-            cliente.setBairro(txtBairro.getText());
-            cliente.setUf(txtUf.getText());
-            cliente.setNumero(txtNumero.getText());
-            
-            try {
+            ClienteDAO dao = new ClienteDAO();
 
-                if (dao.insere(cliente)) {
+            if (clienteEdit != null) {
+                LocalDate data = dpDataNasc.getValue();
+                String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
+                clienteEdit.setCpf(txtCpf.getText());
+                clienteEdit.setRg(txtRg.getText());
+                clienteEdit.setNome(txtNome.getText());
+                clienteEdit.setDataNasc(dataPickerString);
+                clienteEdit.setCep(txtCep.getText());
+                clienteEdit.setEmail(txtEmail.getText());
+                clienteEdit.setTelefone(txtTelefone.getText());
+                clienteEdit.setEndereco(txtEndereco.getText());
+                clienteEdit.setCidade(txtCidade.getText());
+                clienteEdit.setBairro(txtBairro.getText());
+                clienteEdit.setUf(txtUf.getText());
+                clienteEdit.setNumero(txtNumero.getText());
+
+                try {
+                    dao.altera(clienteEdit);
                     Alert alerta = new Alert(Alert.AlertType.INFORMATION);
                     alerta.setTitle("SUCESSO");
                     alerta.setHeaderText("INFORMACOES");
-                    alerta.setContentText("Dados gravados com SUCESSO!");
-
+                    alerta.setContentText("Dados Alterados com SUCESSO!");
                     alerta.showAndWait();
                     limparCampos();
+                    clienteEdit = null;
+                    sceneController.switchToSceneConsultaDeClientes(event);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CadastroClienteController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                Cliente cliente = new Cliente();
+                LocalDate data = dpDataNasc.getValue();
+                String dataPickerString = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-                } else {
+                cliente.setCpf(txtCpf.getText());
+                cliente.setRg(txtRg.getText());
+                cliente.setNome(txtNome.getText());
+                cliente.setDataNasc(dataPickerString);
+                cliente.setCep(txtCep.getText());
+                cliente.setEmail(txtEmail.getText());
+                cliente.setTelefone(txtTelefone.getText());
+                cliente.setEndereco(txtEndereco.getText());
+                cliente.setCidade(txtCidade.getText());
+                cliente.setBairro(txtBairro.getText());
+                cliente.setUf(txtUf.getText());
+                cliente.setNumero(txtNumero.getText());
+
+                try {
+
+                    if (dao.insere(cliente)) {
+
+                        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                        alerta.setTitle("SUCESSO");
+                        alerta.setHeaderText("INFORMACOES");
+                        alerta.setContentText("Dados gravados com SUCESSO!");
+
+                        alerta.showAndWait();
+                        limparCampos();
+
+                    } else {
+                        Alert alerta = new Alert(Alert.AlertType.ERROR);
+                        alerta.setTitle("ERRO");
+                        alerta.setHeaderText("INFORMACOES");
+                        alerta.setContentText("Erro ao gravar os Dados!");
+
+                        alerta.showAndWait();
+                    }
+
+                } catch (SQLException ex) {
                     Alert alerta = new Alert(Alert.AlertType.ERROR);
                     alerta.setTitle("ERRO");
                     alerta.setHeaderText("INFORMACOES");
-                    alerta.setContentText("Erro ao gravar os Dados!");
+                    alerta.setContentText("Erro na gravacao: " + ex.getMessage());
 
                     alerta.showAndWait();
+
                 }
-
-            } catch (SQLException ex) {
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
-                alerta.setTitle("ERRO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Erro na gravacao: " + ex.getMessage());
-
-                alerta.showAndWait();
-
             }
         }
 
@@ -185,7 +194,7 @@ public class CadastroClienteController implements Initializable {
         txtCidade.setText(cep.getCidade());
         txtBairro.setText(cep.getBairro());
         txtUf.setText(cep.getUf());
-
+        txtNumero.requestFocus();
     }
 
     @FXML
@@ -269,7 +278,6 @@ public class CadastroClienteController implements Initializable {
         txtBairro.setText(cliente.getBairro());
         txtUf.setText(cliente.getUf());
         txtNumero.setText(cliente.getNumero());
-            
 
         clienteEdit = cliente;
 
@@ -290,7 +298,7 @@ public class CadastroClienteController implements Initializable {
         txtBairro.setText("");
         txtUf.setText("");
         txtNumero.setText("");
-        
+
         clienteEdit = null;
 
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

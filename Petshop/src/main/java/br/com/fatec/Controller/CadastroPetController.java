@@ -99,105 +99,114 @@ public class CadastroPetController implements Initializable {
     }
 
     @FXML
-    private void btnCadastrar_click(ActionEvent event)throws IOException {
+    private void btnCadastrar_click(ActionEvent event) throws IOException {
 
-        if (petEdit == null) {
-            
-            Pet pet = new Pet();
-            Cliente dono = new Cliente();
-            dono.setCpf(txtCpfDono.getText());
+        if ("".equals(txtCpfDono.getText()) || "".equals(txtNome.getText()) || cmbCategoria.getValue() == null || "".equals(txtRaca.getText()) || (ckFeminino.isSelected() == false && ckMasculino.isSelected() == false)) {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("PREENCHA TODOS OS CAMPOS");
+            alerta.setHeaderText("INFORMACOES");
+            alerta.setContentText("Preencha Todos os campos!");
+            alerta.showAndWait();
+        } else {
 
-            try {
-                dono = clienteDao.buscaCPF(dono);
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                //Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            if (petEdit == null) {
 
-            pet.setNome(txtNome.getText());
-            pet.setCategoria(cmbCategoria.getValue());
-            pet.setRaca(txtRaca.getText());
-            pet.setGenero(this.sexo);
-            pet.setRestricao(txtRestricao.getText());
-            pet.setId_dono(dono.getId());
+                Pet pet = new Pet();
+                Cliente dono = new Cliente();
+                dono.setCpf(txtCpfDono.getText());
 
-            try {
-                if (dao.insere(pet)) {
-                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                    alerta.setTitle("SUCESSO");
-                    alerta.setHeaderText("INFORMACOES");
-                    alerta.setContentText("Dados gravados com SUCESSO!");
+                try {
+                    dono = clienteDao.buscaCPF(dono);
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                    //Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-                    alerta.showAndWait();
-                    limparTela();
+                pet.setNome(txtNome.getText());
+                pet.setCategoria(cmbCategoria.getValue());
+                pet.setRaca(txtRaca.getText());
+                pet.setGenero(this.sexo);
+                pet.setRestricao(txtRestricao.getText());
+                pet.setId_dono(dono.getId());
 
-                } else {
+                try {
+                    if (dao.insere(pet)) {
+                        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                        alerta.setTitle("SUCESSO");
+                        alerta.setHeaderText("INFORMACOES");
+                        alerta.setContentText("Dados gravados com SUCESSO!");
+
+                        alerta.showAndWait();
+                        limparTela();
+
+                    } else {
+                        Alert alerta = new Alert(Alert.AlertType.ERROR);
+                        alerta.setTitle("ERRO");
+                        alerta.setHeaderText("INFORMACOES");
+                        alerta.setContentText("Erro ao gravar os Dados!");
+
+                        alerta.showAndWait();
+                    }
+
+                } catch (SQLException ex) {
                     Alert alerta = new Alert(Alert.AlertType.ERROR);
                     alerta.setTitle("ERRO");
                     alerta.setHeaderText("INFORMACOES");
-                    alerta.setContentText("Erro ao gravar os Dados!");
+                    alerta.setContentText("Erro na gravacao: " + ex.getMessage());
 
                     alerta.showAndWait();
+
+                }
+            } else {
+
+                Cliente dono = new Cliente();
+                dono.setCpf(txtCpfDono.getText());
+
+                try {
+                    dono = clienteDao.buscaCPF(dono);
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                    //Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-            } catch (SQLException ex) {
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
-                alerta.setTitle("ERRO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Erro na gravacao: " + ex.getMessage());
+                petEdit.setNome(txtNome.getText());
+                petEdit.setCategoria(cmbCategoria.getValue());
+                petEdit.setRaca(txtRaca.getText());
+                petEdit.setGenero(this.sexo);
+                petEdit.setRestricao(txtRestricao.getText());
+                petEdit.setId_dono(dono.getId());
 
-                alerta.showAndWait();
+                try {
+                    if (dao.altera(petEdit)) {
+                        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                        alerta.setTitle("SUCESSO");
+                        alerta.setHeaderText("INFORMACOES");
+                        alerta.setContentText("Dados Alterados com SUCESSO!");
 
-            }
-        }else{
-            
-            Cliente dono = new Cliente();
-            dono.setCpf(txtCpfDono.getText());
+                        alerta.showAndWait();
+                        limparTela();
+                        sceneController.switchToSceneConsultaDePet(event);
 
-            try {
-                dono = clienteDao.buscaCPF(dono);
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                //Logger.getLogger(CadastroPetController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                    } else {
+                        Alert alerta = new Alert(Alert.AlertType.ERROR);
+                        alerta.setTitle("ERRO");
+                        alerta.setHeaderText("INFORMACOES");
+                        alerta.setContentText("Erro ao Alterar os Dados!");
 
-            petEdit.setNome(txtNome.getText());
-            petEdit.setCategoria(cmbCategoria.getValue());
-            petEdit.setRaca(txtRaca.getText());
-            petEdit.setGenero(this.sexo);
-            petEdit.setRestricao(txtRestricao.getText());
-            petEdit.setId_dono(dono.getId());
+                        alerta.showAndWait();
+                    }
 
-            try {
-                if (dao.altera(petEdit)) {
-                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                    alerta.setTitle("SUCESSO");
-                    alerta.setHeaderText("INFORMACOES");
-                    alerta.setContentText("Dados Alterados com SUCESSO!");
-
-                    alerta.showAndWait();
-                    limparTela();
-                    sceneController.switchToSceneConsultaDePet(event);
-
-                } else {
+                } catch (SQLException ex) {
                     Alert alerta = new Alert(Alert.AlertType.ERROR);
                     alerta.setTitle("ERRO");
                     alerta.setHeaderText("INFORMACOES");
-                    alerta.setContentText("Erro ao Alterar os Dados!");
+                    alerta.setContentText("Erro na gravacao: " + ex.getMessage());
 
                     alerta.showAndWait();
+
                 }
 
-            } catch (SQLException ex) {
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
-                alerta.setTitle("ERRO");
-                alerta.setHeaderText("INFORMACOES");
-                alerta.setContentText("Erro na gravacao: " + ex.getMessage());
-
-                alerta.showAndWait();
-
             }
-            
         }
     }
 
@@ -232,13 +241,13 @@ public class CadastroPetController implements Initializable {
         txtRaca.setText(pet.getRaca());
         txtRestricao.setText(pet.getRestricao());
         cmbCategoria.setValue(pet.getCategoria());
-        
+
         if ("M".equals(pet.getGenero())) {
             ckMasculino.setSelected(true);
             this.sexo = pet.getGenero();
         } else {
             ckFeminino.setSelected(true);
-            this.sexo = pet.getGenero(); 
+            this.sexo = pet.getGenero();
         }
 
         btnCadastro.setText("Atualizar");
@@ -259,8 +268,8 @@ public class CadastroPetController implements Initializable {
     }
 
     @FXML
-    private void btnCancelar_click(ActionEvent event)throws IOException {
-        
+    private void btnCancelar_click(ActionEvent event) throws IOException {
+
         if (petEdit != null) {
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Cancelar");
@@ -278,7 +287,7 @@ public class CadastroPetController implements Initializable {
                 limparTela();
             }
         }
-        
+
         limparTela();
     }
 

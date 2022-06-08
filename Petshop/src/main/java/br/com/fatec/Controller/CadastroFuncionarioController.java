@@ -119,6 +119,7 @@ public class CadastroFuncionarioController implements Initializable {
         txtCidade.setText(cep.getCidade());
         txtBairro.setText(cep.getBairro());
         txtUf.setText(cep.getUf());
+        txtNumero.requestFocus();
     }
 
     @FXML
@@ -133,6 +134,7 @@ public class CadastroFuncionarioController implements Initializable {
 
     @FXML
     private void btnCadastrar_click(ActionEvent event) throws IOException {
+        
 
         if (funcionarioEdit == null) {
             LocalDate data = dpDataNasc.getValue();

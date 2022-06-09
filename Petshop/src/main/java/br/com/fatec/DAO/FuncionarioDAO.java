@@ -15,7 +15,7 @@ import java.util.Collection;
 public class FuncionarioDAO {
 
     public static ArrayList<Funcionario> funcionarios = new ArrayList<>();
-    public static Integer idCount = 0;
+    public static Integer idCount = 1;
 
     public boolean insere(Funcionario obj) throws Exception {
         try {

@@ -1,14 +1,11 @@
 br\com\fatec\model\Cep.class
 br\com\fatec\model\Pet.class
-br\com\fatec\model\Veiculo.class
 br\com\fatec\DAO\PetDAO.class
 br\com\fatec\model\Agenda.class
-br\com\fatec\DAO\ProprietarioDAO.class
 br\com\fatec\TextFieldFormatter.class
 br\com\fatec\Controller\ConsultaTiposController.class
 br\com\fatec\SceneController.class
 br\com\fatec\Controller\HomeController.class
-br\com\fatec\DAO\VeiculoDAO.class
 br\com\fatec\Controller\CadastroClienteController.class
 br\com\fatec\Controller\AgendaConsultaController.class
 br\com\fatec\Controller\CadastroPetController.class
@@ -30,6 +27,5 @@ br\com\fatec\App.class
 br\com\fatec\Controller\ConsultasDeClientesController$1.class
 br\com\fatec\persistencia\Banco.class
 br\com\fatec\model\Cliente.class
-br\com\fatec\model\Proprietario.class
 br\com\fatec\model\Servico.class
 br\com\fatec\Controller\CadastroFuncionarioController.class

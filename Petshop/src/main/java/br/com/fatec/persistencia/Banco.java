@@ -24,9 +24,9 @@ public class Banco {
     //define valores padrão
     static {
         //mysql e mariaDB
-        bancoDados = "plutonio2";
+        bancoDados = "plutonio";
         usuario = "root";
-        senha = "";
+        senha = "Bruna03200109";
         servidor = "localhost";
         porta = 3306;
         

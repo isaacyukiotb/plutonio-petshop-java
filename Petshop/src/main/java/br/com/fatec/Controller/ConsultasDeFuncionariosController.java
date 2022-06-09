@@ -4,11 +4,14 @@
  */
 package br.com.fatec.Controller;
 
+import br.com.fatec.DAO.AgendaDAO;
 import br.com.fatec.DAO.FuncionarioDAO;
 import br.com.fatec.SceneController;
+import br.com.fatec.model.Agenda;
 import br.com.fatec.model.Funcionario;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -45,6 +48,7 @@ public class ConsultasDeFuncionariosController implements Initializable {
     SceneController sceneController = new SceneController();
     Funcionario currentFuncionario = new Funcionario();
     FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+    AgendaDAO agendaDao = new AgendaDAO();
     String argumentos = "";
     String tipo = "";
 
@@ -84,7 +88,7 @@ public class ConsultasDeFuncionariosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        carregaFuncionarios("","");
+        carregaFuncionarios("", "");
         carregaCmbOptions();
     }
 
@@ -98,8 +102,8 @@ public class ConsultasDeFuncionariosController implements Initializable {
         ObservableList<String> obsTipos = FXCollections.observableArrayList();
         obsTipos.add("Todos");
         obsTipos.add("id_funcionario");
-        obsTipos.add("cpf");  
-        obsTipos.add("nome");    
+        obsTipos.add("cpf");
+        obsTipos.add("nome");
         obsTipos.add("email");
         obsTipos.add("cargo");
 
@@ -113,20 +117,20 @@ public class ConsultasDeFuncionariosController implements Initializable {
         if (cmTipoPesquisa.getValue() == "Todos") {
             argumentos = "";
             tipo = "";
-            carregaFuncionarios(tipo,argumentos);
+            carregaFuncionarios(tipo, argumentos);
         } else {
             argumentos = "";
             tipo = cmTipoPesquisa.getValue();
-            argumentos +=txtDados.getText();
-            
-            carregaFuncionarios(tipo,argumentos);
+            argumentos += txtDados.getText();
+
+            carregaFuncionarios(tipo, argumentos);
         }
     }
 
     @FXML
     private void txtDados_KeyReleased(KeyEvent event) {
         argumentos = "";
-        tipo="";
+        tipo = "";
     }
 
     @FXML
@@ -134,7 +138,7 @@ public class ConsultasDeFuncionariosController implements Initializable {
 
         txtDados.setText("");
         argumentos = "";
-        tipo="";
+        tipo = "";
 
     }
 
@@ -146,6 +150,23 @@ public class ConsultasDeFuncionariosController implements Initializable {
         alerta.setContentText("CPF: " + currentFuncionario.getCpf() + "\n\n" + "Nome: " + currentFuncionario.getNome() + "\n" + "Data Nasc. : " + currentFuncionario.getData_nasc() + "\n" + "Email: " + currentFuncionario.getEmail());
 
         if (alerta.showAndWait().get() == ButtonType.OK) {
+
+            ArrayList<Agenda> agendas = new ArrayList<>();
+
+            try {
+                agendas.addAll(agendaDao.lista("id_func =" + currentFuncionario.getId_funcionario()));
+            } catch (SQLException ex) {
+                Logger.getLogger(ConsultasDeFuncionariosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (Agenda agenda : agendas) {
+                try {
+                    agendaDao.remove(agenda);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConsultasDeFuncionariosController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
             try {
                 funcionarioDao.remove(currentFuncionario);
                 carregaFuncionarios("", "");
@@ -175,11 +196,11 @@ public class ConsultasDeFuncionariosController implements Initializable {
 
     }
 
-    public void carregaFuncionarios(String tipo,String args) {
+    public void carregaFuncionarios(String tipo, String args) {
         ObservableList<Funcionario> obsCliente = FXCollections.observableArrayList();
         ArrayList<Funcionario> lista = new ArrayList<>();
         try {
-            lista.addAll(funcionarioDao.lista(tipo,args));
+            lista.addAll(funcionarioDao.lista(tipo, args));
         } catch (Exception ex) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("ERRO");

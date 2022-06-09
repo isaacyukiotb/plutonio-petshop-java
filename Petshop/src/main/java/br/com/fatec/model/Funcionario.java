@@ -63,7 +63,6 @@ public class Funcionario {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-
     
     
     @Override

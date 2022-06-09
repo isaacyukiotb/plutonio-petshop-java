@@ -10,64 +10,72 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.ConsultasDePetsController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.ConsultasDePetsController">
     <stylesheets>
         <URL value="@css/consultas.css" />
     </stylesheets>
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="146.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="904.0" />
-      <Label layoutX="48.0" layoutY="70.0" />
-      <TextField fx:id="txtDados" focusTraversable="false" layoutX="264.0" layoutY="220.0" onKeyReleased="#txtDados_KeyReleased" prefHeight="40.0" prefWidth="229.0" styleClass="input" stylesheets="@css/default.css">
-         <font>
-            <Font name="Yu Gothic UI Semibold" size="14.0" />
-         </font></TextField>
-      <Label layoutX="368.0" layoutY="131.0" />
-      <Button fx:id="btnPesquisar" layoutX="523.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnPesquisar_click" prefHeight="44.0" prefWidth="142.0" styleClass="btnPesquisar" stylesheets="@css/default.css" text="🔍 Pesquisar" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font></Button>
-      <Button layoutX="24.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font></Button>
-      <ComboBox fx:id="cmTipoPesquisa" layoutX="81.0" layoutY="220.0" onAction="#cmTipoPesquisa_selected" prefHeight="40.0" prefWidth="162.0" stylesheets="@css/default.css" />
-      <Label layoutX="92.0" layoutY="196.0" stylesheets="@css/default.css" text="Pesquisar por:">
-         <font>
-            <Font name="Yu Gothic UI Semibold" size="14.0" />
-         </font></Label>
-      <Label layoutX="273.0" layoutY="196.0" stylesheets="@css/default.css" text="Dado:">
-         <font>
-            <Font name="Yu Gothic UI Semibold" size="14.0" />
-         </font></Label>
-      <Button fx:id="btnDeletar" layoutX="686.0" layoutY="501.0" mnemonicParsing="false" onAction="#btnDeletar_click" styleClass="btnDeletar" stylesheets="@css/default.css" text="Deletar ✘" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font></Button>
-      <Button fx:id="btnEditar" layoutX="693.0" layoutY="381.0" mnemonicParsing="false" onAction="#btnEditar_click" styleClass="btnEditar" stylesheets="@css/default.css" text="Editar ☛" textFill="#df3b57">
-         <font>
-            <Font size="20.0" />
-         </font></Button>
-      <TableView fx:id="tbvPet" focusTraversable="false" layoutX="74.0" layoutY="289.0" prefHeight="511.0" prefWidth="530.0" stylesheets="@css/default.css">
-        <columns>
-          <TableColumn fx:id="nome" prefWidth="133.0" text="Nome" />
-          <TableColumn fx:id="genero" prefWidth="112.0" text="Gênero" />
-            <TableColumn fx:id="raca" prefWidth="114.0" text="Raça" />
-            <TableColumn fx:id="cpf_dono" prefWidth="170.0" text="CPF Dono" />
-        </columns>
-      </TableView>
-      <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="768.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@resources/img/plutonio_cabeça.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="69.0" fitWidth="612.0" layoutX="194.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@resources/img/titulo_consul_pet.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="676.0" layoutY="665.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@resources/img/plutonio_logo.png" />
-         </image></ImageView>
-   </children>
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="146.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="858.0" />
+        <Label layoutX="48.0" layoutY="70.0" />
+        <TextField fx:id="txtDados" focusTraversable="false" layoutX="264.0" layoutY="191.0" onKeyReleased="#txtDados_KeyReleased" prefHeight="42.0" prefWidth="229.0" styleClass="input" stylesheets="@css/default.css">
+            <font>
+                <Font name="Yu Gothic UI Semibold" size="14.0" />
+            </font>
+        </TextField>
+        <Label layoutX="368.0" layoutY="131.0" />
+        <Button fx:id="btnPesquisar" layoutX="523.0" layoutY="189.0" mnemonicParsing="false" onAction="#btnPesquisar_click" prefHeight="42.0" prefWidth="142.0" styleClass="btnPesquisar" stylesheets="@css/default.css" text="🔍 Pesquisar" textFill="WHITE">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="7.0" layoutY="51.0" mnemonicParsing="false" onAction="#switchPage_home" styleClass="btnVoltar" stylesheets="@css/default.css" text="❮  voltar" textFill="WHITE">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <ComboBox fx:id="cmTipoPesquisa" layoutX="81.0" layoutY="191.0" onAction="#cmTipoPesquisa_selected" prefHeight="42.0" prefWidth="162.0" stylesheets="@css/default.css" />
+        <Label layoutX="92.0" layoutY="167.0" stylesheets="@css/default.css" text="Pesquisar por:">
+            <font>
+                <Font name="Yu Gothic UI Semibold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="273.0" layoutY="167.0" stylesheets="@css/default.css" text="Dado:">
+            <font>
+                <Font name="Yu Gothic UI Semibold" size="14.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnDeletar" layoutX="670.0" layoutY="416.0" mnemonicParsing="false" onAction="#btnDeletar_click" styleClass="btnDeletar" stylesheets="@css/default.css" text="Deletar ✘" textFill="WHITE">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button fx:id="btnEditar" layoutX="676.0" layoutY="328.0" mnemonicParsing="false" onAction="#btnEditar_click" styleClass="btnEditar" stylesheets="@css/default.css" text="Editar ☛" textFill="#df3b57">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <TableView fx:id="tbvPet" focusTraversable="false" layoutX="68.0" layoutY="273.0" prefHeight="409.0" prefWidth="549.0" stylesheets="@css/default.css">
+            <columns>
+                <TableColumn fx:id="nome" prefWidth="133.0" text="Nome" />
+                <TableColumn fx:id="genero" prefWidth="112.0" text="Gênero" />
+                <TableColumn fx:id="raca" prefWidth="114.0" text="Raça" />
+                <TableColumn fx:id="cpf_dono" prefWidth="170.0" text="CPF Dono" />
+            </columns>
+        </TableView>
+        <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="717.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@resources/img/plutonio_cabeça.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="69.0" fitWidth="612.0" layoutX="171.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@resources/img/titulo_consul_pet.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="632.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@resources/img/plutonio_logo.png" />
+            </image>
+        </ImageView>
+    </children>
 </AnchorPane>

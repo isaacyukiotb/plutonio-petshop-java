@@ -10,15 +10,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.ConsultaTiposController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.Controller.ConsultaTiposController">
     <stylesheets>
         <URL value="@/br/com/fatec/css/consultatipos.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="153.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="863.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="856.0" layoutX="626.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="237.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a457f" height="746.0" layoutX="646.0" layoutY="49.0" stroke="#052f5f" strokeType="INSIDE" strokeWidth="0.0" width="196.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="153.0" layoutY="708.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="859.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="153.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="859.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="566.0" layoutX="626.0" layoutY="-7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="228.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a457f" height="507.0" layoutX="640.0" layoutY="49.0" stroke="#052f5f" strokeType="INSIDE" strokeWidth="0.0" width="196.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#052f5f" height="153.0" layoutX="-6.0" layoutY="547.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="859.0" />
       <Button fx:id="btnConsultaFunc" alignment="BASELINE_RIGHT" layoutX="664.0" layoutY="314.0" mnemonicParsing="false" onAction="#btnConsultaFunc_click" prefHeight="40.0" prefWidth="165.0" styleClass="navButton" stylesheets="@css/consultatipos.css" text="Funcionário" />
       <Button fx:id="btnConsultaCli" alignment="BASELINE_RIGHT" layoutX="663.0" layoutY="114.0" mnemonicParsing="false" onAction="#btnConsultaCli_click" prefHeight="40.0" prefWidth="165.0" styleClass="navButton" stylesheets="@css/consultatipos.css" text="Cliente" textAlignment="RIGHT" />
       <Button fx:id="btnConsultaPet" alignment="BASELINE_RIGHT" layoutX="662.0" layoutY="214.0" mnemonicParsing="false" onAction="#btnConsultaPet_click" prefHeight="40.0" prefWidth="165.0" styleClass="navButton" stylesheets="@css/consultatipos.css" text="Pet" />
@@ -28,32 +28,32 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <ImageView fitHeight="54.0" fitWidth="57.0" layoutX="793.0" layoutY="795.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="54.0" fitWidth="57.0" layoutX="770.0" layoutY="624.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/img/plutonio_cabeça.png" />
          </image>
       </ImageView>
-      <Label layoutX="450.0" layoutY="833.0" text="Ⓒ 2022" textFill="WHITE">
+      <Label layoutX="389.0" layoutY="673.0" text="Ⓒ 2022" textFill="WHITE">
          <font>
             <Font name="Yu Gothic UI Semibold" size="9.0" />
          </font>
       </Label>
-      <Label layoutX="403.0" layoutY="806.0" text="Rafaela Alves de Jesus" textFill="WHITE">
+      <Label layoutX="342.0" layoutY="646.0" text="Rafaela Alves de Jesus" textFill="WHITE">
          <font>
             <Font name="Yu Gothic UI Semibold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="392.0" layoutY="787.0" text="Isaac Yukio Tagawa Barros" textFill="WHITE">
+      <Label layoutX="331.0" layoutY="627.0" text="Isaac Yukio Tagawa Barros" textFill="WHITE">
          <font>
             <Font name="Yu Gothic UI Semibold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="418.0" layoutY="766.0" text="ADSMA4 • Viotti" textFill="WHITE">
+      <Label layoutX="357.0" layoutY="606.0" text="ADSMA4 • Viotti" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <GridPane layoutX="426.0" layoutY="723.0" prefHeight="34.0" prefWidth="79.0">
+      <GridPane layoutX="365.0" layoutY="563.0" prefHeight="34.0" prefWidth="79.0">
          <children>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <image>
@@ -74,7 +74,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <ImageView fitHeight="356.0" fitWidth="196.0" layoutX="207.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="304.0" fitWidth="165.0" layoutX="238.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/img/plutonio_solo.png" />
          </image>

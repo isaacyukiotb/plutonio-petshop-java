@@ -207,8 +207,10 @@ public class ConsultasDeServicosController implements Initializable {
     }
 
     public void carregaAgendas(String args) {
+
         ObservableList<Agenda> obsAgenda = FXCollections.observableArrayList();
         ArrayList<Agenda> lista = new ArrayList<>();
+
         try {
             lista.addAll(agendaDao.lista(args));
         } catch (SQLException ex) {
@@ -226,17 +228,21 @@ public class ConsultasDeServicosController implements Initializable {
 
         for (Agenda agenda : lista) {
 
-            funcionarioAgenda = new Funcionario(agenda.getId_func());
-            
+            funcionarioAgenda= new Funcionario(agenda.getId_func());
             clienteDono.setId(agenda.getId_cli());
             servicoAgenda.setId_servico(agenda.getId_serv());
             petAgenda.setId_pet(agenda.getId_pet());
+
             try {
                 funcionarioAgenda = funcionarioDao.buscaID(funcionarioAgenda);
             } catch (Exception ex) {
-                Logger.getLogger(ConsultasDeServicosController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("ERRO");
+                alerta.setHeaderText("INFORMACOES");
+                alerta.setContentText("Erro na consulta: " + ex.getMessage());
+                alerta.showAndWait();
             }
-            
+
             try {
                 servicoAgenda = servicoDao.buscaID(servicoAgenda);
                 petAgenda = petDao.buscaID(petAgenda);
@@ -245,10 +251,12 @@ public class ConsultasDeServicosController implements Initializable {
             } catch (SQLException ex) {
                 Logger.getLogger(ConsultasDeServicosController.class.getName()).log(Level.SEVERE, null, ex);
             }
+
             agenda.setCpfCliente(clienteDono.getCpf());
             agenda.setNomeFunc(funcionarioAgenda.getNome());
             agenda.setNomePet(petAgenda.getNome());
             agenda.setTipoServ(servicoAgenda.getNome());
+
         }
 
         obsAgenda.addAll(lista);

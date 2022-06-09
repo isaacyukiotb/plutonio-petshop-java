@@ -26,7 +26,7 @@ public class Banco {
         //mysql e mariaDB
         bancoDados = "plutonio2";
         usuario = "root";
-        senha = "Bruna03200109";
+        senha = "";
         servidor = "localhost";
         porta = 3306;
         

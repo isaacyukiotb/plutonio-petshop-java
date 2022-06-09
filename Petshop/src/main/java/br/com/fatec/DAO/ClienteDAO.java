@@ -5,10 +5,6 @@
 package br.com.fatec.DAO;
 
 import br.com.fatec.model.Cliente;
-import java.sql.SQLException;
-import java.util.Collection;
-import br.com.fatec.model.Proprietario;
-
 import br.com.fatec.persistencia.Banco;
 import java.sql.SQLException;
 import java.util.ArrayList;
